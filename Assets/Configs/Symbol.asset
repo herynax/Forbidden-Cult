@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e1b189f11e0e844b59e0a9aef25c87, type: 3}
+  m_Name: Symbol
+  m_EditorClassIdentifier: 
+  ID: symbol
+  Name: "\u0417\u043D\u0430\u043A"
+  Icon: {fileID: 4313692675795891595, guid: fa1ce9ce4111e2641b4a1084738af88f, type: 3}
+  RowBackground: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  BasePrice: 15
+  BasePassiveIncome: 1
+  MaxVisuals: 10
+  RequiredUpgrade: {fileID: 11400000}
+  RequiredAmount: 0

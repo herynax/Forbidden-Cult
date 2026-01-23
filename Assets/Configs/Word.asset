@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e1b189f11e0e844b59e0a9aef25c87, type: 3}
+  m_Name: Word
+  m_EditorClassIdentifier: 
+  ID: 
+  Name: 
+  Icon: {fileID: 0}
+  RowBackground: {fileID: 0}
+  BasePrice: 0
+  BasePassiveIncome: 0
+  MaxVisuals: 10
+  RequiredUpgrade: {fileID: 0}
+  RequiredAmount: 0
