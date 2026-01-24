@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b940cfd9d407bfd44bebb2769a44c102, type: 3}
+  m_Name: Object3
+  m_EditorClassIdentifier: 
+  level: 3
+  sprite: {fileID: 6545346731285738030, guid: 15ec32632eff94940b6c846b54767509, type: 3}
+  itemColor: {r: 1, g: 0, b: 0.7325125, a: 1}
+  scale: 0.8
+  reward: 4
+  nextLevel: {fileID: 11400000, guid: c377e96fd32999f4f8d58daed2516452, type: 2}
