@@ -19,18 +19,46 @@ public class PassiveIncomeManager : MonoBehaviour
 
     private void Update()
     {
-        // 1. Пересчитываем текущий доход (можно делать реже для оптимизации, но для простоты здесь так)
-        CalculateIncomeValue();
+        if (saveManager == null || saveManager.data == null) return;
 
-        // 2. Начисляем доход ПЛАВНО. 
-        // Мы берем доход в секунду и делим его на количество кадров (Time.deltaTime)
-        double incomeThisFrame = totalIncomePerSecond * Time.deltaTime;
-        saveManager.data.Money += incomeThisFrame;
+        double frameTotalIncome = 0;
 
-        // 3. Обновляем визуализацию
+        // Проходим по всем типам зданий, которые есть в игре
+        foreach (var upgradeSO in allUpgrades)
+        {
+            if (upgradeSO == null) continue;
+
+            // Ищем состояние этого здания в сохранениях
+            var state = saveManager.data.Upgrades.Find(u => u.ID == upgradeSO.ID);
+
+            if (state != null && state.Amount > 0)
+            {
+                // Считаем, сколько этот тип зданий приносит в секунду
+                double incomePerSecondForThisType = state.Amount * upgradeSO.BasePassiveIncome;
+
+                // Считаем, сколько привалило за этот конкретный кадр
+                double frameIncomeForThisType = incomePerSecondForThisType * Time.deltaTime;
+
+                // ВАЖНО: Добавляем этот доход в личную статистику здания!
+                // Именно эту переменную читает TooltipManager
+                state.TotalEarned += frameIncomeForThisType;
+
+                // Суммируем для общего баланса
+                frameTotalIncome += incomePerSecondForThisType;
+            }
+        }
+
+        // Обновляем общую сумму дохода в секунду для отображения в UI
+        totalIncomePerSecond = frameTotalIncome;
+
+        // Начисляем деньги в общий банк игрока
+        saveManager.data.Money += totalIncomePerSecond * Time.deltaTime;
+
+        // Обновляем главный текст денег
         if (moneyDisplay != null)
             moneyDisplay.text = BigNumberFormatter.Format(saveManager.data.Money);
 
+        // Обновляем текст дохода в секунду
         if (totalIncomeText != null)
             totalIncomeText.text = BigNumberFormatter.Format(totalIncomePerSecond);
     }

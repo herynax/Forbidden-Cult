@@ -21,7 +21,7 @@ public class UpgradeState
 {
     public string ID;
     public int Amount;
-    // Список сохраненных позиций для иконок
+    public double TotalEarned; // Сколько скверны принесло именно это улучшение за всё время
     public List<VisualPosition> StoredPositions = new List<VisualPosition>();
 }
 
