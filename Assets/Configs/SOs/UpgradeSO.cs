@@ -1,7 +1,5 @@
 using UnityEngine;
 
-
-public enum UpgradeCategory { Symbol, Word, Phrase }
 [CreateAssetMenu(fileName = "NewUpgrade", menuName = "Clicker/Upgrade")]
 public class UpgradeSO : ScriptableObject
 {
@@ -11,8 +9,6 @@ public class UpgradeSO : ScriptableObject
     public Sprite RowBackground; // ”никальный фон дл€ р€да построек
     public double BasePrice;
     public double BasePassiveIncome;
-
-    public UpgradeCategory Category;
 
     [Header("Visual Layout")]
     public int RowsCount = 2;      // —колько р€дов будет в этой полосе

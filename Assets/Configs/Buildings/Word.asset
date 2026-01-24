@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: word
   Name: "\u0421\u043B\u043E\u0432\u043E"
-  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  Icon: {fileID: 8468526713697396880, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
   RowBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   BasePrice: 50
   BasePassiveIncome: 10
-  Category: 0
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 10

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
 {
@@ -17,16 +18,18 @@ public class StoreManager : MonoBehaviour
 
     public void RefreshAvailableUpgrades()
     {
+        Debug.Log($"Проверка магазина. Всего в базе: {allUpgrades.Length} объектов");
+
         foreach (var upg in allUpgrades)
         {
-            // Если кнопка уже есть, пропускаем
+            // 1. Если кнопка уже создана - пропускаем
             if (spawnedButtons.ContainsKey(upg.ID)) continue;
 
-            // Проверяем условия открытия
+            // 2. Проверяем условия
             bool canShow = false;
             if (upg.RequiredUpgrade == null)
             {
-                canShow = true; // Начальные улучшения
+                canShow = true;
             }
             else
             {
@@ -36,11 +39,15 @@ public class StoreManager : MonoBehaviour
 
             if (canShow)
             {
+                Debug.Log($"Спавним кнопку для: {upg.ID}"); // Посмотри, сколько раз выведется это сообщение
                 GameObject btnObj = Instantiate(buttonPrefab, container);
                 UpgradeButton btn = btnObj.GetComponent<UpgradeButton>();
                 btn.upgradeSO = upg;
                 btn.Init(saveManager);
                 spawnedButtons.Add(upg.ID, btn);
+
+                // Принудительно обновляем Layout
+                LayoutRebuilder.ForceRebuildLayoutImmediate(container.GetComponent<RectTransform>());
             }
         }
     }
