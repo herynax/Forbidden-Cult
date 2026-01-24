@@ -44,6 +44,7 @@ public class MiniGameButton : MonoBehaviour
                 // ПЕРЕХОД В СОСТОЯНИЕ 2: Появление кнопки (Ожидание)
                 if (!hasRevealed)
                 {
+                    Debug.Log("Кнопка открыта!");
                     yield return RevealButton();
                 }
 

@@ -36,7 +36,7 @@ public class MiniGameProgress
 [System.Serializable]
 public class GameData
 {
-    public double Money;
+    public double Money = 0;
     public float ClickPower = 1;
     
     public List<UpgradeState> Upgrades = new List<UpgradeState>();

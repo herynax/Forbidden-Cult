@@ -3,7 +3,7 @@ using TMPro;
 
 public class PassiveIncomeManager : MonoBehaviour
 {
-    public SaveManager saveManager;
+    private SaveManager saveManager;
     public UpgradeSO[] allUpgrades;
     public TextMeshProUGUI totalIncomeText;
     public TextMeshProUGUI moneyDisplay; // —сылка на главный текст денег
@@ -11,6 +11,11 @@ public class PassiveIncomeManager : MonoBehaviour
     private double totalIncomePerSecond;
 
     public double TotalIncomePerSecond => totalIncomePerSecond;
+
+    private void Awake()
+    {
+        saveManager = FindFirstObjectByType<SaveManager>();
+    }
 
     private void Update()
     {
@@ -27,7 +32,7 @@ public class PassiveIncomeManager : MonoBehaviour
             moneyDisplay.text = BigNumberFormatter.Format(saveManager.data.Money);
 
         if (totalIncomeText != null)
-            totalIncomeText.text = "per sec: " + BigNumberFormatter.Format(totalIncomePerSecond);
+            totalIncomeText.text = BigNumberFormatter.Format(totalIncomePerSecond);
     }
 
     void CalculateIncomeValue()

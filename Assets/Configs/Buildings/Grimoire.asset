@@ -21,7 +21,7 @@ MonoBehaviour:
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 10
-  RequiredUpgrade: {fileID: 11400000, guid: 5593da53dd3378a4983daea308bd14d5, type: 2}
+  RequiredUpgrade: {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
   RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7

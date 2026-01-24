@@ -7,9 +7,14 @@ public class StoreManager : MonoBehaviour
     public UpgradeSO[] allUpgrades;
     public GameObject buttonPrefab;
     public Transform container;
-    public SaveManager saveManager;
+    private SaveManager saveManager;
 
     private Dictionary<string, UpgradeButton> spawnedButtons = new Dictionary<string, UpgradeButton>();
+
+    private void Awake()
+    {
+        saveManager = FindFirstObjectByType<SaveManager>();
+    }
 
     void Start()
     {
@@ -18,7 +23,6 @@ public class StoreManager : MonoBehaviour
 
     public void RefreshAvailableUpgrades()
     {
-        Debug.Log($"Проверка магазина. Всего в базе: {allUpgrades.Length} объектов");
 
         foreach (var upg in allUpgrades)
         {
@@ -39,7 +43,6 @@ public class StoreManager : MonoBehaviour
 
             if (canShow)
             {
-                Debug.Log($"Спавним кнопку для: {upg.ID}"); // Посмотри, сколько раз выведется это сообщение
                 GameObject btnObj = Instantiate(buttonPrefab, container);
                 UpgradeButton btn = btnObj.GetComponent<UpgradeButton>();
                 btn.upgradeSO = upg;
