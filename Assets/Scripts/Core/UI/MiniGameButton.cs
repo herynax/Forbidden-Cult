@@ -1,32 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
-using DG.Tweening; // Не забываем DOTween
+using DG.Tweening;
 
 public class MiniGameButton : MonoBehaviour
 {
     public MiniGameSO gameData;
 
     [Header("UI References")]
-    [SerializeField] private GameObject readyVisual;  // Объект, который загорается, когда можно кликать
+    [SerializeField] private GameObject readyVisual;  // Эффект свечения (активен только в состоянии 3)
     [SerializeField] private Button mainButton;
+    [SerializeField] private CanvasGroup canvasGroup; // Для управления прозрачностью в состоянии 2
 
     private SaveManager saveManager;
-    private bool isUnlocked;  // Здания куплены?
-    private bool isReady;     // Таймер прошел, можно играть?
-    private bool hasScaledUp; // Кнопка уже появилась на экране?
+    private bool isUnlocked;  // Состояние 1 пройдено?
+    private bool isReady;     // Состояние 3 наступило?
+    private bool hasRevealed; // Флаг, чтобы не проигрывать анимацию появления каждый раз
 
     private void Start()
     {
         saveManager = FindFirstObjectByType<SaveManager>();
 
-        // В начале кнопка полностью скрыта
+        // Изначально кнопка в Состоянии 1 (Скрыта)
         transform.localScale = Vector3.zero;
-
         readyVisual.SetActive(false);
         mainButton.interactable = false;
+        if (canvasGroup != null) canvasGroup.alpha = 0.5f; // Полупрозрачная в ожидании
 
         StartCoroutine(ButtonLogicRoutine());
     }
@@ -35,38 +35,43 @@ public class MiniGameButton : MonoBehaviour
     {
         while (true)
         {
-            // 1. Проверяем, выполнены ли условия открытия
+            // ПРОВЕРКА СОСТОЯНИЯ 1: Куплены ли здания?
             bool conditionsMet = gameData.RequiredUpgradeIDs.All(id =>
                 saveManager.data.Upgrades.Any(u => u.ID == id && u.Amount > 0));
 
-            // 2. Если условия выполнены впервые — анимируем появление кнопки
-            if (conditionsMet && !hasScaledUp)
+            if (conditionsMet)
             {
-                RevealButton();
+                // ПЕРЕХОД В СОСТОЯНИЕ 2: Появление кнопки (Ожидание)
+                if (!hasRevealed)
+                {
+                    yield return RevealButton();
+                }
+
+                // ПРОВЕРКА: Нужно ли запускать таймер для СОСТОЯНИЯ 3?
+                if (!isReady)
+                {
+                    float waitTime = Random.Range(gameData.minCooldown, gameData.maxCooldown);
+                    Debug.Log($"Мини-игра {gameData.TypeID} будет готова через {waitTime} сек.");
+
+                    yield return new WaitForSeconds(waitTime);
+
+                    // ПЕРЕХОД В СОСТОЯНИЕ 3: Можно нажимать
+                    SetReady();
+                }
             }
 
-            // 3. Если кнопка уже на экране, но игра еще не готова к запуску
-            if (hasScaledUp && !isReady)
-            {
-                // Ждем случайное время перезарядки
-                float waitTime = Random.Range(gameData.minCooldown, gameData.maxCooldown);
-                yield return new WaitForSeconds(waitTime);
-
-                // Активируем кнопку
-                SetReady();
-            }
-
-            yield return new WaitForSeconds(2f); // Проверка условий раз в пару секунд
+            yield return new WaitForSeconds(2f); // Проверка условий раз в 2 секунды
         }
     }
 
-    private void RevealButton()
+    private IEnumerator RevealButton()
     {
-        hasScaledUp = true;
+        hasRevealed = true;
         isUnlocked = true;
 
-        // Плавное появление из нуля в единицу с эффектом пружины
-        transform.DOScale(1f, 0.6f).SetEase(Ease.OutBack);
+        // Анимация перехода из Состояния 1 в Состояние 2
+        transform.DOKill();
+        yield return transform.DOScale(1f, 0.6f).SetEase(Ease.OutBack).WaitForCompletion();
     }
 
     private void SetReady()
@@ -74,21 +79,24 @@ public class MiniGameButton : MonoBehaviour
         isReady = true;
         mainButton.interactable = true;
 
-        // Включаем визуал "Готово" (например, свечение)
+        // Визуал Состояния 3
+        if (canvasGroup != null) canvasGroup.DOFade(1f, 0.5f);
+
         readyVisual.SetActive(true);
         readyVisual.transform.localScale = Vector3.zero;
         readyVisual.transform.DOScale(1f, 0.3f).SetEase(Ease.OutCubic);
 
-        // Можно добавить легкую пульсацию всей кнопки, пока она ждет клика
-        transform.DOShakePosition(0.5f, 5f, 10, 90, false, false).SetDelay(1f).SetLoops(-1, LoopType.Restart);
+        // Акцентная анимация (тряска), чтобы игрок заметил кнопку
+        transform.DOShakePosition(0.5f, 5f, 10).SetLoops(-1, LoopType.Restart).SetDelay(2f);
     }
 
     public void OnClick()
     {
         if (isReady)
         {
-            // Останавливаем все анимации на кнопке перед уходом
+            // Останавливаем всё перед сменой сцены
             transform.DOKill();
+            StopAllCoroutines();
 
             saveManager.Save();
             SceneLoader.Instance.LoadScene(gameData.SceneName);

@@ -17,6 +17,6 @@ MonoBehaviour:
   RequiredUpgradeIDs:
   - sybmol
   - word
-  - book
+  - text
   minCooldown: 60
   maxCooldown: 180

@@ -4,7 +4,7 @@ using DG.Tweening;
 using Lean.Pool;
 using DG.Tweening.Core.Easing;
 
-public class CthulhuClicker : MonoBehaviour, IPointerDownHandler
+public class CthulhuClicker : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Settings")]
     public GameObject numberPrefab; // Префаб с FloatingNumber
@@ -14,10 +14,12 @@ public class CthulhuClicker : MonoBehaviour, IPointerDownHandler
     [SerializeField] private float punchStrength = 0.1f;
     [SerializeField] private float animDuration = 0.15f;
 
-    private SaveManager saveManager; // Ссылка на твой менеджер сохранений
+    private SaveManager saveManager;
+    private RectTransform rect;
 
     private void Awake()
     {
+        rect = GetComponent<RectTransform>();
         saveManager = FindFirstObjectByType<SaveManager>();
     }
 
@@ -31,6 +33,24 @@ public class CthulhuClicker : MonoBehaviour, IPointerDownHandler
 
         // 3. Вылет цифры
         SpawnNumber(eventData.position);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // Обязательно убиваем текущий твин, чтобы анимации не суммировались
+        rect.DOKill();
+
+        // Target: 1.1f
+        // Duration: 0.6f (для эластичности нужно чуть больше времени, чтобы успели пройти колебания)
+        // Ease: OutElastic — создаёт эффект пружины
+        rect.DOScale(1.1f, 0.6f).SetEase(Ease.OutElastic).SetLink(gameObject);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        rect.DOKill();
+        // Возвращаемся к 1.0. Используем OutBack, чтобы был легкий "вжим" перед остановкой
+        rect.DOScale(1.0f, 0.4f).SetEase(Ease.OutBack).SetLink(gameObject);
     }
 
     private void AnimateCthulhu()
