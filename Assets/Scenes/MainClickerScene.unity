@@ -5439,6 +5439,7 @@ MonoBehaviour:
   gameData: {fileID: 0}
   readyVisual: {fileID: 355412492}
   mainButton: {fileID: 355412495}
+  canvasGroup: {fileID: 0}
 --- !u!114 &355412495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6852,6 +6853,7 @@ MonoBehaviour:
   gameData: {fileID: 0}
   readyVisual: {fileID: 806689420}
   mainButton: {fileID: 806689423}
+  canvasGroup: {fileID: 0}
 --- !u!114 &806689423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7369,6 +7371,7 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: 24ea09c1558b8904d9b4307b1d3176a9, type: 2}
   readyVisual: {fileID: 962323450}
   mainButton: {fileID: 962323453}
+  canvasGroup: {fileID: 0}
 --- !u!114 &962323453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8560,6 +8563,7 @@ MonoBehaviour:
   gameData: {fileID: 0}
   readyVisual: {fileID: 2042443569}
   mainButton: {fileID: 2042443572}
+  canvasGroup: {fileID: 0}
 --- !u!114 &2042443572
 MonoBehaviour:
   m_ObjectHideFlags: 0
