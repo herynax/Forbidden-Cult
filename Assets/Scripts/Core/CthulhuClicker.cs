@@ -16,17 +16,23 @@ public class CthulhuClicker : MonoBehaviour, IPointerDownHandler, IPointerEnterH
 
     private SaveManager saveManager;
     private RectTransform rect;
+    private PassiveIncomeManager passiveIncomeManager;
+    private double clickPower;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
         saveManager = FindFirstObjectByType<SaveManager>();
+
+        passiveIncomeManager = FindFirstObjectByType<PassiveIncomeManager>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // 1. Логика ресурса
-        saveManager.data.Money += saveManager.data.ClickPower;
+        clickPower = 1 + (passiveIncomeManager.TotalIncomePerSecond * 0.01);
+        saveManager.data.Money += clickPower;
+
+        
 
         // 2. Визуальный эффект Ктулху (дерганье)
         AnimateCthulhu();
@@ -67,6 +73,6 @@ public class CthulhuClicker : MonoBehaviour, IPointerDownHandler, IPointerEnterH
     {
         // Берем объект из Lean Pool
         GameObject obj = LeanPool.Spawn(numberPrefab, uiCanvas);
-        obj.GetComponent<FloatingNumber>().Initialize(saveManager.data.ClickPower, pos);
+        obj.GetComponent<FloatingNumber>().Initialize(clickPower, pos);
     }
 }

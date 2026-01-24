@@ -21,6 +21,8 @@ public class SaveManager : MonoBehaviour
 
     public void Save()
     {
+        data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
+
         // Превращаем объект в строку
         string json = JsonUtility.ToJson(data);
         // Сохраняем в PlayerPrefs (в Вебе это IndexedDB)

@@ -10,8 +10,7 @@ public class BuildingVisualManager : MonoBehaviour
     [SerializeField] private GameObject buildingPrefab;
 
     [Header("Sleep Effects")]
-    public GameObject sleepParticlePrefab; // Мировой префаб частиц (не UI)
-    public Camera mainCamera;
+    public GameObject sleepUIPrefab;
 
     private Dictionary<string, Transform> activeRows = new Dictionary<string, Transform>();
     private SaveManager saveManager;
@@ -134,7 +133,8 @@ public class BuildingVisualManager : MonoBehaviour
 
         icon.transform.DOPunchRotation(new Vector3(0, 0, 3), Random.Range(3f, 5f), 1)
             .SetLoops(-1, LoopType.Restart)
-            .SetDelay(Random.Range(0f, 2f));
+            .SetDelay(Random.Range(0f, 2f))
+            .SetLink(icon);
     }
 
     private void AnimateRow(string upgradeID)
@@ -158,18 +158,14 @@ public class BuildingVisualManager : MonoBehaviour
 
     public void SpawnSleepParticles(RectTransform buildingRect)
     {
-        // 1. Получаем экранную позицию иконки
-        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(null, buildingRect.position);
+        // Спавним прямо ВНУТРЬ иконки персонажа
+        GameObject effect = Instantiate(sleepUIPrefab, buildingRect);
 
-        // 2. Переводим экранную позицию в мировые координаты перед камерой
-        // z = 10 (расстояние от камеры, чтобы частицы были между камерой и UI)
-        Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(screenPoint.x, screenPoint.y, 10f));
+        // Сбрасываем позицию в ноль, чтобы он был точно в центре иконки
+        RectTransform effectRect = effect.GetComponent<RectTransform>();
+        effectRect.anchoredPosition = Vector2.up * 50f; // Чуть выше головы
 
-        // 3. Спавним частицы
-        GameObject effect = Instantiate(sleepParticlePrefab, worldPos, Quaternion.Euler(-90, 0, 0));
-
-        // Делаем частицы дочерними к камере или персонажу, если нужно, чтобы они следовали
-        // Или просто уничтожаем через пару секунд
+        // Уничтожаем через время
         Destroy(effect, 5f);
     }
 

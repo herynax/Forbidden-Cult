@@ -42,6 +42,8 @@ public class GameData
     public List<UpgradeState> Upgrades = new List<UpgradeState>();
     public List<string> RevealedUpgrades = new List<string>(); // Список раскрытых ID
 
+    public long LastSaveTimeTicks;
+
     public bool IsRevealed(string id) => RevealedUpgrades.Contains(id);
 
 
