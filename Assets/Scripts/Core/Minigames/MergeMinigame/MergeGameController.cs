@@ -24,6 +24,10 @@ public class MergeGameController : MonoBehaviour
     public TextMeshProUGUI earnedTextOnLosePanel;
     public Button exitButton;
 
+    [Header("Merge Visuals")]
+    // Закинь сюда 3 разных префаба систем частиц (взрывы, искры, вспышки)
+    public GameObject[] mergeParticlePrefabs;
+
     [Header("Logic")]
     public float baseTime = 60f;
     public float timeBonus = 3f;
@@ -126,19 +130,17 @@ public class MergeGameController : MonoBehaviour
         MergeObjectSO nextLevel = a.data.nextLevel;
         double rewardAmount = a.data.reward;
 
-        // Убиваем все твины этих объектов ПЕРЕД удалением
+        // --- НОВОЕ: СПАВН ЧАСТИЦ ---
+        SpawnRandomMergeParticle(spawnPos);
+
         a.transform.DOKill();
         b.transform.DOKill();
 
-        // Эффект слияния
         a.transform.DOMove(spawnPos, 0.1f);
         b.transform.DOMove(spawnPos, 0.1f).OnComplete(() => {
-
-            // Удаляем старые
             Destroy(a.gameObject);
             Destroy(b.gameObject);
 
-            // Спавним новый уровень
             if (nextLevel != null)
             {
                 GameObject newGo = Instantiate(itemPrefab, spawnPos, Quaternion.identity);
@@ -151,9 +153,26 @@ public class MergeGameController : MonoBehaviour
                 newGo.transform.DOScale(nextLevel.scale, 0.3f).SetEase(Ease.OutBack);
             }
 
-            // Награда
             AddReward(rewardAmount, spawnPos);
         });
+    }
+
+    private void SpawnRandomMergeParticle(Vector3 pos)
+    {
+        if (mergeParticlePrefabs == null || mergeParticlePrefabs.Length == 0) return;
+
+        // Выбираем случайный индекс из массива
+        int randomIndex = Random.Range(0, mergeParticlePrefabs.Length);
+        GameObject selectedPrefab = mergeParticlePrefabs[randomIndex];
+
+        if (selectedPrefab != null)
+        {
+            // Спавним через Lean Pool (мировые координаты)
+            GameObject effect = Lean.Pool.LeanPool.Spawn(selectedPrefab, pos, Quaternion.identity);
+
+            // Возвращаем в пул через 2 секунды (или настрой время в самом префабе через LeanDespawn)
+            Lean.Pool.LeanPool.Despawn(effect, 2f);
+        }
     }
 
     private void AddReward(double amount, Vector3 pos)

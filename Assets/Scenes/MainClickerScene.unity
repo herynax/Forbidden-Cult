@@ -256,6 +256,56 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &212675261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 212675263}
+  - component: {fileID: 212675262}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &212675262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212675261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c601f2014ba824ab3ec90117b477ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUpgrades:
+  - {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
+  - {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
+  buttonPrefab: {fileID: 2446790729793069876, guid: 57b8f4050fb6d2247b98c479073c70fd, type: 3}
+  container: {fileID: 819556678}
+  saveManager: {fileID: 328713014}
+--- !u!4 &212675263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212675261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &264846903
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +425,6 @@ GameObject:
   - component: {fileID: 328713015}
   - component: {fileID: 328713014}
   - component: {fileID: 328713018}
-  - component: {fileID: 328713019}
   m_Layer: 0
   m_Name: ====Managers====
   m_TagString: Untagged
@@ -439,25 +488,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
   - {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
   totalIncomeText: {fileID: 733415477}
-  moneyDisplay: {fileID: 0}
---- !u!114 &328713019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328713013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c601f2014ba824ab3ec90117b477ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allUpgrades:
-  - {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
-  - {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
-  buttonPrefab: {fileID: 2446790729793069876, guid: 57b8f4050fb6d2247b98c479073c70fd, type: 3}
-  container: {fileID: 819556678}
-  saveManager: {fileID: 328713014}
+  moneyDisplay: {fileID: 614378904}
 --- !u!1 &355412492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,3 +3790,4 @@ SceneRoots:
   - {fileID: 1362732106}
   - {fileID: 978660619}
   - {fileID: 3706876923565362539}
+  - {fileID: 212675263}
