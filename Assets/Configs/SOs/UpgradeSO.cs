@@ -22,4 +22,10 @@ public class UpgradeSO : ScriptableObject
     [Header("Sleep Mechanics")]
     public int MinClicksToWake = 3;
     public int MaxClicksToWake = 7;
+
+    [Header("Tooltip Info")]
+    [TextArea(3, 10)]
+    public string Description; // "”величивает производство на..."
+    [TextArea(2, 5)]
+    public string LoreText;    // "¬кусные печеньки от доброй бабули"
 }
