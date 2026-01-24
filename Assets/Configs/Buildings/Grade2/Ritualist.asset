@@ -15,14 +15,14 @@ MonoBehaviour:
   ID: ritualist
   Name: "\u0420\u0438\u0442\u0443\u0430\u043B\u0438\u0441\u0442"
   Icon: {fileID: -3079049568978296704, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
-  RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
+  RowBackground: {fileID: -5297196951289981945, guid: 19af557bf71486142b8e2dd75414262d, type: 3}
   BasePrice: 45000000
   BasePassiveIncome: 1100000
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20
   RequiredUpgrade: {fileID: 11400000, guid: 699feef7b631c3f4099a60cf4adca3d8, type: 2}
-  RequiredAmount: 0
+  RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7
   Description: "\u041F\u0440\u043E\u0444\u0438 \u043E\u043A\u043A\u0443\u043B\u044C\u0442\u043D\u044B\u0445

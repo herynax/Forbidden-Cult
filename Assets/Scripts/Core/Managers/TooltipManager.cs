@@ -38,6 +38,7 @@ public class TooltipManager : MonoBehaviour
 
     public void ShowTooltip(UpgradeSO data, int currentCount)
     {
+        canvasGroup.gameObject.SetActive(true);
         isActive = true;
         currentShownUpgrade = data;
 
@@ -84,6 +85,7 @@ public class TooltipManager : MonoBehaviour
         currentShownUpgrade = null; // —брасываем объект
         canvasGroup.DOKill();
         canvasGroup.DOFade(0f, 0.15f).SetUpdate(true);
+        canvasGroup.gameObject.SetActive(false);
     }
 
     private void Update()

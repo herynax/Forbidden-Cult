@@ -15,14 +15,14 @@ MonoBehaviour:
   ID: monolith
   Name: "\u041C\u043E\u043D\u043E\u043B\u0438\u0442"
   Icon: {fileID: -1283540817298506357, guid: 2341be825c6c6654d98beb68d52a8895, type: 3}
-  RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
+  RowBackground: {fileID: 2950976784391216073, guid: 9eee27e9be43780408dec1704d81d387, type: 3}
   BasePrice: 2000000000
   BasePassiveIncome: 50000000
   RowsCount: 1
   IconsPerLine: 10
   MaxVisuals: 10
   RequiredUpgrade: {fileID: 11400000, guid: 0883b11763d2ac841b0f14ae634fc3ad, type: 2}
-  RequiredAmount: 0
+  RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7
   Description: "\u0413\u043B\u044B\u0431\u0430 \u0447\u0435\u0440\u043D\u043E\u0433\u043E

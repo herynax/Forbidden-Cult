@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: word
   Name: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u043E\u0435 \u0441\u043B\u043E\u0432\u043E"
   Icon: {fileID: 21300000, guid: 52b2ec612535ec04ea0d8538e575720c, type: 3}
-  RowBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  RowBackground: {fileID: 5354223966570692452, guid: c80d2a6aab5ca9342b9f1cde4e8bdfa4, type: 3}
   BasePrice: 100
   BasePassiveIncome: 0.8
   RowsCount: 3

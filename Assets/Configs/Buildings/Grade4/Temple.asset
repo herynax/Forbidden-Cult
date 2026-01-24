@@ -15,14 +15,14 @@ MonoBehaviour:
   ID: temple
   Name: "\u0425\u0440\u0430\u043C"
   Icon: {fileID: 8780799021987293888, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
-  RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
+  RowBackground: {fileID: -4846732496204108578, guid: c38bc8e2c1bf7ac4591b10885f29cbde, type: 3}
   BasePrice: 1000000000000
   BasePassiveIncome: 14000000000
   RowsCount: 1
   IconsPerLine: 8
   MaxVisuals: 8
-  RequiredUpgrade: {fileID: 11400000, guid: 0883b11763d2ac841b0f14ae634fc3ad, type: 2}
-  RequiredAmount: 0
+  RequiredUpgrade: {fileID: 11400000, guid: f7b5d47be90f0e841a2297e69baac8f0, type: 2}
+  RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7
   Description: "\u0413\u0440\u0430\u043D\u0434\u0438\u043E\u0437\u043D\u043E\u0435

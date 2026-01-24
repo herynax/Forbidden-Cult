@@ -15,14 +15,14 @@ MonoBehaviour:
   ID: neophyte
   Name: "\u041D\u0435\u043E\u0444\u0438\u0442"
   Icon: {fileID: 8780799021987293888, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
-  RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
+  RowBackground: {fileID: -3149689827952356062, guid: b79946426df8bad4385064d1e14945dd, type: 3}
   BasePrice: 1000000
   BasePassiveIncome: 18000
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20
   RequiredUpgrade: {fileID: 11400000, guid: 699feef7b631c3f4099a60cf4adca3d8, type: 2}
-  RequiredAmount: 0
+  RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7
   Description: "\u041F\u0440\u043E\u0445\u043E\u0436\u0438\u0439, \u0437\u0430\u0441\u043C\u043E\u0442\u0440\u0435\u0432\u0448\u0438\u0439\u0441\u044F

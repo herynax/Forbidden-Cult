@@ -15,14 +15,14 @@ MonoBehaviour:
   ID: cathedral
   Name: "\u0421\u043E\u0431\u043E\u0440"
   Icon: {fileID: -3079049568978296704, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
-  RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
+  RowBackground: {fileID: 2950976784391216073, guid: 9eee27e9be43780408dec1704d81d387, type: 3}
   BasePrice: 10000000000000
   BasePassiveIncome: 111111111111
   RowsCount: 1
   IconsPerLine: 8
   MaxVisuals: 8
-  RequiredUpgrade: {fileID: 11400000, guid: 0883b11763d2ac841b0f14ae634fc3ad, type: 2}
-  RequiredAmount: 0
+  RequiredUpgrade: {fileID: 11400000, guid: f7b5d47be90f0e841a2297e69baac8f0, type: 2}
+  RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7
   Description: "\u0412\u0435\u0440\u0448\u0438\u043D\u0430 \u043F\u043E\u043A\u043B\u043E\u043D\u0435\u043D\u0438\u044F.

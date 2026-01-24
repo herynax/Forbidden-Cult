@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: grimoire
   Name: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0433\u0440\u0438\u043C\u0443\u0430\u0440"
   Icon: {fileID: -2183270343088332244, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
-  RowBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  RowBackground: {fileID: 134470934641131873, guid: c2f893a810d68914fa84b3bf7a958914, type: 3}
   BasePrice: 160000
   BasePassiveIncome: 2400
   RowsCount: 1

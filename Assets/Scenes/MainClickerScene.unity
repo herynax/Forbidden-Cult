@@ -5359,9 +5359,19 @@ MonoBehaviour:
   allUpgrades:
   - {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
   - {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
+  - {fileID: 11400000, guid: f3f4458ce078dba448aeab8601cac4ca, type: 2}
   - {fileID: 11400000, guid: 5593da53dd3378a4983daea308bd14d5, type: 2}
-  - {fileID: 11400000, guid: 699feef7b631c3f4099a60cf4adca3d8, type: 2}
   - {fileID: 11400000, guid: 5be0f2afc8caef241abf92d0c52cb8b6, type: 2}
+  - {fileID: 11400000, guid: 699feef7b631c3f4099a60cf4adca3d8, type: 2}
+  - {fileID: 11400000, guid: 0acc29ee9b42deb4f8b2b9b46e9c2c13, type: 2}
+  - {fileID: 11400000, guid: 450c81c2e07b0394dbe344908a007c51, type: 2}
+  - {fileID: 11400000, guid: 0883b11763d2ac841b0f14ae634fc3ad, type: 2}
+  - {fileID: 11400000, guid: f6145bd0899f86140a28fb7ee3f72657, type: 2}
+  - {fileID: 11400000, guid: c21d7b16f5c35e642a2f7ad8ca339654, type: 2}
+  - {fileID: 11400000, guid: f7b5d47be90f0e841a2297e69baac8f0, type: 2}
+  - {fileID: 11400000, guid: ea6d8b016443fe740b655476990340af, type: 2}
+  - {fileID: 11400000, guid: feda6513c2fd1aa4492261446b2557bd, type: 2}
+  - {fileID: 11400000, guid: 4174d9335c4ce6d4a8e5dd285d62d29c, type: 2}
   totalIncomeText: {fileID: 733415477}
   moneyDisplay: {fileID: 614378904}
 --- !u!114 &328713019
@@ -5379,9 +5389,19 @@ MonoBehaviour:
   allUpgrades:
   - {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
   - {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
+  - {fileID: 11400000, guid: f3f4458ce078dba448aeab8601cac4ca, type: 2}
   - {fileID: 11400000, guid: 5593da53dd3378a4983daea308bd14d5, type: 2}
   - {fileID: 11400000, guid: 5be0f2afc8caef241abf92d0c52cb8b6, type: 2}
   - {fileID: 11400000, guid: 699feef7b631c3f4099a60cf4adca3d8, type: 2}
+  - {fileID: 11400000, guid: 0acc29ee9b42deb4f8b2b9b46e9c2c13, type: 2}
+  - {fileID: 11400000, guid: 450c81c2e07b0394dbe344908a007c51, type: 2}
+  - {fileID: 11400000, guid: 0883b11763d2ac841b0f14ae634fc3ad, type: 2}
+  - {fileID: 11400000, guid: f6145bd0899f86140a28fb7ee3f72657, type: 2}
+  - {fileID: 11400000, guid: c21d7b16f5c35e642a2f7ad8ca339654, type: 2}
+  - {fileID: 11400000, guid: f7b5d47be90f0e841a2297e69baac8f0, type: 2}
+  - {fileID: 11400000, guid: ea6d8b016443fe740b655476990340af, type: 2}
+  - {fileID: 11400000, guid: feda6513c2fd1aa4492261446b2557bd, type: 2}
+  - {fileID: 11400000, guid: 4174d9335c4ce6d4a8e5dd285d62d29c, type: 2}
   buttonPrefab: {fileID: 2446790729793069876, guid: 57b8f4050fb6d2247b98c479073c70fd, type: 3}
   container: {fileID: 819556678}
 --- !u!1 &357105721
