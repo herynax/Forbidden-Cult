@@ -15,7 +15,7 @@ MonoBehaviour:
   TypeID: CardMinigame
   SceneName: CardMinigame
   RequiredUpgradeIDs:
-  - sybmol
+  - symbol
   - word
   - text
   minCooldown: 60

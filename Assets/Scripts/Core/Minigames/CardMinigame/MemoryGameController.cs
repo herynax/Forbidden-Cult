@@ -218,7 +218,11 @@ public class MemoryGameController : MonoBehaviour
 
             yield return new WaitForSeconds(0.6f);
 
-            double reward = FindFirstObjectByType<PassiveIncomeManager>().TotalIncomePerSecond * 15;
+            PassiveIncomeManager passiveManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
+
+            double currentCps = (passiveManager != null) ? passiveManager.TotalIncomePerSecond : 0;
+            double reward = currentCps * 2;
+
             if (reward < 1) reward = 1;
 
             sessionEarnings += reward;

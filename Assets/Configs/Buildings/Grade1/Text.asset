@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14e1b189f11e0e844b59e0a9aef25c87, type: 3}
-  m_Name: Folio
+  m_Name: Text
   m_EditorClassIdentifier: 
-  ID: folio
-  Name: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0444\u043E\u043B\u0438\u0430\u043D\u0442"
-  Icon: {fileID: -2581632841690836079, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
-  RowBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  BasePrice: 50
-  BasePassiveIncome: 10
+  ID: text
+  Name: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0442\u0435\u043A\u0441\u0442"
+  Icon: {fileID: 8468526713697396880, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
+  RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
+  BasePrice: 0
+  BasePassiveIncome: 0
   RowsCount: 2
   IconsPerLine: 10
-  MaxVisuals: 10
-  RequiredUpgrade: {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
+  MaxVisuals: 30
+  RequiredUpgrade: {fileID: 11400000, guid: f3f4458ce078dba448aeab8601cac4ca, type: 2}
   RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7

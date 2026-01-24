@@ -579,8 +579,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2de433bbde574459c05c56eee4df3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveManager: {fileID: 26765186}
-  allUpgrades: []
+  allUpgrades:
+  - {fileID: 11400000, guid: 5be0f2afc8caef241abf92d0c52cb8b6, type: 2}
+  - {fileID: 11400000, guid: 699feef7b631c3f4099a60cf4adca3d8, type: 2}
+  - {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
+  - {fileID: 11400000, guid: 5593da53dd3378a4983daea308bd14d5, type: 2}
+  - {fileID: 11400000, guid: e39b7470912149f44b2cb8869ffe1333, type: 2}
   totalIncomeText: {fileID: 0}
   moneyDisplay: {fileID: 0}
 --- !u!1 &755611721

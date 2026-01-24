@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14e1b189f11e0e844b59e0a9aef25c87, type: 3}
-  m_Name: Word
+  m_Name: Grimoire
   m_EditorClassIdentifier: 
-  ID: word
-  Name: "\u0421\u043B\u043E\u0432\u043E"
-  Icon: {fileID: 8468526713697396880, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
+  ID: grimoire
+  Name: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0433\u0440\u0438\u043C\u0443\u0430\u0440"
+  Icon: {fileID: -2183270343088332244, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
   RowBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   BasePrice: 50
   BasePassiveIncome: 10
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 10
-  RequiredUpgrade: {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
+  RequiredUpgrade: {fileID: 11400000, guid: f3f4458ce078dba448aeab8601cac4ca, type: 2}
   RequiredAmount: 1
   MinClicksToWake: 3
   MaxClicksToWake: 7

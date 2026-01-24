@@ -38,13 +38,20 @@ public class PassiveIncomeManager : MonoBehaviour
     void CalculateIncomeValue()
     {
         totalIncomePerSecond = 0;
-        BuildingEntity[] allBuildings = Object.FindObjectsByType<BuildingEntity>(FindObjectsSortMode.None);
-        foreach (var b in allBuildings)
+
+        // Проверка на наличие менеджера и данных
+        if (saveManager == null || saveManager.data == null) return;
+
+        // Проходим по всем типам улучшений, которые мы закинули в массив в инспекторе
+        foreach (var upgradeSO in allUpgrades)
         {
-            if (b != null && b.currentState == BuildingEntity.State.Active)
-            {
-                totalIncomePerSecond += b.GetPassiveIncome();
-            }
+            if (upgradeSO == null) continue;
+
+            // Берем количество купленных зданий этого типа из сохранения
+            int count = saveManager.data.GetUpgradeCount(upgradeSO.ID);
+
+            // Прибавляем к общему доходу: (Количество * доход одного здания)
+            totalIncomePerSecond += count * upgradeSO.BasePassiveIncome;
         }
     }
 
