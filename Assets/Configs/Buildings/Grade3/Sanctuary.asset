@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: sanctuary
   Name: "\u0421\u0432\u044F\u0442\u0438\u043B\u0438\u0449\u0435"
-  Icon: {fileID: -3079049568978296704, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
+  Icon: {fileID: -7698688916799460016, guid: 2341be825c6c6654d98beb68d52a8895, type: 3}
   RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
   BasePrice: 0
   BasePassiveIncome: 0

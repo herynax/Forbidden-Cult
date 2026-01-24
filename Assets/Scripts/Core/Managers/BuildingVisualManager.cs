@@ -166,7 +166,7 @@ public class BuildingVisualManager : MonoBehaviour
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(screenPoint.x, screenPoint.y, 10f));
 
         // 3. Спавним частицы
-        GameObject effect = Instantiate(sleepParticlePrefab, worldPos, Quaternion.identity);
+        GameObject effect = Instantiate(sleepParticlePrefab, worldPos, Quaternion.Euler(-90, 0, 0));
 
         // Делаем частицы дочерними к камере или персонажу, если нужно, чтобы они следовали
         // Или просто уничтожаем через пару секунд

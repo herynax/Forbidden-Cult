@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: altar
   Name: "\u0410\u043B\u0442\u0430\u0440\u044C"
-  Icon: {fileID: -8524714818473189813, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
+  Icon: {fileID: 4588504535222749217, guid: 2341be825c6c6654d98beb68d52a8895, type: 3}
   RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
   BasePrice: 0
   BasePassiveIncome: 0

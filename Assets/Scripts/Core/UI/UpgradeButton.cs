@@ -31,7 +31,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         currentPrice = upgradeSO.BasePrice * Mathf.Pow(1.15f, count); //x = 15 * 1.15^y
 
         // Логика раскрытия (70% от цены)
-        if (!isRevealed && saveManager.data.Money >= currentPrice * 0.7f)
+        if (!isRevealed && saveManager.data.Money >= currentPrice)
         {
             Reveal();
         }

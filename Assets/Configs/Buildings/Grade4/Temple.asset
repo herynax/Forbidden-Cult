@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e1b189f11e0e844b59e0a9aef25c87, type: 3}
   m_Name: Temple
   m_EditorClassIdentifier: 
-  ID: monolith
-  Name: "\u041C\u043E\u043D\u043E\u043B\u0438\u0442"
+  ID: temple
+  Name: "\u0425\u0440\u0430\u043C"
   Icon: {fileID: 8780799021987293888, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
   RowBackground: {fileID: 21300000, guid: beaff2d80f886c04bbee441e52b721a4, type: 3}
   BasePrice: 0
