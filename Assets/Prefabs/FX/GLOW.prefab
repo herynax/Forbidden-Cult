@@ -4785,7 +4785,7 @@ GameObject:
   - component: {fileID: 4109064841345302815}
   - component: {fileID: 4109064841345302814}
   m_Layer: 0
-  m_Name: Shine_pink
+  m_Name: GLOW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
