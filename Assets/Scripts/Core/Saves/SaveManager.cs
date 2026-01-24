@@ -7,8 +7,16 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
+        // 1. Сначала проверяем на дубликаты самого SaveManager
+        if (FindObjectsByType<SaveManager>(FindObjectsSortMode.None).Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
+        // 2. Загружаем данные
         Load();
-        StartCoroutine(FindFirstObjectByType<BuildingVisualManager>().RestoreVisuals());
     }
 
     public void Save()

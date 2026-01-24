@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e1b189f11e0e844b59e0a9aef25c87, type: 3}
   m_Name: Word
   m_EditorClassIdentifier: 
-  ID: 
-  Name: 
-  Icon: {fileID: 0}
-  RowBackground: {fileID: 0}
-  BasePrice: 0
-  BasePassiveIncome: 0
+  ID: word
+  Name: "\u0421\u043B\u043E\u0432\u043E"
+  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  RowBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  BasePrice: 50
+  BasePassiveIncome: 10
+  Category: 0
+  RowsCount: 2
+  IconsPerLine: 10
   MaxVisuals: 10
-  RequiredUpgrade: {fileID: 0}
-  RequiredAmount: 0
+  RequiredUpgrade: {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
+  RequiredAmount: 1
+  MinClicksToWake: 3
+  MaxClicksToWake: 7

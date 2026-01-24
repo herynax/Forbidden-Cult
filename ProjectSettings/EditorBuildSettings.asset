@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/MainClickerScene.unity
+    guid: 164cc154c3e43034bab581d037e01a69
+  - enabled: 1
+    path: Assets/Scenes/CardMinigame.unity
+    guid: dbf8e07bc87e1224e9c612d4b2ed718f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

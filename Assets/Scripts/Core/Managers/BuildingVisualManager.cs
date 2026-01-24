@@ -21,6 +21,11 @@ public class BuildingVisualManager : MonoBehaviour
         saveManager = FindFirstObjectByType<SaveManager>();
     }
 
+    private void Start()
+    {
+        StartCoroutine(RestoreVisuals());
+    }
+
     // Измененная сигнатура: теперь принимаем сохраненную позицию
     public void OnPurchase(UpgradeSO upgrade, int currentCount, bool isSilent = false, VisualPosition loadedPos = null)
     {

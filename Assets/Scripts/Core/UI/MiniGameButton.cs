@@ -91,7 +91,7 @@ public class MiniGameButton : MonoBehaviour
             transform.DOKill();
 
             saveManager.Save();
-            SceneManager.LoadScene(gameData.SceneName);
+            SceneLoader.Instance.LoadScene(gameData.SceneName);
         }
     }
 }

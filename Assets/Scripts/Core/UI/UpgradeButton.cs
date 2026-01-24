@@ -28,7 +28,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         // —читаем цену
         int count = saveManager.data.GetUpgradeCount(upgradeSO.ID);
-        currentPrice = upgradeSO.BasePrice * Mathf.Pow(1.15f, count);
+        currentPrice = upgradeSO.BasePrice * Mathf.Pow(1.15f, count); //x = 15 * 1.15^y
 
         // Ћогика раскрыти€ (70% от цены)
         if (!isRevealed && saveManager.data.Money >= currentPrice * 0.7f)
@@ -36,7 +36,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             Reveal();
         }
 
-        priceText.text = BigNumberFormatter.Format(currentPrice);
+        priceText.text = BigNumberFormatter.StoreFormat(currentPrice);
         priceText.color = saveManager.data.Money >= currentPrice ? Color.green : Color.red;
     }
 

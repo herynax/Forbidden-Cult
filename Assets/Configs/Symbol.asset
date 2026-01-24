@@ -17,7 +17,12 @@ MonoBehaviour:
   Icon: {fileID: 4313692675795891595, guid: fa1ce9ce4111e2641b4a1084738af88f, type: 3}
   RowBackground: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   BasePrice: 15
-  BasePassiveIncome: 1
-  MaxVisuals: 10
+  BasePassiveIncome: 0.1
+  Category: 0
+  RowsCount: 2
+  IconsPerLine: 10
+  MaxVisuals: 20
   RequiredUpgrade: {fileID: 11400000}
   RequiredAmount: 0
+  MinClicksToWake: 3
+  MaxClicksToWake: 7

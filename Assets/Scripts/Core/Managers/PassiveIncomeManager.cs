@@ -6,54 +6,65 @@ public class PassiveIncomeManager : MonoBehaviour
     public SaveManager saveManager;
     public UpgradeSO[] allUpgrades;
     public TextMeshProUGUI totalIncomeText;
+    public TextMeshProUGUI moneyDisplay; // Ссылка на главный текст денег
 
-    private double totalIncome;
+    private double totalIncomePerSecond;
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(AddIncome), 1f, 1f);
-    }
+    public double TotalIncomePerSecond => totalIncomePerSecond;
 
     private void Update()
     {
-        CalculateIncome();
+        // 1. Пересчитываем текущий доход (можно делать реже для оптимизации, но для простоты здесь так)
+        CalculateIncomeValue();
 
-        // Защита: если ты забыл перетащить TextMeshPro в инспектор
+        // 2. Начисляем доход ПЛАВНО. 
+        // Мы берем доход в секунду и делим его на количество кадров (Time.deltaTime)
+        double incomeThisFrame = totalIncomePerSecond * Time.deltaTime;
+        saveManager.data.Money += incomeThisFrame;
+
+        // 3. Обновляем визуализацию
+        if (moneyDisplay != null)
+            moneyDisplay.text = BigNumberFormatter.Format(saveManager.data.Money);
+
         if (totalIncomeText != null)
-        {
-            totalIncomeText.text = totalIncome.ToString("F1");
-        }
+            totalIncomeText.text = "per sec: " + BigNumberFormatter.Format(totalIncomePerSecond);
     }
 
-    void CalculateIncome()
+    void CalculateIncomeValue()
     {
-        totalIncome = 0;
-
+        totalIncomePerSecond = 0;
         BuildingEntity[] allBuildings = Object.FindObjectsByType<BuildingEntity>(FindObjectsSortMode.None);
-
-        if (allBuildings == null) return;
-
         foreach (var b in allBuildings)
         {
-            // Проверяем b на null (на случай удаления объекта в этом же кадре)
             if (b != null && b.currentState == BuildingEntity.State.Active)
             {
-                totalIncome += b.GetPassiveIncome();
+                totalIncomePerSecond += b.GetPassiveIncome();
             }
         }
     }
 
-    void AddIncome()
+    // Раз в секунду можно пушить визуальный эффект PulseRow, чтобы не спамить в Update
+    private float pulseTimer;
+    private void FixedUpdate()
     {
-        saveManager.data.Money += totalIncome;
+        pulseTimer += Time.fixedDeltaTime;
+        if (pulseTimer >= 1f)
+        {
+            pulseTimer = 0;
+            TriggerPulse();
+        }
+    }
+
+    void TriggerPulse()
+    {
+        var bvm = Object.FindFirstObjectByType<BuildingVisualManager>();
+        if (bvm == null) return;
 
         foreach (var upgrade in allUpgrades)
         {
             if (saveManager.data.GetUpgradeCount(upgrade.ID) > 0)
             {
-                // Используем новый метод поиска и здесь для консистентности
-                var bvm = Object.FindFirstObjectByType<BuildingVisualManager>();
-                if (bvm != null) bvm.PulseRow(upgrade.ID);
+                bvm.PulseRow(upgrade.ID);
             }
         }
     }

@@ -37,7 +37,7 @@ public class MiniGameProgress
 public class GameData
 {
     public double Money;
-    public float ClickPower;
+    public float ClickPower = 1;
     
     public List<UpgradeState> Upgrades = new List<UpgradeState>();
     public List<string> RevealedUpgrades = new List<string>(); // Список раскрытых ID
