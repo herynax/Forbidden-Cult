@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using Lean.Pool;
 using DG.Tweening.Core.Easing;
+using FMODUnity;
 
 public class CthulhuClicker : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -31,6 +32,8 @@ public class CthulhuClicker : MonoBehaviour, IPointerDownHandler, IPointerEnterH
     {
         clickPower = 1 + (passiveIncomeManager.TotalIncomePerSecond * 0.01);
         saveManager.data.Money += clickPower;
+
+        RuntimeManager.PlayOneShot("event:/UI/Click");
 
         
 

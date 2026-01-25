@@ -17,7 +17,7 @@ MonoBehaviour:
   Icon: {fileID: -8524714818473189813, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
   RowBackground: {fileID: -6021860980914418404, guid: 47018b8dc90952c40aefa4d878c2ca00, type: 3}
   BasePrice: 6500000
-  BasePassiveIncome: 18000
+  BasePassiveIncome: 140000
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20

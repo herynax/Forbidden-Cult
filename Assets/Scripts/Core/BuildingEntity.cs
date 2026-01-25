@@ -40,6 +40,11 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
         return (myUpgrade != null) ? myUpgrade.BasePassiveIncome : 0;
     }
 
+    public string GetUpgradeID()
+    {
+        return (myUpgrade != null) ? myUpgrade.ID : "";
+    }
+
     private void OnDestroy()
     {
         transform.DOKill();

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{d474af2c-49c7-4687-b6ac-88f6899b9eae}">
 		<property name="name">
-			<value>Parameter 1</value>
+			<value>ClickType</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c46ba457-c6de-4517-b192-28e4bf58acc6}</destination>
@@ -26,8 +26,14 @@
 			<value>Value E</value>
 			<value>Value F</value>
 		</property>
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
 		<property name="initialValue">
 			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
 		</property>
 	</object>
 </objects>
