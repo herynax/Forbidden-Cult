@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 89194093}
   - component: {fileID: 89194092}
   - component: {fileID: 89194091}
+  - component: {fileID: 89194094}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -5001,13 +5002,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89194090}
   serializedVersion: 2
-  m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 10, z: -90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1747182596}
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
+--- !u!114 &89194094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89194090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84109af067b7ced49a0d2c4dcbec104a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSystem: {fileID: 89194092}
+  particlesPerBuilding: 1
+  baseMaxParticles: 0
 --- !u!1 &150843762
 GameObject:
   m_ObjectHideFlags: 0
@@ -10575,7 +10591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -5.02, y: 0}
+  m_AnchoredPosition: {x: -5.0200043, y: 0}
   m_SizeDelta: {x: -10.04, y: 57.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1651392274
@@ -10846,6 +10862,7 @@ Transform:
   - {fileID: 1695527468}
   - {fileID: 929477373}
   - {fileID: 1553586187}
+  - {fileID: 89194093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787153411
@@ -11020,7 +11037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -4.56, y: 0}
+  m_AnchoredPosition: {x: -4.5599976, y: 0}
   m_SizeDelta: {x: -9.12, y: 57.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1928276894
@@ -11987,7 +12004,6 @@ SceneRoots:
   - {fileID: 1142913770}
   - {fileID: 1362732106}
   - {fileID: 978660619}
-  - {fileID: 89194093}
   - {fileID: 19263942}
   - {fileID: 485820663}
   - {fileID: 915105200}

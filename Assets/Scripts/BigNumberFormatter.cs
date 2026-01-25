@@ -6,41 +6,42 @@ public static class BigNumberFormatter
     // Суффиксы для больших чисел
     private static readonly string[] Names = { "", "k", "M", "B", "T", "Qa", "Qi", "Sx", "Sp" };
 
-    // Культура ru-RU: формат 1 234 567,890
-    private static readonly CultureInfo RussianCulture = CultureInfo.GetCultureInfo("ru-RU");
+    // Используем InvariantCulture для формата 1,234,567.89 (запятая - тысячи, точка - дробь)
+    private static readonly CultureInfo Style = CultureInfo.InvariantCulture;
 
     public static string Format(double value)
     {
-        if (value < 0.001) return "0,000";
+        if (value < 1) return "0";
 
-        // Если число меньше миллиона, показываем его полностью с разделителями тысяч
-        // Пример: 123 456,789
+        // Если число меньше миллиона — выводим как целое с разделителем запятой
+        // Пример: 150,000 или 5,400 или 999,999
         if (value < 1000000)
         {
-            return value.ToString("N3", RussianCulture);
+            return value.ToString("N0", Style);
         }
 
-        // Если число больше миллиона, переходим к сокращениям (M, B, T...)
+        // Если число больше или равно миллиону — сокращаем и добавляем 2 знака после точки
         int n = 0;
         double displayValue = value;
 
-        // Делим, пока не дойдем до нужного суффикса
         while (displayValue >= 1000 && n < Names.Length - 1)
         {
             n++;
             displayValue /= 1000;
         }
 
-        // Форматируем остаток с 3 знаками после запятой
-        // Пример: 1,234 M
-        return displayValue.ToString("F3", RussianCulture) + " " + Names[n];
+        // Формат F2 дает ровно 2 знака после точки
+        // Пример: 1.25 M или 1,500.20 B
+        return displayValue.ToString("F2", Style) + " " + Names[n];
     }
 
-    // Формат для магазина (цены обычно без 3 знаков после запятой, чтобы не забивать UI)
+    // Формат для магазина (цены)
     public static string StoreFormat(double value)
     {
-        if (value < 1000) return value.ToString("F0", RussianCulture);
+        // В магазине обычно не нужны дробные доли, если число маленькое
+        if (value < 1000) return value.ToString("F0", Style);
 
+        // Если цена уже с буквой (k, M...) — показываем 2 знака
         int n = 0;
         double displayValue = value;
         while (displayValue >= 1000 && n < Names.Length - 1)
@@ -49,8 +50,12 @@ public static class BigNumberFormatter
             displayValue /= 1000;
         }
 
-        // Для цен в магазине оставим 2 знака, если есть суффикс
-        // Пример: 1,25 k
-        return displayValue.ToString("F2", RussianCulture) + " " + Names[n];
+        // Если есть любая буква (даже 'k') — показываем 2 знака
+        if (n > 0)
+        {
+            return displayValue.ToString("F2", Style) + " " + Names[n];
+        }
+
+        return displayValue.ToString("N0", Style);
     }
 }
