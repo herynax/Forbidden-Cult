@@ -6178,6 +6178,8 @@ MonoBehaviour:
   rowPrefab: {fileID: 30365089610194231, guid: 26159a1cb8ecec04abb5a3b5a71fb978, type: 3}
   buildingPrefab: {fileID: 1599873015293359078, guid: 1d2fe89bae4d4164aae7e377fae37de0, type: 3}
   sleepUIPrefab: {fileID: 417768922808383555, guid: fa3f1a628f6531441bef593fb54bf2cd, type: 3}
+  moneyNumberPrefab: {fileID: 526506958195978333, guid: de84d818641c10a4bab8f5de291d72a9, type: 3}
+  canvasTransform: {fileID: 978660619}
 --- !u!1 &387157689
 GameObject:
   m_ObjectHideFlags: 0

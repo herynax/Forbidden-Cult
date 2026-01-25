@@ -87,20 +87,45 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Всегда делаем "Панч" при клике, даже если не спит (фидбек)
+        // 1. Фидбек клика (всегда)
         transform.DOKill(true);
         transform.DOPunchScale(new Vector3(0.15f, 0.15f, 0.15f), 0.2f);
 
+        // Ссылка на SaveManager для получения ClickPower
+        var saveManager = Object.FindFirstObjectByType<SaveManager>();
+
         if (currentState == State.Sleeping)
         {
-            currentClicks++;
+            // 2. ЛОГИКА БОНУСНОГО КЛИКА (2x)
+            if (saveManager != null)
+            {
+                // Берем текущую силу клика (базовую или динамическую)
+                double bonusAmount = saveManager.data.ClickPower * 2;
 
-            // Визуальный эффект "сопротивления" (тряска)
+                saveManager.data.Money += bonusAmount;
+
+                // 3. СПАВН ЦИФРЫ в месте клика
+                manager.SpawnFloatingNumber(bonusAmount, eventData.position);
+            }
+
+            // 4. Логика пробуждения (счетчик кликов)
+            currentClicks++;
             transform.DOPunchRotation(new Vector3(0, 0, 10f), 0.2f);
 
             if (currentClicks >= clicksNeeded)
             {
                 WakeUp();
+            }
+        }
+        else
+        {
+            // Обычный клик по активному зданию (если хочешь давать 1х доход)
+            // Но обычно в кликерах кликают только по главному объекту или "сонным"
+            if (saveManager != null)
+            {
+                double normalAmount = saveManager.data.ClickPower;
+                saveManager.data.Money += normalAmount;
+                manager.SpawnFloatingNumber(normalAmount, eventData.position);
             }
         }
     }

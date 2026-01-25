@@ -12,6 +12,10 @@ public class BuildingVisualManager : MonoBehaviour
     [Header("Sleep Effects")]
     public GameObject sleepUIPrefab;
 
+    [Header("Click Settings")]
+    [SerializeField] private GameObject moneyNumberPrefab; // Тот же префаб, что в кликере
+    [SerializeField] private Transform canvasTransform;
+
     private Dictionary<string, Transform> activeRows = new Dictionary<string, Transform>();
     private SaveManager saveManager;
 
@@ -39,6 +43,19 @@ public class BuildingVisualManager : MonoBehaviour
         }
 
         if (!isSilent) AnimateRow(upgrade.ID);
+    }
+
+    public void SpawnFloatingNumber(double amount, Vector2 screenPos)
+    {
+        if (moneyNumberPrefab == null) return;
+
+        // Спавним через пул
+        GameObject go = Lean.Pool.LeanPool.Spawn(moneyNumberPrefab, screenPos, Quaternion.identity, canvasTransform);
+        var floatingNum = go.GetComponent<FloatingNumber>();
+        if (floatingNum != null)
+        {
+            floatingNum.Initialize(amount, screenPos);
+        }
     }
 
     private void CreateNewRow(UpgradeSO upgrade, bool isSilent)
