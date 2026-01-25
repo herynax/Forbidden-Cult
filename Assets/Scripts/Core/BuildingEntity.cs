@@ -87,60 +87,58 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // 1. Фидбек клика (всегда)
+        // Фидбек нажатия (тряска)
         transform.DOKill(true);
         transform.DOPunchScale(new Vector3(0.15f, 0.15f, 0.15f), 0.2f);
 
-        // Ссылка на SaveManager для получения ClickPower
-        var saveManager = Object.FindFirstObjectByType<SaveManager>();
-
         if (currentState == State.Sleeping)
         {
-            // 2. ЛОГИКА БОНУСНОГО КЛИКА (2x)
-            if (saveManager != null)
-            {
-                // Берем текущую силу клика (базовую или динамическую)
-                double bonusAmount = saveManager.data.ClickPower * 2;
-
-                saveManager.data.Money += bonusAmount;
-
-                // 3. СПАВН ЦИФРЫ в месте клика
-                manager.SpawnFloatingNumber(bonusAmount, eventData.position);
-            }
-
-            // 4. Логика пробуждения (счетчик кликов)
             currentClicks++;
-            transform.DOPunchRotation(new Vector3(0, 0, 10f), 0.2f);
 
+            // Визуальный эффект "сопротивления"
+            transform.DOPunchRotation(new Vector3(0, 0, 15f), 0.2f);
+
+            // Если это был последний нужный клик
             if (currentClicks >= clicksNeeded)
             {
-                WakeUp();
+                // Передаем координаты клика в метод пробуждения для спавна цифр
+                WakeUp(eventData.position);
             }
-        }
-        else
-        {
-            // Обычный клик по активному зданию (если хочешь давать 1х доход)
-            // Но обычно в кликерах кликают только по главному объекту или "сонным"
-            if (saveManager != null)
+            else
             {
-                double normalAmount = saveManager.data.ClickPower;
-                saveManager.data.Money += normalAmount;
-                manager.SpawnFloatingNumber(normalAmount, eventData.position);
+                // Можно спавнить маленькую цифру за промежуточный клик (опционально)
+                // manager.SpawnFloatingNumber(saveManager.data.ClickPower, eventData.position);
             }
         }
     }
 
-    private void WakeUp()
+    private void WakeUp(Vector2 clickPosition)
     {
         currentState = State.Active;
 
+        // --- ЛОГИКА НАГРАДЫ "ДЖЕКПОТ" ---
+        var saveManager = Object.FindFirstObjectByType<SaveManager>();
+        if (saveManager != null)
+        {
+            // Формула: (Кол-во кликов для пробуждения) * (Сила клика) * (Рандом 2-4)
+            float randomMultiplier = Random.Range(2f, 4.1f); // 4.1 чтобы 4 выпадало чаще
+            double totalWakeUpReward = clicksNeeded * saveManager.data.ClickPower * randomMultiplier;
+
+            saveManager.data.Money += totalWakeUpReward;
+
+            // Спавним жирную цифру в месте последнего клика
+            manager.SpawnFloatingNumber(totalWakeUpReward, clickPosition);
+        }
+
+        // --- ВИЗУАЛ ПРОБУЖДЕНИЯ ---
         iconImage.DOColor(originalColor, 0.5f);
         currentAnim.Kill();
         transform.DOScale(1f, 0.2f);
-        StartActiveAnimation();
 
-        // Эффект при окончательном пробуждении
-        transform.DOPunchRotation(new Vector3(0, 0, 30f), 0.5f, 15);
+        // Эффект "отряхивания" (сильная тряска)
+        transform.DOPunchRotation(new Vector3(0, 0, 40f), 0.6f, 20).SetUpdate(true);
+
+        StartActiveAnimation();
     }
 
     private void StartActiveAnimation()
