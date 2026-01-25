@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: credence
   Name: "\u0416\u0435\u0440\u0442\u0432\u0435\u043D\u043D\u0438\u043A"
   Icon: {fileID: 4402694333995341726, guid: 024f31bb1be782d4282b2f19cabed9e1, type: 3}
-  RowBackground: {fileID: -4846732496204108578, guid: c38bc8e2c1bf7ac4591b10885f29cbde, type: 3}
+  RowBackground: {fileID: -4841579211479179947, guid: e140ec5dcf048ea4b8deac382fb4d615, type: 3}
   BasePrice: 120000000000
   BasePassiveIncome: 2000000000
   RowsCount: 1
