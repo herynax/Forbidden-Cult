@@ -172,16 +172,21 @@ public class BuildingVisualManager : MonoBehaviour
     public System.Collections.IEnumerator RestoreVisuals()
     {
         yield return new WaitForEndOfFrame();
-        var pm = FindFirstObjectByType<PassiveIncomeManager>();
+        yield return new WaitForEndOfFrame();
+
+        var pm = Object.FindFirstObjectByType<PassiveIncomeManager>();
+        var sm = Object.FindFirstObjectByType<SaveManager>();
+
+        if (sm == null || sm.data == null) yield break;
 
         foreach (var upg in pm.allUpgrades)
         {
-            var state = saveManager.data.Upgrades.Find(u => u.ID == upg.ID);
+            var state = sm.data.Upgrades.Find(u => u.ID == upg.ID);
             if (state != null)
             {
+                // Отрисовываем здания по сохраненным позициям
                 for (int i = 0; i < state.StoredPositions.Count; i++)
                 {
-                    // Передаем i + 1 как currentCount
                     OnPurchase(upg, i + 1, true, state.StoredPositions[i]);
                 }
             }

@@ -15,19 +15,15 @@ public class OfflineIncomeManager : MonoBehaviour
 
     private void Start()
     {
-        // Используем более надежный поиск, так как менеджеры могут быть на разных объектах
         saveManager = Object.FindFirstObjectByType<SaveManager>();
         passiveManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
 
-        // Проверка: если мы забыли что-то перетащить в инспекторе
-        if (welcomePanel == null || earnedText == null || closeButton == null)
-        {
-            Debug.LogError("[OfflineIncomeManager] Не все ссылки на UI назначены в инспекторе!");
-            return;
-        }
+        // ВАЖНО: сначала просим менеджер дохода обновить цифру CPS
+        // иначе passiveManager.TotalIncomePerSecond будет равен 0 в первый кадр
+        if (passiveManager != null) passiveManager.CalculateIncomeValue();
 
-        // Ждем небольшую задержку, чтобы PassiveIncomeManager успел инициализироваться и посчитать CPS
-        DOVirtual.DelayedCall(0.1f, () => {
+        // Запускаем расчет с микро-задержкой
+        DOVirtual.DelayedCall(0.2f, () => {
             CalculateOfflineIncome();
         }).SetUpdate(true);
 
@@ -36,28 +32,24 @@ public class OfflineIncomeManager : MonoBehaviour
 
     private void CalculateOfflineIncome()
     {
-        // Проверяем наличие всех данных перед расчетом
         if (saveManager == null || saveManager.data == null || passiveManager == null) return;
-
-        // Если это самый первый запуск игры и времени сохранения еще нет
         if (saveManager.data.LastSaveTimeTicks <= 0) return;
 
-        // 1. Считаем сколько времени прошло
         System.DateTime lastTime = new System.DateTime(saveManager.data.LastSaveTimeTicks);
         System.DateTime currentTime = System.DateTime.UtcNow;
         System.TimeSpan timePassed = currentTime - lastTime;
 
         double secondsOffline = timePassed.TotalSeconds;
 
-        // Если прошло меньше 10 секунд (например, просто перезагрузил страницу), не спамим
-        if (secondsOffline < 10) return;
+        // Снижаем порог до 1 секунды, чтобы мини-игры тоже считались
+        if (secondsOffline < 1) return;
 
-        // 2. Считаем доход
         double cps = passiveManager.TotalIncomePerSecond;
         double earned = cps * secondsOffline;
 
         if (earned > 0.01)
         {
+            // Начисляем доход за время мини-игры
             saveManager.data.Money += earned;
             ShowWelcomePanel(earned, timePassed);
         }

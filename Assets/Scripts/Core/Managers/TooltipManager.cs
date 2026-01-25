@@ -18,7 +18,7 @@ public class TooltipManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float followSpeed = 25f;
 
-    private SaveManager saveManager; // ДОБАВЛЕНО: Ссылка на менеджер сохранений
+    private SaveManager saveManager;
     private UpgradeSO currentShownUpgrade;
     private bool isActive = false;
     private RectTransform canvasRect;
@@ -28,25 +28,40 @@ public class TooltipManager : MonoBehaviour
     {
         Instance = this;
         canvasGroup.alpha = 0;
+        canvasGroup.gameObject.SetActive(false);
 
         parentCanvas = GetComponentInParent<Canvas>();
         canvasRect = parentCanvas.GetComponent<RectTransform>();
-
-        // ДОБАВЛЕНО: Инициализация ссылки
         saveManager = Object.FindFirstObjectByType<SaveManager>();
     }
 
     public void ShowTooltip(UpgradeSO data, int currentCount)
     {
+        // 1. Проверяем, открыто ли улучшение (есть ли оно в списке RevealedUpgrades)
+        bool isRevealed = saveManager.data.RevealedUpgrades.Contains(data.ID);
+
         canvasGroup.gameObject.SetActive(true);
         isActive = true;
         currentShownUpgrade = data;
 
-        nameText.text = data.Name;
-        descriptionText.text = data.Description;
-        loreText.text = "<i>\"" + data.LoreText + "\"</i>";
+        if (!isRevealed)
+        {
+            // СОСТОЯНИЕ: Скрыто (???)
+            nameText.text = "???";
+            descriptionText.text = "Соберите больше скверны, чтобы узреть это...";
+            loreText.text = "";
+            incomeText.gameObject.SetActive(false);
+        }
+        else
+        {
+            // СОСТОЯНИЕ: Раскрыто
+            nameText.text = data.Name;
+            descriptionText.text = data.Description;
+            loreText.text = "<i>\"" + data.LoreText + "\"</i>";
 
-        RefreshDynamicData();
+            // Метод сам решит, показывать ли доход (если куплено > 0)
+            RefreshDynamicData();
+        }
 
         canvasGroup.DOKill();
         canvasGroup.DOFade(1f, 0.15f).SetUpdate(true);
@@ -54,8 +69,10 @@ public class TooltipManager : MonoBehaviour
 
     private void RefreshDynamicData()
     {
-        // Проверка безопасности: если менеджер не найден или данные не прогрузились
         if (currentShownUpgrade == null || saveManager == null || saveManager.data == null) return;
+
+        // Если улучшение еще не раскрыто, не обновляем цифры дохода
+        if (!saveManager.data.RevealedUpgrades.Contains(currentShownUpgrade.ID)) return;
 
         var state = saveManager.data.Upgrades.Find(u => u.ID == currentShownUpgrade.ID);
         int count = state != null ? state.Amount : 0;
@@ -67,11 +84,9 @@ public class TooltipManager : MonoBehaviour
             double eachProvides = currentShownUpgrade.BasePassiveIncome;
             double totalProvides = eachProvides * count;
 
-            // Форматируем текст дохода
             incomeText.text = $"Собрано скверны: <color=#B000FF>{BigNumberFormatter.Format(state.TotalEarned)}</color>\n" +
                               $"Всего приносит: <color=green>{BigNumberFormatter.Format(totalProvides)}</color>\n" +
                               $"Каждый дает: <color=green>{BigNumberFormatter.Format(eachProvides)}</color>";
-;
         }
         else
         {
@@ -82,20 +97,21 @@ public class TooltipManager : MonoBehaviour
     public void HideTooltip()
     {
         isActive = false;
-        currentShownUpgrade = null; // Сбрасываем объект
+        currentShownUpgrade = null;
+
         canvasGroup.DOKill();
-        canvasGroup.DOFade(0f, 0.15f).SetUpdate(true);
-        canvasGroup.gameObject.SetActive(false);
+        // Плавно исчезаем и ТОЛЬКО ПОТОМ выключаем объект через OnComplete
+        canvasGroup.DOFade(0f, 0.15f).SetUpdate(true).OnComplete(() => {
+            if (!isActive) canvasGroup.gameObject.SetActive(false);
+        });
     }
 
     private void Update()
     {
         if (!isActive) return;
 
-        // ВЫЗЫВАЕМ ОБНОВЛЕНИЕ ЦИФР каждый кадр, чтобы они "тикали" пока мы смотрим
         RefreshDynamicData();
 
-        // Логика движения
         Vector2 localPoint;
         Camera uiCamera = (parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay) ? null : parentCanvas.worldCamera;
 

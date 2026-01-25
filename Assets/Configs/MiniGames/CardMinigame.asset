@@ -17,6 +17,6 @@ MonoBehaviour:
   RequiredUpgradeIDs:
   - symbol
   - word
-  - text
+  - spell
   minCooldown: 60
   maxCooldown: 180
