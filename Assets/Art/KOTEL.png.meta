@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 81c216f6e4da290478097d2ece731e52
+guid: fac7e1b2db3452e46b3575193371781e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4940826068150216418
-    second: lk1_0
+      213: -2744963865716635204
+    second: KOTEL_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lk1_0
+      name: KOTEL_0
       rect:
         serializedVersion: 2
-        x: 104
-        y: 96
-        width: 1620
-        height: 1616
+        x: 11
+        y: 26
+        width: 234
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e199aee5ed8ae6bb0800000000000000
-      internalID: -4940826068150216418
+      spriteID: cb94da658ede7e9d0800000000000000
+      internalID: -2744963865716635204
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lk1_0: -4940826068150216418
+      KOTEL_0: -2744963865716635204
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -545,12 +545,12 @@ MonoBehaviour:
   sessionMoneyHUD: {fileID: 1447563320}
   hudPunchAmount: 1.2
   cardIDColors:
-  - {r: 0, g: 1, b: 0.22465372, a: 1}
+  - {r: 1, g: 0.38841486, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.22352934, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.8867924, g: 0, b: 0.79190403, a: 1}
   - {r: 0, g: 0.25909448, b: 1, a: 1}
-  - {r: 1, g: 0.38841486, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.64036965, a: 1}
   canClick: 0
 --- !u!4 &754021318
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 225}
+  m_CellSize: {x: 150, y: 150}
   m_Spacing: {x: 50, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
