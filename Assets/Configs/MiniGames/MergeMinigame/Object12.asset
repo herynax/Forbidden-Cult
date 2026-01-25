@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b940cfd9d407bfd44bebb2769a44c102, type: 3}
-  m_Name: Object3
+  m_Name: Object12
   m_EditorClassIdentifier: 
-  level: 3
-  sprite: {fileID: 8468526713697396880, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
-  itemColor: {r: 1, g: 0, b: 0.7325125, a: 1}
-  scale: 0.8
-  reward: 4
-  nextLevel: {fileID: 11400000, guid: c377e96fd32999f4f8d58daed2516452, type: 2}
+  level: 12
+  sprite: {fileID: -4841579211479179947, guid: e140ec5dcf048ea4b8deac382fb4d615, type: 3}
+  itemColor: {r: 1, g: 1, b: 1, a: 1}
+  scale: 1.7
+  reward: 13
+  nextLevel: {fileID: 11400000, guid: 05ae414d5cfec7045a2cfd741fb878ee, type: 2}
