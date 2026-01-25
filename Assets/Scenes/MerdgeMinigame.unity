@@ -449,8 +449,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 653b61cea21bff14c825a0f98ed13360, type: 2}
+  m_sharedMaterial: {fileID: -6961331694494810768, guid: 653b61cea21bff14c825a0f98ed13360, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1678,9 +1678,9 @@ MonoBehaviour:
   mergeParticlePrefabs:
   - {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
   - {fileID: 2504214343621411470, guid: 2deec221f5c319148aeb236026e27d2e, type: 3}
-  - {fileID: 8176850701479282271, guid: b219c04f384e7f345bb8ae1fef443965, type: 3}
+  - {fileID: 2504214343621411470, guid: 1ba0a34594607a943bc99d6336750e10, type: 3}
   - {fileID: 0}
-  baseTime: 25
+  baseTime: 20
   timeBonus: 3
 --- !u!4 &1957924698
 Transform:
