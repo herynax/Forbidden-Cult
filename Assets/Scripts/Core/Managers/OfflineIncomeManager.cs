@@ -33,23 +33,42 @@ public class OfflineIncomeManager : MonoBehaviour
     private void CalculateOfflineIncome()
     {
         if (saveManager == null || saveManager.data == null || passiveManager == null) return;
-        if (saveManager.data.LastSaveTimeTicks <= 0) return;
 
+        // 1. ПРИНУДИТЕЛЬНО ПЕРЕСЧИТЫВАЕМ ДОХОД перед проверкой
+        passiveManager.CalculateIncomeValue();
+        double cps = passiveManager.TotalIncomePerSecond;
+
+        // 2. ПРОВЕРКА: Если игрок ничего не купил (доход 0), панель не показываем
+        if (cps <= 0)
+        {
+            // Просто обновляем метку времени, чтобы при следующей покупке расчет был верным
+            saveManager.data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
+            return;
+        }
+
+        // 3. ПРОВЕРКА НА САМЫЙ ПЕРВЫЙ ЗАПУСК (уже обсуждали)
+        if (saveManager.data.LastSaveTimeTicks == 0)
+        {
+            saveManager.data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
+            saveManager.Save();
+            return;
+        }
+
+        // 4. Считаем время
         System.DateTime lastTime = new System.DateTime(saveManager.data.LastSaveTimeTicks);
         System.DateTime currentTime = System.DateTime.UtcNow;
         System.TimeSpan timePassed = currentTime - lastTime;
 
         double secondsOffline = timePassed.TotalSeconds;
 
-        // Снижаем порог до 1 секунды, чтобы мини-игры тоже считались
-        if (secondsOffline < 1) return;
+        // Игнорируем короткие сессии (меньше 10 секунд)
+        if (secondsOffline < 10) return;
 
-        double cps = passiveManager.TotalIncomePerSecond;
+        // 5. Начисляем доход
         double earned = cps * secondsOffline;
 
         if (earned > 0.01)
         {
-            // Начисляем доход за время мини-игры
             saveManager.data.Money += earned;
             ShowWelcomePanel(earned, timePassed);
         }
