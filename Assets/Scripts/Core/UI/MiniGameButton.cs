@@ -12,10 +12,10 @@ public class MiniGameButton : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private Image cooldownFill;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private GameObject readyVisual;
-    [SerializeField] private GameObject warningVisual;
+    [SerializeField] private GameObject readyVisual;  // Твой FX
     [SerializeField] private CanvasGroup canvasGroup;
 
+    private Button mainButton;
     private SaveManager saveManager;
     private bool isReady;
     private bool hasRevealed;
@@ -24,51 +24,46 @@ public class MiniGameButton : MonoBehaviour
 
     private void Awake()
     {
-        // Лучше искать менеджер в Awake
         saveManager = Object.FindFirstObjectByType<SaveManager>();
+        mainButton = GetComponent<Button>();
     }
 
     private void OnEnable()
     {
-        // Сбрасываем визуал при включении (если еще не раскрыта)
-        if (!hasRevealed) transform.localScale = Vector3.zero;
+        // Скрываем всё ПЕРЕД началом логики
+        SetupInitialState();
 
         if (logicRoutine != null) StopCoroutine(logicRoutine);
         logicRoutine = StartCoroutine(ButtonLogicRoutine());
     }
 
-    private void OnDisable()
+    private void SetupInitialState()
     {
-        if (logicRoutine != null) StopCoroutine(logicRoutine);
-        // Убиваем твины, чтобы они не выдавали ошибки при выключении объекта
-        transform.DOKill();
-        timerText.DOKill();
-    }
-
-    private void Start()
-    {
-        saveManager = Object.FindFirstObjectByType<SaveManager>();
-
-        // Начальное состояние кнопки
+        // Сама кнопка
         transform.localScale = Vector3.zero;
-
-        // Настройка FX (Ready Visual)
-        if (readyVisual != null)
+        if (canvasGroup != null)
         {
-            readyVisual.transform.localScale = Vector3.zero; // Скейл в 0
-            readyVisual.SetActive(false);
+            canvasGroup.alpha = 0;
+            canvasGroup.blocksRaycasts = false;
         }
 
-        cooldownFill.fillAmount = 0;
-        timerText.text = "";
-        warningVisual.SetActive(false);
+        if (mainButton != null) mainButton.interactable = false;
 
-        // Запуск логики через OnEnable (чтобы не было ошибок неактивного объекта)
+        // Дочерние элементы (Таймер и Заливка) по умолчанию выключены
+        if (cooldownFill != null) cooldownFill.gameObject.SetActive(false);
+        if (timerText != null) timerText.gameObject.SetActive(false);
+
+        // FX эффекты
+        if (readyVisual != null)
+        {
+            readyVisual.transform.localScale = Vector3.zero;
+            readyVisual.SetActive(false);
+        }
     }
 
     private IEnumerator ButtonLogicRoutine()
     {
-        // Ждем пока данные загрузятся
+        // Ждем загрузки данных
         while (saveManager == null || saveManager.data == null)
         {
             saveManager = Object.FindFirstObjectByType<SaveManager>();
@@ -77,28 +72,24 @@ public class MiniGameButton : MonoBehaviour
 
         while (true)
         {
+            // Проверка условий открытия
             bool conditionsMet = gameData.RequiredUpgradeIDs.All(id =>
                 saveManager.data.Upgrades.Any(u => u.ID == id && u.Amount > 0));
 
             if (conditionsMet)
             {
+                // ЭТАП 1: Появление кнопки
                 if (!hasRevealed)
                 {
                     yield return RevealButton();
                 }
 
+                // ЭТАП 2: Кулдаун
                 if (!isReady)
                 {
                     yield return StartCooldown();
                 }
             }
-            else
-            {
-                // Если условия перестали соблюдаться (например, сброс сейва)
-                transform.localScale = Vector3.zero;
-                hasRevealed = false;
-            }
-
             yield return new WaitForSeconds(1f);
         }
     }
@@ -106,8 +97,17 @@ public class MiniGameButton : MonoBehaviour
     private IEnumerator RevealButton()
     {
         hasRevealed = true;
+
+        // Включаем видимость через CanvasGroup
+        if (canvasGroup != null)
+        {
+            canvasGroup.DOFade(1f, 0.5f);
+            canvasGroup.blocksRaycasts = true;
+        }
+
         transform.DOKill();
-        yield return transform.DOScale(1f, 0.6f).SetEase(Ease.OutBack).WaitForCompletion();
+        // Анимация масштаба всей кнопки 0 -> 1
+        yield return transform.DOScale(Vector3.one, 0.6f).SetEase(Ease.OutBack).WaitForCompletion();
     }
 
     private IEnumerator StartCooldown()
@@ -116,24 +116,31 @@ public class MiniGameButton : MonoBehaviour
         float elapsed = 0;
         isWarningStarted = false;
 
-        if (canvasGroup != null) canvasGroup.alpha = 0.6f;
+        // ВКЛЮЧАЕМ Таймер и Заливку в момент начала КД
+        if (cooldownFill != null) cooldownFill.gameObject.SetActive(true);
+        if (timerText != null) timerText.gameObject.SetActive(true);
+
+        mainButton.interactable = false;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float remaining = duration - elapsed;
 
-            cooldownFill.fillAmount = elapsed / duration;
+            if (cooldownFill != null) cooldownFill.fillAmount = elapsed / duration;
 
-            int minutes = Mathf.FloorToInt(remaining / 60);
-            int seconds = Mathf.FloorToInt(remaining % 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            if (timerText != null)
+            {
+                int minutes = Mathf.FloorToInt(remaining / 60);
+                int seconds = Mathf.FloorToInt(remaining % 60);
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
 
+            // За 10 секунд до конца - тряска
             if (remaining <= 10f && !isWarningStarted)
             {
                 TriggerWarning();
             }
-
             yield return null;
         }
 
@@ -142,52 +149,58 @@ public class MiniGameButton : MonoBehaviour
 
     private void TriggerWarning()
     {
-        isWarningStarted = true;
-        warningVisual.SetActive(true);
-        timerText.DOColor(Color.red, 0.5f).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);
-        transform.DOShakeRotation(10f, 2f, 10, 90).SetLoops(-1).SetLink(gameObject);
+
+        // Тряска и пульсация таймера
+        timerText.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f).SetLoops(-1);
+        transform.DOShakeRotation(10f, 2f, 10).SetLoops(-1).SetLink(gameObject);
     }
 
     private void SetReady()
     {
         isReady = true;
         isWarningStarted = false;
+        mainButton.interactable = true;
 
-        // Останавливаем тряску и красные тексты
+        // Выключаем элементы кулдауна
+        if (cooldownFill != null) cooldownFill.gameObject.SetActive(false);
+
         transform.DOKill();
-        timerText.DOKill();
-        warningVisual.SetActive(false);
+        timerText.transform.DOKill();
 
         timerText.text = "ИГРАТЬ!";
         timerText.color = Color.white;
 
-        if (canvasGroup != null) canvasGroup.DOFade(1f, 0.3f);
-
-        // --- ЛОГИКА FX (Ready Visual) ---
+        // ЭТАП 3: FX (Ready Visual) выплывает из 0 до 0.3
         if (readyVisual != null)
         {
             readyVisual.SetActive(true);
-            readyVisual.transform.DOKill(); // Убиваем старые твины на FX
-            readyVisual.transform.localScale = Vector3.zero; // Гарантируем 0 перед стартом
-
-            // Плавное появление до 0.3 через OutCubic
+            readyVisual.transform.localScale = Vector3.zero;
             readyVisual.transform.DOScale(new Vector3(0.3f, 0.3f, 0.3f), 0.5f)
-                .SetEase(Ease.OutCubic)
-                .SetUpdate(true); // Чтобы работало даже при паузе
+                .SetEase(Ease.OutCubic);
         }
 
-        // Саму кнопку можно тоже слегка увеличить для акцента
-        transform.DOScale(1.05f, 0.3f).SetEase(Ease.OutBack);
+        // Анимация "Готовности" самой кнопки (подпрыгивание)
+        transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.5f, 5)
+            .SetLoops(-1, LoopType.Restart)
+            .SetDelay(1f);
     }
 
     public void OnClick()
     {
         if (isReady)
         {
-            isReady = false; // Чтобы нельзя было нажать дважды
+            isReady = false;
             transform.DOKill();
             saveManager.Save();
             SceneLoader.Instance.LoadScene(gameData.SceneName);
         }
+    }
+
+    private void OnDisable()
+    {
+        if (logicRoutine != null) StopCoroutine(logicRoutine);
+        transform.DOKill();
+        if (timerText != null) timerText.transform.DOKill();
+        if (readyVisual != null) readyVisual.transform.DOKill();
     }
 }
