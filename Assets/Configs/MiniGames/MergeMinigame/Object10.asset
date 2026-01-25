@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Object10
   m_EditorClassIdentifier: 
   level: 10
-  sprite: {fileID: -8524714818473189813, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
-  itemColor: {r: 1, g: 0.5666981, b: 0, a: 1}
+  sprite: {fileID: 21300000, guid: e99f4dd5d4244364299e5e1ffea1df1a, type: 3}
+  itemColor: {r: 0, g: 1, b: 0.18928123, a: 1}
   scale: 1.5
   reward: 11
   nextLevel: {fileID: 11400000, guid: f57aa973b9ac36343a86f72772a4db41, type: 2}

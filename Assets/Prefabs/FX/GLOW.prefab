@@ -187,7 +187,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0.269979, a: 0.5254902}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.23353481, g: 1, b: 0, a: 0.27450982}
@@ -251,7 +251,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 14.7
+      scalar: 55
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4963,7 +4963,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 0.20392157}
+      maxColor: {r: 0.28135142, g: 0.010679938, b: 0.754717, a: 0.6392157}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.9811321, g: 0.6591732, b: 0.19900322, a: 0.27450982}
@@ -5027,7 +5027,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 11.48
+      scalar: 15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6200,7 +6200,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: bf04f30f380d18849b60d45ecaab22f6, type: 3}
+    - sprite: {fileID: 21300000, guid: ccd3c6eb8020e97489da396bf552b3ee, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -9586,8 +9586,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4109064841345302813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9600,7 +9600,7 @@ ParticleSystem:
   m_GameObject: {fileID: 4109064841367350317}
   serializedVersion: 8
   lengthInSec: 2
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
@@ -9745,7 +9745,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.1834998, g: 0, b: 0.5849056, a: 0.53333336}
+      maxColor: {r: 0.49056602, g: 0.030081892, b: 0.09901666, a: 0.078431375}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 0.740566, a: 1}
@@ -10374,7 +10374,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 6
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10821,8 +10821,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.99726325, g: 1, b: 0.7783019, a: 0}
-        key1: {r: 1, g: 0.95776826, b: 0.0990566, a: 1}
+        key0: {r: 0.25156355, g: 0, b: 0.4433962, a: 0}
+        key1: {r: 1, g: 0.09803921, b: 0.14172329, a: 1}
         key2: {r: 0.990566, g: 0.9581136, b: 0.23829651, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 1}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -10846,7 +10846,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 5
       minGradient:
@@ -11000,7 +11000,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 4424dda84344cd94489735f2f7bdfdbc, type: 3}
+    - sprite: {fileID: 21300000, guid: bf04f30f380d18849b60d45ecaab22f6, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -14305,7 +14305,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75be7a7b742586840beb0b9c8ce4b273, type: 2}
+  - {fileID: 2100000, guid: 7f1fea85f791b4f4b8fabff9da93491a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14349,7 +14349,7 @@ ParticleSystemRenderer:
   m_VertexStreams: 0001030405
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
-  m_Mesh: {fileID: 3215075968978754175, guid: e82f2cbd6def7ff4c98963f706f00d3e, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 1a6345b23d834ab4290d4498136e1abc, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -14387,7 +14387,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4109064841345302813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14400,7 +14400,7 @@ ParticleSystem:
   m_GameObject: {fileID: 4109064841844230559}
   serializedVersion: 8
   lengthInSec: 2
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
@@ -14544,8 +14544,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.4433962, g: 0.02300641, b: 0.08190663, a: 0.6784314}
-      maxColor: {r: 0.19209984, g: 0, b: 0.3301887, a: 0.57254905}
+      minColor: {r: 0.4433962, g: 0.02300641, b: 0.08190663, a: 0.85882354}
+      maxColor: {r: 0.19209984, g: 0, b: 0.3301887, a: 0.7882353}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 0.28773582, a: 1}
@@ -14610,7 +14610,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 4
-      minScalar: 0.5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15174,7 +15174,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 22
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -15791,7 +15791,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 098eca53dfcb7b14989fd25bda5a8314, type: 3}
+    - sprite: {fileID: 21300006, guid: b27bcf37600cca24196520251965a496, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -19096,7 +19096,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e06e7973fae97da47931c6ffb2b23468, type: 2}
+  - {fileID: 2100000, guid: d789bd285b0278848808ac4587043a4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

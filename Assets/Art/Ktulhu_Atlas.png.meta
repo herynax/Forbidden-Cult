@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: 9439c82c089afa943aaab20f3bfd5ea3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5578456179897977373
+    second: Ktulhu_Atlas_0
+  - first:
+      213: -2914679174396783485
+    second: Ktulhu_Atlas_1
+  - first:
+      213: 3816894004825211160
+    second: Ktulhu_Atlas_2
+  - first:
+      213: -9204156865317455595
+    second: Ktulhu_Atlas_3
+  - first:
+      213: 8746646977432007753
+    second: Ktulhu_Atlas_4
+  - first:
+      213: 5907621550801310136
+    second: Ktulhu_Atlas_5
+  - first:
+      213: 8136989444671363815
+    second: Ktulhu_Atlas_6
+  - first:
+      213: -2202332610554813173
+    second: Ktulhu_Atlas_7
+  - first:
+      213: 7533021489627252772
+    second: Ktulhu_Atlas_8
+  - first:
+      213: 612880303098306081
+    second: Ktulhu_Atlas_9
+  - first:
+      213: -6039010203988615138
+    second: Ktulhu_Atlas_10
+  - first:
+      213: -3085013696740269209
+    second: Ktulhu_Atlas_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_0
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 381
+        width: 260
+        height: 119
+      alignment: 9
+      pivot: {x: 0.017139582, y: 0.4133583}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1ac6e5f658aa6d40800000000000000
+      internalID: 5578456179897977373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_1
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 276
+        width: 211
+        height: 143
+      alignment: 9
+      pivot: {x: 0.9886423, y: 0.7375072}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 384d9d7cbbafc87d0800000000000000
+      internalID: -2914679174396783485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_2
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 467
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811cce6efd458f430800000000000000
+      internalID: 3816894004825211160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_3
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 420
+        width: 120
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 519b7c1c814444080800000000000000
+      internalID: -9204156865317455595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_4
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 320
+        width: 167
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94434919515526970800000000000000
+      internalID: 8746646977432007753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_5
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 144
+        width: 223
+        height: 368
+      alignment: 9
+      pivot: {x: 0.9242718, y: 0.11929475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b154f220861cf150800000000000000
+      internalID: 5907621550801310136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 158
+        width: 239
+        height: 219
+      alignment: 9
+      pivot: {x: 0.97199744, y: 0.17321478}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea5dbec9c46ce070800000000000000
+      internalID: 8136989444671363815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_7
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1
+        width: 141
+        height: 269
+      alignment: 9
+      pivot: {x: 0.49569854, y: 0.022021651}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b052f9eb82ebf61e0800000000000000
+      internalID: -2202332610554813173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_8
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 0
+        width: 181
+        height: 315
+      alignment: 9
+      pivot: {x: 0.06104797, y: 0.101448536}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428cd96122baa8860800000000000000
+      internalID: 7533021489627252772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 472
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e12047363618800800000000000000
+      internalID: 612880303098306081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_10
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 0
+        width: 213
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e10ac4c2730213ca0800000000000000
+      internalID: -6039010203988615138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_11
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 32
+        width: 200
+        height: 111
+      alignment: 9
+      pivot: {x: 0.039066467, y: 0.41804162}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 763e49e4364df25d0800000000000000
+      internalID: -3085013696740269209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ktulhu_Atlas_12
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 420
+        width: 84
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2acb5be5ca889949aaea776a426b2cd
+      internalID: -403751648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2ddbf835934c5f2449c02b844dc4ff53
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ktulhu_Atlas_0: 5578456179897977373
+      Ktulhu_Atlas_1: -2914679174396783485
+      Ktulhu_Atlas_10: -6039010203988615138
+      Ktulhu_Atlas_11: -3085013696740269209
+      Ktulhu_Atlas_12: -403751648
+      Ktulhu_Atlas_2: 3816894004825211160
+      Ktulhu_Atlas_3: -9204156865317455595
+      Ktulhu_Atlas_4: 8746646977432007753
+      Ktulhu_Atlas_5: 5907621550801310136
+      Ktulhu_Atlas_6: 8136989444671363815
+      Ktulhu_Atlas_7: -2202332610554813173
+      Ktulhu_Atlas_8: 7533021489627252772
+      Ktulhu_Atlas_9: 612880303098306081
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
