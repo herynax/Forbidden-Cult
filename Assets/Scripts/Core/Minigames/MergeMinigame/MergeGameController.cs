@@ -82,12 +82,28 @@ public class MergeGameController : MonoBehaviour
     {
         if (currentItem == null || !canDrop) return;
 
+        // 1. Получаем позицию мыши в мировых координатах
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float clampedX = Mathf.Clamp(mousePos.x, -2.5f, 2.5f); // Настрой под свою коробку!
+
+        // 2. Вычисляем динамические границы экрана в мировых координатах
+        // Viewport (0,0) — это левый нижний угол, (1,1) — правый верхний
+        float leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
+        float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
+
+        // 3. Учитываем радиус объекта, чтобы он не заходил за край наполовину
+        // Берем скейл из SO и делим на 2 (радиус)
+        float objectRadius = (currentItem.data.scale) / 2f;
+
+        // 4. Ограничиваем X с учетом границ экрана и размера объекта
+        float clampedX = Mathf.Clamp(mousePos.x, leftBorder + objectRadius, rightBorder - objectRadius);
+
+        // 5. Применяем позицию
         currentItem.transform.position = new Vector3(clampedX, spawnPoint.position.y, 0);
 
+        // Отрисовка линии
         DrawGuideLine(currentItem.transform.position);
 
+        // Дроп
         if (Input.GetMouseButtonDown(0)) DropItem();
     }
 
