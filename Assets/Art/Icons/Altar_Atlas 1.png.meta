@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: df8d76b38d2284347b1744a7a00baff8
+guid: 6d40b6f6ba7cde1458b61813355384a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2165438392749350887
-    second: "\u0441\u043B\u043E\u0432\u043E_3_0"
+      213: 4588504535222749217
+    second: Altar_Atlas_0
   - first:
-      213: 6192284825109470459
-    second: "\u0441\u043B\u043E\u0432\u043E_3_1"
+      213: -1283540817298506357
+    second: Altar_Atlas_1
   - first:
-      213: 5132277690137364193
-    second: "\u0441\u043B\u043E\u0432\u043E_3_2"
+      213: -7698688916799460016
+    second: Altar_Atlas_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,30 +115,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0441\u043B\u043E\u0432\u043E_3_0"
+      name: Altar_Atlas_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 3
-        width: 363
-        height: 338
+        x: 38
+        y: 10
+        width: 170
+        height: 237
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ef51d6cebe2d0e10800000000000000
-      internalID: 2165438392749350887
+      spriteID: 12888385094adaf30800000000000000
+      internalID: 4588504535222749217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0441\u043B\u043E\u0432\u043E_3_1"
+      name: Altar_Atlas_1
       rect:
         serializedVersion: 2
-        x: 387
-        y: 103
-        width: 350
-        height: 273
+        x: 255
+        y: 6
+        width: 236
+        height: 236
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfc11b48d3a6fe550800000000000000
-      internalID: 6192284825109470459
+      spriteID: b8d353a5d62ff2ee0800000000000000
+      internalID: -1283540817298506357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0441\u043B\u043E\u0432\u043E_3_2"
+      name: Altar_Atlas_2
       rect:
         serializedVersion: 2
-        x: 735
-        y: 62
-        width: 370
-        height: 328
+        x: 512
+        y: 7
+        width: 256
+        height: 235
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e6cc410e53893740800000000000000
-      internalID: 5132277690137364193
+      spriteID: 05d6ee53833c82590800000000000000
+      internalID: -7698688916799460016
       vertices: []
       indices: 
       edges: []
@@ -211,9 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0441\u043B\u043E\u0432\u043E_3_0": 2165438392749350887
-      "\u0441\u043B\u043E\u0432\u043E_3_1": 6192284825109470459
-      "\u0441\u043B\u043E\u0432\u043E_3_2": 5132277690137364193
+      Altar_Atlas_0: 4588504535222749217
+      Altar_Atlas_1: -1283540817298506357
+      Altar_Atlas_2: -7698688916799460016
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
