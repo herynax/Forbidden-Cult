@@ -11,32 +11,35 @@ public static class BigNumberFormatter
 
     public static string Format(double value)
     {
-        if (value < 1) return "0";
+        if (value < 0.01) return "0";
 
-        // ≈сли число меньше миллиона Ч выводим как целое с разделителем зап€той
-        // ѕример: 150,000 или 5,400 или 999,999
+        // 1. ≈сли число меньше 1,000 Ч показываем максимум 2 знака после точки
+        if (value < 1000)
+        {
+            // "F2" заставит всегда показывать 2 знака (например 5.12)
+            // ≈сли хочешь, чтобы целые числа были без нулей (просто 5), используй "0.##"
+            return value.ToString("0.##", Style);
+        }
+
+        // 2. ≈сли число от 1,000 до 1,000,000 Ч показываем целым с зап€тыми
+        // ѕример: 150,000 или 1,234
         if (value < 1000000)
         {
             return value.ToString("N0", Style);
         }
 
-        // ≈сли число больше или равно миллиону Ч сокращаем и добавл€ем 2 знака после точки
+        // 3. ≈сли число больше миллиона Ч сокращаем (M, B, T) + 2 знака
         int n = 0;
         double displayValue = value;
-
         while (displayValue >= 1000 && n < Names.Length - 1)
         {
             n++;
             displayValue /= 1000;
         }
 
-        // ‘ормат F2 дает ровно 2 знака после точки
-        // ѕример: 1.25 M или 1,500.20 B
         return displayValue.ToString("F2", Style) + " " + Names[n];
     }
-
-    // ‘ормат дл€ магазина (цены)
-    public static string StoreFormat(double value)
+public static string StoreFormat(double value)
     {
         // ¬ магазине обычно не нужны дробные доли, если число маленькое
         if (value < 1000) return value.ToString("F0", Style);

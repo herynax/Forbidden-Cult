@@ -13,7 +13,9 @@ public class FloatingNumber : MonoBehaviour
     public void Initialize(double amount, Vector2 position)
     {
         transform.position = position;
-        text.text = $"+{amount}";
+
+        text.text = "+" + BigNumberFormatter.Format(amount);
+
         text.alpha = 1f;
 
         // Убиваем старые твины на этом объекте, если они были
