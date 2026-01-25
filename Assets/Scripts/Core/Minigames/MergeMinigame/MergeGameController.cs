@@ -25,7 +25,6 @@ public class MergeGameController : MonoBehaviour
     public Button exitButton;
 
     [Header("Merge Visuals")]
-    // Закинь сюда 3 разных префаба систем частиц (взрывы, искры, вспышки)
     public GameObject[] mergeParticlePrefabs;
 
     [Header("Logic")]
@@ -36,6 +35,13 @@ public class MergeGameController : MonoBehaviour
     private MergeItem currentItem;
     private bool canDrop = true;
     private bool isGameOver = false;
+
+    [Header("Difficulty Scaling")]
+    [SerializeField] private float minBaseTime = 10f; // Минимальный порог, чтобы игра не стала невозможной
+    [SerializeField] private float mergeTimeReduction = 0.1f; // На сколько уменьшаем базовое время за мердж
+
+    [Header("Danger Zone")]
+    [SerializeField] private float dangerPenaltyAmount = 5f;
 
     // КЭШ МЕНЕДЖЕРОВ
     private SaveManager saveManager;
@@ -153,8 +159,33 @@ public class MergeGameController : MonoBehaviour
                 newGo.transform.DOScale(nextLevel.scale, 0.3f).SetEase(Ease.OutBack);
             }
 
+            ReduceBaseTime();
             AddReward(rewardAmount, spawnPos);
         });
+    }
+
+    private void ReduceBaseTime()
+    {
+        // Уменьшаем базовое время (максимальный объем слайдера)
+        baseTime -= mergeTimeReduction;
+
+        // Ограничиваем, чтобы не уйти в ноль
+        if (baseTime < minBaseTime) baseTime = minBaseTime;
+    }
+
+    public void ApplyDangerPenalty()
+    {
+        if (isGameOver) return;
+
+        // Штрафуем игрока
+        timeLeft -= dangerPenaltyAmount;
+
+        // Визуальный фидбек: трясем таймер и красим в красный
+        timerBar.transform.DOKill(true);
+        timerBar.transform.DOShakePosition(0.5f, 15f);
+        timerBar.DOColor(Color.red, 0.2f).OnComplete(() => timerBar.DOColor(Color.green, 0.5f));
+
+        if (timeLeft <= 0) GameOver();
     }
 
     private void SpawnRandomMergeParticle(Vector3 pos)
