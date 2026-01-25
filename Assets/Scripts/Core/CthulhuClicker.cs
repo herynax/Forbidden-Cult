@@ -35,7 +35,7 @@ public class CthulhuClicker : MonoBehaviour, IPointerDownHandler, IPointerEnterH
 
         RuntimeManager.PlayOneShot("event:/UI/Click");
 
-        
+        MiniGameButton.ReduceAllCooldowns(1.0f);
 
         // 2. Визуальный эффект Ктулху (дерганье)
         AnimateCthulhu();
