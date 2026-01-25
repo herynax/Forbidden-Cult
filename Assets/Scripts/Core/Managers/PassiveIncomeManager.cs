@@ -1,12 +1,16 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class PassiveIncomeManager : MonoBehaviour
 {
     private SaveManager saveManager;
     public UpgradeSO[] allUpgrades;
     public TextMeshProUGUI totalIncomeText;
-    public TextMeshProUGUI moneyDisplay; // Ссылка на главный текст денег
+    public TextMeshProUGUI moneyDisplay;
+
+    private List<BuildingEntity> activeBuildingInstances = new List<BuildingEntity>();
+
 
     private double totalIncomePerSecond;
 
@@ -17,71 +21,58 @@ public class PassiveIncomeManager : MonoBehaviour
         saveManager = FindFirstObjectByType<SaveManager>();
     }
 
+    // Методы для регистрации иконок (вызываются из BuildingEntity)
+    public void RegisterBuilding(BuildingEntity building) => activeBuildingInstances.Add(building);
+    public void UnregisterBuilding(BuildingEntity building) => activeBuildingInstances.Remove(building);
+
     private void Update()
     {
-        if (saveManager == null || saveManager.data == null) return;
+        CalculateIncomeValue();
 
-        double frameTotalIncome = 0;
+        double incomeThisFrame = totalIncomePerSecond * Time.deltaTime;
+        saveManager.data.Money += incomeThisFrame;
 
-        // Проходим по всем типам зданий, которые есть в игре
-        foreach (var upgradeSO in allUpgrades)
-        {
-            if (upgradeSO == null) continue;
-
-            // Ищем состояние этого здания в сохранениях
-            var state = saveManager.data.Upgrades.Find(u => u.ID == upgradeSO.ID);
-
-            if (state != null && state.Amount > 0)
-            {
-                // Считаем, сколько этот тип зданий приносит в секунду
-                double incomePerSecondForThisType = state.Amount * upgradeSO.BasePassiveIncome;
-
-                // Считаем, сколько привалило за этот конкретный кадр
-                double frameIncomeForThisType = incomePerSecondForThisType * Time.deltaTime;
-
-                // ВАЖНО: Добавляем этот доход в личную статистику здания!
-                // Именно эту переменную читает TooltipManager
-                state.TotalEarned += frameIncomeForThisType;
-
-                // Суммируем для общего баланса
-                frameTotalIncome += incomePerSecondForThisType;
-            }
-        }
-
-        // Обновляем общую сумму дохода в секунду для отображения в UI
-        totalIncomePerSecond = frameTotalIncome;
-
-        // Начисляем деньги в общий банк игрока
-        saveManager.data.Money += totalIncomePerSecond * Time.deltaTime;
-
-        // Обновляем главный текст денег
         if (moneyDisplay != null)
             moneyDisplay.text = BigNumberFormatter.Format(saveManager.data.Money);
 
-        // Обновляем текст дохода в секунду
         if (totalIncomeText != null)
             totalIncomeText.text = BigNumberFormatter.Format(totalIncomePerSecond);
     }
 
-    void CalculateIncomeValue()
+    public void CalculateIncomeValue()
     {
-        totalIncomePerSecond = 0;
-
-        // Проверка на наличие менеджера и данных
         if (saveManager == null || saveManager.data == null) return;
 
-        // Проходим по всем типам улучшений, которые мы закинули в массив в инспекторе
-        foreach (var upgradeSO in allUpgrades)
+        // 1. Считаем полный потенциальный доход из сохранений
+        double potentialIncome = 0;
+        foreach (var upg in allUpgrades)
         {
-            if (upgradeSO == null) continue;
-
-            // Берем количество купленных зданий этого типа из сохранения
-            int count = saveManager.data.GetUpgradeCount(upgradeSO.ID);
-
-            // Прибавляем к общему доходу: (Количество * доход одного здания)
-            totalIncomePerSecond += count * upgradeSO.BasePassiveIncome;
+            if (upg == null) continue;
+            int count = saveManager.data.GetUpgradeCount(upg.ID);
+            potentialIncome += count * upg.BasePassiveIncome;
         }
+
+        // 2. Считаем штраф за "спящие" объекты в текущей сцене
+        double sleepPenalty = 0;
+        for (int i = activeBuildingInstances.Count - 1; i >= 0; i--)
+        {
+            var b = activeBuildingInstances[i];
+            if (b == null) { activeBuildingInstances.RemoveAt(i); continue; }
+
+            // Если здание в сцене спит — вычитаем его доход из общего пула
+            if (b.currentState == BuildingEntity.State.Sleeping)
+            {
+                sleepPenalty += b.GetIncomeValue();
+            }
+        }
+
+        // Итоговый доход = Всё что куплено МИНУС то что сейчас спит
+        totalIncomePerSecond = potentialIncome - sleepPenalty;
+
+        // Защита от отрицательного дохода (на всякий случай)
+        if (totalIncomePerSecond < 0) totalIncomePerSecond = 0;
     }
+
 
     // Раз в секунду можно пушить визуальный эффект PulseRow, чтобы не спамить в Update
     private float pulseTimer;

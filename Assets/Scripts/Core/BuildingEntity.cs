@@ -27,10 +27,25 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
         myUpgrade = upgrade;
         originalColor = iconImage.color;
 
-        StartActiveAnimation();
+        // РЕГИСТРАЦИЯ: Добавляем себя в список менеджера доходов
+        var piManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
+        if (piManager != null) piManager.RegisterBuilding(this);
 
-        // Запускаем проверку на сон
+        StartActiveAnimation();
         InvokeRepeating(nameof(TryToSleep), Random.Range(10f, 20f), 15f);
+    }
+
+    public double GetIncomeValue()
+    {
+        return (myUpgrade != null) ? myUpgrade.BasePassiveIncome : 0;
+    }
+
+    private void OnDestroy()
+    {
+        transform.DOKill();
+        // УДАЛЯЕМ СЕБЯ из списка при уничтожении объекта (например, при смене сцены)
+        var piManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
+        if (piManager != null) piManager.UnregisterBuilding(this);
     }
 
     public double GetPassiveIncome()

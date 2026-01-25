@@ -23,8 +23,8 @@ MonoBehaviour:
   MaxVisuals: 30
   RequiredUpgrade: {fileID: 11400000, guid: 605ad076e81d0ec44999730edebf7bdd, type: 2}
   RequiredAmount: 1
-  MinClicksToWake: 3
-  MaxClicksToWake: 7
+  MinClicksToWake: 1
+  MaxClicksToWake: 3
   Description: "\u0421\u043E\u0447\u0435\u0442\u0430\u043D\u0438\u0435 \u0437\u043D\u0430\u043A\u0430
     \u0438 \u0441\u043B\u043E\u0432\u0430. \u042D\u0441\u0441\u0435\u043D\u0446\u0438\u044F
     \u0442\u0435\u0447\u0435\u0442 \u043A \u0432\u0430\u043C \u0441\u0442\u0430\u0431\u0438\u043B\u044C\u043D\u044B\u043C

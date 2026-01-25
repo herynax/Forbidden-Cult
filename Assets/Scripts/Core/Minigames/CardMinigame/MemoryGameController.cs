@@ -73,18 +73,50 @@ public class MemoryGameController : MonoBehaviour
         StartRound();
     }
 
+    private void Update()
+    {
+        // Плавный лерп визуального времени работает ВСЕГДА.
+        // Если timeLeft (цель) больше, чем visualTime (текущее), полоска будет наполняться.
+        visualTime = Mathf.Lerp(visualTime, timeLeft, Time.deltaTime * 5f);
+
+        if (maxTime > 0) // Защита от деления на 0
+        {
+            timerBar.fillAmount = Mathf.Clamp01(visualTime / maxTime);
+        }
+
+        // Если таймер не активен (пауза, превью или анимация перехода), дальше не идем
+        if (!isTimerActive)
+        {
+            return;
+        }
+
+        // Логика уменьшения времени
+        timeLeft -= Time.deltaTime;
+
+        if (timeLeft <= 0)
+        {
+            timeLeft = 0; // Чтобы visualTime тоже дошел до нуля
+            isTimerActive = false;
+            GameOver();
+        }
+    }
+
     private void StartRound()
     {
         canClick = false;
         isTimerActive = false;
 
-        // Показываем надпись "ROUND N"
+        // Показываем надпись "РАУНД N"
         ShowRoundOverlay();
 
         maxTime = baseTime - (currentRound * 1.5f);
         if (maxTime < 10f) maxTime = 10f;
+
+        // Устанавливаем цель для таймера
         timeLeft = maxTime;
-        visualTime = maxTime;
+
+        // ВАЖНО: visualTime НЕ трогаем здесь. 
+        // Если это самый первый раунд, инициализируем нулем в Start.
 
         pairsToMatch = 2 + (currentRound / 2);
         GenerateGrid();
@@ -173,17 +205,14 @@ public class MemoryGameController : MonoBehaviour
 
     private IEnumerator PreviewSequence()
     {
-        timerBar.fillAmount = 1;
-        // 1. Ждем показа карт
+        // timerBar.fillAmount = 1; // УДАЛЯЕМ ЭТУ СТРОКУ, теперь за это отвечает Lerp в Update
+
         yield return new WaitForSeconds(previewDuration);
 
-        // 2. Переворачиваем карты
         foreach (var card in spawnedCards) card.Flip(false);
 
-        // 3. Ждем завершения анимации переворота
         yield return new WaitForSeconds(0.5f);
 
-        // 4. ВОТ ТЕПЕРЬ запускаем игру и таймер
         canClick = true;
         isTimerActive = true;
     }
@@ -271,29 +300,6 @@ public class MemoryGameController : MonoBehaviour
             // "Сочный" эффект: текст слегка подпрыгивает при изменении
             sessionMoneyHUD.transform.DOKill(true);
             sessionMoneyHUD.transform.DOPunchScale(Vector3.one * (hudPunchAmount - 1f), 0.2f);
-        }
-    }
-
-    private void Update()
-    {
-        // Если таймер еще не запущен, держим полоску полной и выходим
-        if (!isTimerActive)
-        {
-            timerBar.fillAmount = 1f;
-            return;
-        }
-
-        // Основная логика убывания времени
-        timeLeft -= Time.deltaTime;
-
-        // Плавный лерп для красоты
-        visualTime = Mathf.Lerp(visualTime, timeLeft, Time.deltaTime * 5f);
-        timerBar.fillAmount = Mathf.Clamp01(visualTime / maxTime);
-
-        if (timeLeft <= 0)
-        {
-            isTimerActive = false; // Останавливаем, чтобы не заходить сюда дважды
-            GameOver();
         }
     }
 

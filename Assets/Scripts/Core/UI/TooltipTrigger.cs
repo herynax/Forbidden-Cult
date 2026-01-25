@@ -16,10 +16,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (upgradeButton == null || upgradeButton.upgradeSO == null) return;
 
-        // Получаем количество купленных зданий из сейва
+        // Берем количество из сейва
         int count = saveManager.data.GetUpgradeCount(upgradeButton.upgradeSO.ID);
 
-        // Вызываем показ
+        // Вызываем показ (менеджер сам проверит, раскрыто ли оно через saveManager.data.RevealedUpgrades)
         TooltipManager.Instance.ShowTooltip(upgradeButton.upgradeSO, count);
     }
 
