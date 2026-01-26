@@ -29,7 +29,7 @@ MonoBehaviour:
   - {r: 0.9622642, g: 0.76708794, b: 0.76708794, a: 1}
   - {r: 0.94212455, g: 0.76862746, b: 0.9607843, a: 1}
   - {r: 0.48393556, g: 0.485616, b: 0.8207547, a: 1}
-  sleepMaterial: {fileID: 0}
+  sleepMaterial: {fileID: 2100000, guid: 50d37cf05d8b23d4d96602e208a36e75, type: 2}
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20
