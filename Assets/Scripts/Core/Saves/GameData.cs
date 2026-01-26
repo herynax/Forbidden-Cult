@@ -47,6 +47,7 @@ public class GameData
 {
     public double Money = 0;
     public float ClickPower = 1;
+    public double MoneyAtLeave = -1;
 
     public List<UpgradeState> Upgrades = new List<UpgradeState>();
     public List<string> RevealedUpgrades = new List<string>(); // Список раскрытых ID

@@ -8,15 +8,14 @@ public class SceneLoader : MonoBehaviour
     public static SceneLoader Instance;
 
     [Header("References")]
-    [SerializeField] private RectTransform fadePanel; // Картинка на весь экран
+    [SerializeField] private RectTransform fadePanel;
     [SerializeField] private CanvasGroup raycastBlocker;
 
     [Header("Settings")]
     [SerializeField] private float transitionDuration = 0.5f;
     [SerializeField] private Ease moveEase = Ease.InOutQuart;
-    [SerializeField] private float screenOfset = 300f;
 
-    private float screenHeight;
+    private RectTransform canvasRect;
 
     private void Awake()
     {
@@ -24,7 +23,9 @@ public class SceneLoader : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            screenHeight = Screen.height + screenOfset; // Берем высоту с запасом
+
+            // Берем RectTransform всего канваса для точного расчета высоты
+            canvasRect = GetComponent<RectTransform>();
         }
         else
         {
@@ -34,6 +35,9 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        // Предотвращаем двойной клик, если сцена уже грузится
+        if (raycastBlocker.blocksRaycasts) return;
+
         StartCoroutine(LoadRoutine(sceneName));
     }
 
@@ -41,21 +45,42 @@ public class SceneLoader : MonoBehaviour
     {
         raycastBlocker.blocksRaycasts = true;
 
-        // 1. Позиционируем над экраном и выезжаем в центр
-        fadePanel.anchoredPosition = new Vector2(0, screenHeight);
-        yield return fadePanel.DOAnchorPos(Vector2.zero, transitionDuration).SetEase(moveEase).WaitForCompletion();
+        // Получаем актуальную высоту канваса (с учетом масштабирования)
+        float height = canvasRect.rect.height + 100f;
 
-        // 2. Загружаем сцену
+        // 1. Выезжаем плашкой СВЕРХУ в ЦЕНТР
+        fadePanel.anchoredPosition = new Vector2(0, height);
+        yield return fadePanel.DOAnchorPos(Vector2.zero, transitionDuration)
+            .SetEase(moveEase)
+            .SetUpdate(true) // Чтобы работало при паузе
+            .WaitForCompletion();
+
+        // 2. ЗАПОМИНАЕМ СОСТОЯНИЕ ПЕРЕД УХОДОМ
+        SaveManager sm = Object.FindFirstObjectByType<SaveManager>();
+        if (sm != null)
+        {
+            sm.data.MoneyAtLeave = sm.data.Money;
+            sm.Save();
+        }
+
+        // Очистка перед новой сценой
+        DOTween.KillAll();
+
+        // 3. ЗАГРУЗКА СЦЕНЫ
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!asyncLoad.isDone) yield return null;
 
-        yield return new WaitForSeconds(0.2f); // Небольшая пауза для стабильности
+        // Небольшая задержка, чтобы сцена успела "проснуться"
+        yield return new WaitForSecondsRealtime(0.2f);
 
-        // 3. Уезжаем вниз
-        yield return fadePanel.DOAnchorPos(new Vector2(0, -screenHeight), transitionDuration).SetEase(moveEase).WaitForCompletion();
+        // 4. Уезжаем из ЦЕНТРА ВНИЗ
+        yield return fadePanel.DOAnchorPos(new Vector2(0, -height), transitionDuration)
+            .SetEase(moveEase)
+            .SetUpdate(true) // ВАЖНО: добавить и сюда
+            .WaitForCompletion();
 
-        // 4. Сброс позиции вверх (мгновенно) для следующего раза
-        fadePanel.anchoredPosition = new Vector2(0, screenHeight);
+        // 5. Сброс позиции ВВЕРХ (мгновенно) для следующего раза
+        fadePanel.anchoredPosition = new Vector2(0, height);
         raycastBlocker.blocksRaycasts = false;
     }
 }

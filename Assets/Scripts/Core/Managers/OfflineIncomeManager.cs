@@ -34,44 +34,48 @@ public class OfflineIncomeManager : MonoBehaviour
     {
         if (saveManager == null || saveManager.data == null || passiveManager == null) return;
 
-        // 1. ПРИНУДИТЕЛЬНО ПЕРЕСЧИТЫВАЕМ ДОХОД перед проверкой
-        passiveManager.CalculateIncomeValue();
-        double cps = passiveManager.TotalIncomePerSecond;
+        double earned = 0;
+        System.TimeSpan timePassed = System.TimeSpan.Zero;
+        bool fromMinigame = false;
 
-        // 2. ПРОВЕРКА: Если игрок ничего не купил (доход 0), панель не показываем
-        if (cps <= 0)
+        // 1. ПРОВЕРКА: Если мы вернулись из мини-игры (MoneyAtLeave > 0)
+        if (saveManager.data.MoneyAtLeave > 0)
         {
-            // Просто обновляем метку времени, чтобы при следующей покупке расчет был верным
+            earned = saveManager.data.Money - saveManager.data.MoneyAtLeave;
+            fromMinigame = true;
+
+            // Сбрасываем метку ухода
+            saveManager.data.MoneyAtLeave = -1;
+        }
+        // 2. ПРОВЕРКА: Если это был холодный запуск (офлайн через время)
+        else if (saveManager.data.LastSaveTimeTicks > 0)
+        {
+            System.DateTime lastTime = new System.DateTime(saveManager.data.LastSaveTimeTicks);
+            timePassed = System.DateTime.UtcNow - lastTime;
+
+            if (timePassed.TotalSeconds >= 10)
+            {
+                passiveManager.CalculateIncomeValue();
+                earned = passiveManager.TotalIncomePerSecond * timePassed.TotalSeconds;
+                saveManager.data.Money += earned;
+            }
+        }
+
+        // Если ничего не куплено — просто обновляем время и выходим
+        if (passiveManager.TotalIncomePerSecond <= 0 && !fromMinigame)
+        {
             saveManager.data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
             return;
         }
 
-        // 3. ПРОВЕРКА НА САМЫЙ ПЕРВЫЙ ЗАПУСК (уже обсуждали)
-        if (saveManager.data.LastSaveTimeTicks == 0)
-        {
-            saveManager.data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
-            saveManager.Save();
-            return;
-        }
-
-        // 4. Считаем время
-        System.DateTime lastTime = new System.DateTime(saveManager.data.LastSaveTimeTicks);
-        System.DateTime currentTime = System.DateTime.UtcNow;
-        System.TimeSpan timePassed = currentTime - lastTime;
-
-        double secondsOffline = timePassed.TotalSeconds;
-
-        // Игнорируем короткие сессии (меньше 10 секунд)
-        if (secondsOffline < 10) return;
-
-        // 5. Начисляем доход
-        double earned = cps * secondsOffline;
-
+        // Если заработано достаточно — показываем панель
         if (earned > 0.01)
         {
-            saveManager.data.Money += earned;
             ShowWelcomePanel(earned, timePassed);
         }
+
+        // Обновляем метку времени для следующего раза
+        saveManager.data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
     }
 
     private void ShowWelcomePanel(double amount, System.TimeSpan span)

@@ -153,11 +153,12 @@ public class MergeGameController : MonoBehaviour
 
         Vector3 spawnPos = (a.transform.position + b.transform.position) / 2f;
         MergeObjectSO nextLevel = a.data.nextLevel;
-        double rewardAmount = a.data.reward;
 
-        // --- НОВОЕ: СПАВН ЧАСТИЦ ---
+        // reward в SO теперь выступает как множитель (например, 5, 10, 100)
+        double rewardMultiplier = a.data.reward;
+
+        // Эффекты и звук
         SpawnRandomMergeParticle(spawnPos);
-
         RuntimeManager.PlayOneShot("event:/UI/MerdgeMinigame/Merdge");
 
         a.transform.DOKill();
@@ -165,6 +166,9 @@ public class MergeGameController : MonoBehaviour
 
         a.transform.DOMove(spawnPos, 0.1f);
         b.transform.DOMove(spawnPos, 0.1f).OnComplete(() => {
+            // Защита: если объект был уничтожен во время анимации
+            if (this == null) return;
+
             Destroy(a.gameObject);
             Destroy(b.gameObject);
 
@@ -181,7 +185,19 @@ public class MergeGameController : MonoBehaviour
             }
 
             ReduceBaseTime();
-            AddReward(rewardAmount, spawnPos);
+
+            // --- РАСЧЕТ ДИНАМИЧЕСКОЙ НАГРАДЫ ---
+            // Берем текущий доход в секунду
+            double currentCPS = (passiveManager != null) ? passiveManager.TotalIncomePerSecond : 0;
+
+            // Если доход 0 (самое начало игры), берем 1 как базу, чтобы награда не была нулевой
+            double baseReward = (currentCPS > 0) ? currentCPS : 1.0;
+
+            // Финальная награда = (Доход в сек) * (Множитель из SO объекта)
+            double calculatedReward = baseReward * rewardMultiplier;
+
+            // Вызываем начисление и спавн цифры
+            AddReward(calculatedReward, spawnPos);
         });
     }
 
