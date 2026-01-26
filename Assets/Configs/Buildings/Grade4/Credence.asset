@@ -18,6 +18,13 @@ MonoBehaviour:
   RowBackground: {fileID: -4841579211479179947, guid: e140ec5dcf048ea4b8deac382fb4d615, type: 3}
   BasePrice: 120000000000
   BasePassiveIncome: 2000000000
+  PurchaseSound:
+    Guid:
+      Data1: 662950551
+      Data2: 1074566721
+      Data3: -1457598054
+      Data4: -279760424
+    Path: event:/UI/Upgrades/Credence
   RowsCount: 1
   IconsPerLine: 8
   MaxVisuals: 8

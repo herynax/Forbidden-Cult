@@ -10,6 +10,8 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
 
     [Header("Visual Settings")]
     [SerializeField] private Image iconImage;
+    private Material defaultMaterial;
+    private Color myRandomColor;
     [SerializeField] private Color sleepColor = new Color(0.5f, 0.5f, 1f);
 
     private Color originalColor;
@@ -21,19 +23,40 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
     private int clicksNeeded;
     private int currentClicks;
 
-    public void Init(UpgradeSO upgrade, BuildingVisualManager mngr)
+    public void Init(UpgradeSO upgrade, BuildingVisualManager mngr, Color savedColor = default)
     {
-        manager = mngr;
         myUpgrade = upgrade;
-        originalColor = iconImage.color;
+        manager = mngr;
+        iconImage = GetComponent<Image>();
+        defaultMaterial = iconImage.material; // Запоминаем стандартный материал
 
-        // РЕГИСТРАЦИЯ: Добавляем себя в список менеджера доходов
+        // ЛОГИКА ЦВЕТА
+        if (savedColor == default || savedColor.a == 0) // Если новый спавн
+        {
+            if (upgrade.possibleColors != null && upgrade.possibleColors.Count > 0)
+            {
+                myRandomColor = upgrade.possibleColors[Random.Range(0, upgrade.possibleColors.Count)];
+            }
+            else
+            {
+                myRandomColor = Color.white;
+            }
+        }
+        else // Если загрузка из сейва
+        {
+            myRandomColor = savedColor;
+        }
+
+        iconImage.color = myRandomColor;
+
+        // Регистрация в PassiveIncomeManager (как делали раньше)
         var piManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
         if (piManager != null) piManager.RegisterBuilding(this);
 
         StartActiveAnimation();
         InvokeRepeating(nameof(TryToSleep), Random.Range(10f, 20f), 15f);
     }
+
 
     public double GetIncomeValue()
     {
@@ -73,14 +96,17 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
     private void GoToSleep()
     {
         currentState = State.Sleeping;
-
-        // Рандомим количество кликов для пробуждения из настроек SO
         clicksNeeded = Random.Range(myUpgrade.MinClicksToWake, myUpgrade.MaxClicksToWake + 1);
         currentClicks = 0;
 
+        // МЕНЯЕМ МАТЕРИАЛ НА СОННЫЙ
+        if (myUpgrade.sleepMaterial != null)
+        {
+            iconImage.material = myUpgrade.sleepMaterial;
+        }
+
         currentAnim.Kill();
         currentAnim = transform.DOScale(0.85f, 1.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-        iconImage.DOColor(sleepColor, 1f);
 
         manager.SpawnSleepParticles(this.GetComponent<RectTransform>());
     }
@@ -116,28 +142,22 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
     {
         currentState = State.Active;
 
-        // --- ЛОГИКА НАГРАДЫ "ДЖЕКПОТ" ---
+        // ВОЗВРАЩАЕМ ДЕФОЛТНЫЙ МАТЕРИАЛ
+        iconImage.material = defaultMaterial;
+
+        // Логика награды (как ты просил в прошлом вопросе)
         var saveManager = Object.FindFirstObjectByType<SaveManager>();
         if (saveManager != null)
         {
-            // Формула: (Кол-во кликов для пробуждения) * (Сила клика) * (Рандом 2-4)
-            float randomMultiplier = Random.Range(2f, 4.1f); // 4.1 чтобы 4 выпадало чаще
+            float randomMultiplier = Random.Range(2f, 4.1f);
             double totalWakeUpReward = clicksNeeded * saveManager.data.ClickPower * randomMultiplier;
-
             saveManager.data.Money += totalWakeUpReward;
-
-            // Спавним жирную цифру в месте последнего клика
             manager.SpawnFloatingNumber(totalWakeUpReward, clickPosition);
         }
 
-        // --- ВИЗУАЛ ПРОБУЖДЕНИЯ ---
-        iconImage.DOColor(originalColor, 0.5f);
         currentAnim.Kill();
         transform.DOScale(1f, 0.2f);
-
-        // Эффект "отряхивания" (сильная тряска)
-        transform.DOPunchRotation(new Vector3(0, 0, 40f), 0.6f, 20).SetUpdate(true);
-
+        transform.DOPunchRotation(new Vector3(0, 0, 40f), 0.6f, 20);
         StartActiveAnimation();
     }
 

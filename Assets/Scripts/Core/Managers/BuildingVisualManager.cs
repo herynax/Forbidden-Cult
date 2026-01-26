@@ -77,77 +77,97 @@ public class BuildingVisualManager : MonoBehaviour
 
     private void SpawnBuildingIcon(UpgradeSO upgrade, int currentCount, bool isSilent, VisualPosition loadedPos = null)
     {
-        Transform rowTransform = activeRows[upgrade.ID];
+        // 1. Поиск ряда
+        if (!activeRows.TryGetValue(upgrade.ID, out Transform rowTransform)) return;
         RectTransform rowRect = rowTransform.GetComponent<RectTransform>();
 
+        // 2. Создание объекта
         GameObject icon = Instantiate(buildingPrefab, rowTransform);
-
+        RectTransform iconRect = icon.GetComponent<RectTransform>();
         BuildingEntity entity = icon.GetComponent<BuildingEntity>();
-        if (entity != null)
+        Image iconImage = icon.GetComponent<Image>();
+
+        // 3. Определение цвета (сохраненный или новый рандомный)
+        Color finalColor = Color.white;
+        if (loadedPos != null)
         {
-            entity.Init(upgrade, this);
+            finalColor = loadedPos.GetColor();
+        }
+        else if (upgrade.possibleColors != null && upgrade.possibleColors.Count > 0)
+        {
+            finalColor = upgrade.possibleColors[Random.Range(0, upgrade.possibleColors.Count)];
         }
 
-        icon.GetComponent<Image>().sprite = upgrade.Icon;
-        RectTransform iconRect = icon.GetComponent<RectTransform>();
-
-        VisualPosition finalPos;
-
-        if (loadedPos == null)
+        // 4. Инициализация логики здания
+        if (entity != null)
         {
-            // --- ЛОГИКА ПООЧЕРЕДНОГО ЗАПОЛНЕНИЯ РЯДОВ ---
+            entity.Init(upgrade, this, finalColor);
+        }
 
+        // 5. Визуальная настройка
+        if (iconImage != null)
+        {
+            iconImage.sprite = upgrade.Icon;
+            iconImage.color = finalColor;
+        }
+
+        // 6. Логика позиции (Jittered Grid)
+        VisualPosition posData;
+
+        if (loadedPos == null) // Новая покупка
+        {
             float width = rowRect.rect.width;
             float height = rowRect.rect.height;
 
-            // Расстояние между рядами и колонками
+            // Расстояние между ячейками
             float spacingY = height / (upgrade.RowsCount + 1);
             float spacingX = width / (upgrade.IconsPerLine + 1);
 
-            // Индекс текущей покупки (от 0)
             int index = currentCount - 1;
-
-            // Определяем РЯД (снизу вверх)
-            // % upgrade.RowsCount заставляет индекс бегать: 0, 1, 2, 0, 1, 2...
             int rowIndex = index % upgrade.RowsCount;
-
-            // Определяем КОЛОНКУ (слева направо)
-            // / upgrade.RowsCount заставляет колонку меняться только после того, как заполнится вертикаль
             int colIndex = index / upgrade.RowsCount;
 
-            // Считаем координаты
-            // По Y: начинаем снизу (-height/2) и прибавляем шаг. 
-            // По X: начинаем слева (-width/2) и прибавляем шаг.
+            // Базовая позиция сетки
             float baseX = (-width / 2f) + (colIndex + 1) * spacingX;
             float baseY = (-height / 2f) + (rowIndex + 1) * spacingY;
 
-            // Добавляем Jitter (небольшой разброс)
+            // Рандомизация (Jitter)
             float jX = Random.Range(-spacingX * 0.15f, spacingX * 0.15f);
             float jY = Random.Range(-spacingY * 0.15f, spacingY * 0.15f);
             float jRot = Random.Range(-8f, 8f);
 
-            finalPos = new VisualPosition(baseX + jX, baseY + jY, jRot);
+            // Создаем данные позиции (включая выбранный цвет для сохранения)
+            posData = new VisualPosition(baseX + jX, baseY + jY, jRot, finalColor);
 
-            // Сохраняем в память
+            // Записываем в GameData
             var state = saveManager.data.Upgrades.Find(u => u.ID == upgrade.ID);
-            if (state != null) state.StoredPositions.Add(finalPos);
+            if (state != null) state.StoredPositions.Add(posData);
+        }
+        else // Загрузка из сейва
+        {
+            posData = loadedPos;
+        }
+
+        // Применяем трансформации
+        iconRect.anchoredPosition = new Vector2(posData.x, posData.y);
+        iconRect.localRotation = Quaternion.Euler(0, 0, posData.zRotation);
+
+        // Новые иконки всегда выше старых
+        iconRect.SetAsLastSibling();
+
+        // 7. Анимации
+        if (!isSilent)
+        {
+            // Эффект появления "выпрыгивание"
+            iconRect.localScale = Vector3.zero;
+            iconRect.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).SetLink(icon);
         }
         else
         {
-            finalPos = loadedPos;
+            iconRect.localScale = Vector3.one;
         }
 
-        // Применяем позицию
-        iconRect.anchoredPosition = new Vector2(finalPos.x, finalPos.y);
-        iconRect.localRotation = Quaternion.Euler(0, 0, finalPos.zRotation);
-
-        // Упорядочивание слоев (Z-order)
-        // Чтобы нижние ряды отрисовывались ПОВЕРХ верхних (эффект перспективы), 
-        // нужно менять SiblingIndex. В UI чем выше индекс, тем "ближе" объект.
-        // Если rowIndex 0 (самый низ), он должен иметь самый большой индекс.
-        // Но так как мы используем свободное наслоение, можно просто оставить как есть,
-        // тогда новые постройки всегда будут чуть выше старых.
-
+        // Постоянное легкое покачивание (Idle)
         icon.transform.DOPunchRotation(new Vector3(0, 0, 3), Random.Range(3f, 5f), 1)
             .SetLoops(-1, LoopType.Restart)
             .SetDelay(Random.Range(0f, 2f))

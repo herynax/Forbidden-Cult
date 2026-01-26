@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 
 [System.Serializable]
@@ -8,12 +9,20 @@ public class VisualPosition
     public float y;
     public float zRotation;
 
-    public VisualPosition(float x, float y, float zRotation)
+    public float r, g, b, a;
+
+    public VisualPosition(float x, float y, float zRotation, Color color)
     {
         this.x = x;
         this.y = y;
         this.zRotation = zRotation;
+        this.r = color.r;
+        this.g = color.g;
+        this.b = color.b;
+        this.a = color.a;
     }
+
+    public Color GetColor() => new Color(r, g, b, a);
 }
 
 [System.Serializable]
