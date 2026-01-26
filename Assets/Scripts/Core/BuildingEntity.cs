@@ -12,10 +12,10 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image iconImage;
     private Material defaultMaterial;
     private Color myRandomColor;
-    [SerializeField] private Color sleepColor = new Color(0.5f, 0.5f, 1f);
 
     private Color originalColor;
     private Tween currentAnim;
+    private Tween flashTween; // Твин для мигания шейдера
     private BuildingVisualManager manager;
     private UpgradeSO myUpgrade;
 
@@ -28,28 +28,24 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
         myUpgrade = upgrade;
         manager = mngr;
         iconImage = GetComponent<Image>();
-        defaultMaterial = iconImage.material; // Запоминаем стандартный материал
+        defaultMaterial = iconImage.material; // Запоминаем стандартный материал (обычно UI/Default)
 
         // ЛОГИКА ЦВЕТА
-        if (savedColor == default || savedColor.a == 0) // Если новый спавн
+        if (savedColor == default || savedColor.a == 0)
         {
             if (upgrade.possibleColors != null && upgrade.possibleColors.Count > 0)
-            {
                 myRandomColor = upgrade.possibleColors[Random.Range(0, upgrade.possibleColors.Count)];
-            }
             else
-            {
                 myRandomColor = Color.white;
-            }
         }
-        else // Если загрузка из сейва
+        else
         {
             myRandomColor = savedColor;
         }
 
         iconImage.color = myRandomColor;
 
-        // Регистрация в PassiveIncomeManager (как делали раньше)
+        // Регистрация в менеджере доходов
         var piManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
         if (piManager != null) piManager.RegisterBuilding(this);
 
@@ -57,40 +53,14 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
         InvokeRepeating(nameof(TryToSleep), Random.Range(10f, 20f), 15f);
     }
 
-
-    public double GetIncomeValue()
-    {
-        return (myUpgrade != null) ? myUpgrade.BasePassiveIncome : 0;
-    }
-
-    public string GetUpgradeID()
-    {
-        return (myUpgrade != null) ? myUpgrade.ID : "";
-    }
-
-    private void OnDestroy()
-    {
-        transform.DOKill();
-        // УДАЛЯЕМ СЕБЯ из списка при уничтожении объекта (например, при смене сцены)
-        var piManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
-        if (piManager != null) piManager.UnregisterBuilding(this);
-    }
-
-    public double GetPassiveIncome()
-    {
-        // Если постройка еще не инициализирована, дохода нет
-        if (myUpgrade == null) return 0;
-        return myUpgrade.BasePassiveIncome;
-    }
+    public double GetIncomeValue() => (myUpgrade != null) ? myUpgrade.BasePassiveIncome : 0;
+    public string GetUpgradeID() => (myUpgrade != null) ? myUpgrade.ID : "";
+    public Color GetCurrentColor() => myRandomColor;
 
     private void TryToSleep()
     {
         if (currentState == State.Sleeping) return;
-
-        if (Random.value < 0.1f) // 10% шанс уснуть
-        {
-            GoToSleep();
-        }
+        if (Random.value < 0.1f) GoToSleep();
     }
 
     private void GoToSleep()
@@ -99,42 +69,46 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
         clicksNeeded = Random.Range(myUpgrade.MinClicksToWake, myUpgrade.MaxClicksToWake + 1);
         currentClicks = 0;
 
-        // МЕНЯЕМ МАТЕРИАЛ НА СОННЫЙ
+        // 1. МЕНЯЕМ МАТЕРИАЛ
         if (myUpgrade.sleepMaterial != null)
         {
             iconImage.material = myUpgrade.sleepMaterial;
+
+            // 2. ЗАПУСКАЕМ МИГАНИЕ ШЕЙДЕРА (_FlashAmount 0 -> 1)
+            // Убиваем старый твин если был
+            flashTween?.Kill();
+            // Сбрасываем параметр перед стартом
+            iconImage.material.SetFloat("_FlashAmount", 0);
+            // Зацикленное мигание (Yoyo)
+            flashTween = iconImage.material.DOFloat(1f, "_FlashAmount", 0.6f)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine)
+                .SetLink(gameObject);
         }
 
-        currentAnim.Kill();
-        currentAnim = transform.DOScale(0.85f, 1.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        // Анимация дыхания (масштаб)
+        currentAnim?.Kill();
+        currentAnim = transform.DOScale(0.85f, 1.5f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetLink(gameObject);
 
         manager.SpawnSleepParticles(this.GetComponent<RectTransform>());
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Фидбек нажатия (тряска)
+        // Фидбек нажатия
         transform.DOKill(true);
         transform.DOPunchScale(new Vector3(0.15f, 0.15f, 0.15f), 0.2f);
 
         if (currentState == State.Sleeping)
         {
             currentClicks++;
-
-            // Визуальный эффект "сопротивления"
             transform.DOPunchRotation(new Vector3(0, 0, 15f), 0.2f);
 
-            // Если это был последний нужный клик
             if (currentClicks >= clicksNeeded)
-            {
-                // Передаем координаты клика в метод пробуждения для спавна цифр
                 WakeUp(eventData.position);
-            }
-            else
-            {
-                // Можно спавнить маленькую цифру за промежуточный клик (опционально)
-                // manager.SpawnFloatingNumber(saveManager.data.ClickPower, eventData.position);
-            }
         }
     }
 
@@ -142,10 +116,11 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
     {
         currentState = State.Active;
 
-        // ВОЗВРАЩАЕМ ДЕФОЛТНЫЙ МАТЕРИАЛ
+        // 1. ОСТАНАВЛИВАЕМ МИГАНИЕ И ВОЗВРАЩАЕМ МАТЕРИАЛ
+        flashTween?.Kill();
         iconImage.material = defaultMaterial;
 
-        // Логика награды (как ты просил в прошлом вопросе)
+        // Награда (Джекпот)
         var saveManager = Object.FindFirstObjectByType<SaveManager>();
         if (saveManager != null)
         {
@@ -155,16 +130,30 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
             manager.SpawnFloatingNumber(totalWakeUpReward, clickPosition);
         }
 
-        currentAnim.Kill();
+        // Визуал пробуждения
+        currentAnim?.Kill();
         transform.DOScale(1f, 0.2f);
-        transform.DOPunchRotation(new Vector3(0, 0, 40f), 0.6f, 20);
+        transform.DOPunchRotation(new Vector3(0, 0, 40f), 0.6f, 20).SetLink(gameObject);
+
         StartActiveAnimation();
     }
 
     private void StartActiveAnimation()
     {
+        currentAnim?.Kill();
         currentAnim = transform.DOPunchRotation(new Vector3(0, 0, 5), Random.Range(3f, 5f), 1)
             .SetLoops(-1, LoopType.Restart)
-            .SetDelay(Random.Range(0f, 2f));
+            .SetDelay(Random.Range(0f, 2f))
+            .SetLink(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        // Чистим всё
+        transform.DOKill();
+        flashTween?.Kill();
+
+        var piManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
+        if (piManager != null) piManager.UnregisterBuilding(this);
     }
 }

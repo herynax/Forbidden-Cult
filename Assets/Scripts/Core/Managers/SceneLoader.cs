@@ -16,6 +16,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private Ease moveEase = Ease.InOutQuart;
 
     private RectTransform canvasRect;
+    private bool isTransitioning = false; // Используем отдельный флаг вместо raycastBlocker
 
     private void Awake()
     {
@@ -23,9 +24,10 @@ public class SceneLoader : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            // Берем RectTransform всего канваса для точного расчета высоты
             canvasRect = GetComponent<RectTransform>();
+
+            // Гарантируем, что при старте клики не заблокированы
+            if (raycastBlocker != null) raycastBlocker.blocksRaycasts = false;
         }
         else
         {
@@ -35,27 +37,27 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        // Предотвращаем двойной клик, если сцена уже грузится
-        if (raycastBlocker.blocksRaycasts) return;
+        // Если уже идет загрузка — игнорируем
+        if (isTransitioning) return;
 
         StartCoroutine(LoadRoutine(sceneName));
     }
 
     private IEnumerator LoadRoutine(string sceneName)
     {
-        raycastBlocker.blocksRaycasts = true;
+        isTransitioning = true;
+        if (raycastBlocker != null) raycastBlocker.blocksRaycasts = true;
 
-        // Получаем актуальную высоту канваса (с учетом масштабирования)
-        float height = canvasRect.rect.height + 100f;
+        float height = canvasRect.rect.height + 200f;
 
-        // 1. Выезжаем плашкой СВЕРХУ в ЦЕНТР
+        // 1. Появление шторки сверху
         fadePanel.anchoredPosition = new Vector2(0, height);
         yield return fadePanel.DOAnchorPos(Vector2.zero, transitionDuration)
             .SetEase(moveEase)
-            .SetUpdate(true) // Чтобы работало при паузе
+            .SetUpdate(true)
             .WaitForCompletion();
 
-        // 2. ЗАПОМИНАЕМ СОСТОЯНИЕ ПЕРЕД УХОДОМ
+        // ЗАПОМИНАЕМ СОСТОЯНИЕ
         SaveManager sm = Object.FindFirstObjectByType<SaveManager>();
         if (sm != null)
         {
@@ -63,24 +65,25 @@ public class SceneLoader : MonoBehaviour
             sm.Save();
         }
 
-        // Очистка перед новой сценой
+        // Вместо KillAll лучше убивать всё, кроме самой шторки, 
+        // но для простоты убедимся, что загрузка пойдет дальше
         DOTween.KillAll();
 
-        // 3. ЗАГРУЗКА СЦЕНЫ
+        // 2. Загрузка сцены
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!asyncLoad.isDone) yield return null;
 
-        // Небольшая задержка, чтобы сцена успела "проснуться"
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.3f);
 
-        // 4. Уезжаем из ЦЕНТРА ВНИЗ
+        // 3. Уезд шторки вниз
         yield return fadePanel.DOAnchorPos(new Vector2(0, -height), transitionDuration)
             .SetEase(moveEase)
-            .SetUpdate(true) // ВАЖНО: добавить и сюда
+            .SetUpdate(true)
             .WaitForCompletion();
 
-        // 5. Сброс позиции ВВЕРХ (мгновенно) для следующего раза
+        // 4. Сброс
         fadePanel.anchoredPosition = new Vector2(0, height);
-        raycastBlocker.blocksRaycasts = false;
+        if (raycastBlocker != null) raycastBlocker.blocksRaycasts = false;
+        isTransitioning = false;
     }
 }
