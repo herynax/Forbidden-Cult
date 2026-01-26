@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e08f8a931a2ae14b8c81ee5ea43c942, type: 3}
   m_Name: NewsData
   m_EditorClassIdentifier: 
-  allNews: []
+  allNews:
+  - message: "\u0412\u044B \u0443\u0437\u043D\u0430\u043B\u0438 \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u043E\u0435
+      \u0441\u043B\u043E\u0432\u043E"
+    unlockID: word
+    hideID: 

@@ -37,7 +37,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
 
         priceText.text = BigNumberFormatter.StoreFormat(currentPrice);
-        priceText.color = saveManager.data.Money >= currentPrice ? Color.green : Color.red;
+        priceText.color = saveManager.data.Money >= currentPrice ? Color.yellow : Color.red;
     }
 
     private void Reveal()

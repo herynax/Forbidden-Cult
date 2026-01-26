@@ -86,7 +86,7 @@ public class OfflineIncomeManager : MonoBehaviour
         else
             timeStr = string.Format("{0:D2}ч {1:D2}м {2:D2}с", span.Hours, span.Minutes, span.Seconds);
 
-        earnedText.text = $"Вас не было\n <color=#B000FF>{timeStr}</color>.\nКультисты собрали\n <color=green>{BigNumberFormatter.Format(amount)}</color> скверны!";
+        earnedText.text = $"Вас не было\n <color=#B000FF>{timeStr}</color>.\nКультисты собрали\n <color=#B000FF>{BigNumberFormatter.Format(amount)}</color> скверны!";
 
         // Анимация как в мини-игре
         welcomePanel.transform.DOKill();
