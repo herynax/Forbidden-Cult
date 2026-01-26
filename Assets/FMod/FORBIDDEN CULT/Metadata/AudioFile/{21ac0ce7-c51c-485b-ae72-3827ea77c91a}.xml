@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{21ac0ce7-c51c-485b-ae72-3827ea77c91a}">
+		<property name="assetPath">
+			<value>SFX_PUSH3.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.44408163265306122</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{37aca66c-891f-4048-a4f6-cc846adcc445}</destination>
+		</relationship>
+	</object>
+</objects>

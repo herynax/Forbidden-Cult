@@ -125,6 +125,8 @@ public class MergeGameController : MonoBehaviour
         canDrop = false;
         guideLine.enabled = false;
 
+        RuntimeManager.PlayOneShot("event:/UI/MerdgeMinigame/Throw");
+
         currentItem.GetComponent<Rigidbody2D>().simulated = true;
         currentItem.isDropped = true;
         currentItem = null;
