@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: monolith
   Name: "\u041C\u043E\u043D\u043E\u043B\u0438\u0442"
   Icon: {fileID: -1283540817298506357, guid: 2341be825c6c6654d98beb68d52a8895, type: 3}
-  RowBackground: {fileID: 2950976784391216073, guid: 9eee27e9be43780408dec1704d81d387, type: 3}
+  RowBackground: {fileID: -2744687693097471743, guid: 3b9b3ad578732c944b87fa10d9c6c253, type: 3}
   BasePrice: 2000000000
   BasePassiveIncome: 50000000
   PurchaseSound:

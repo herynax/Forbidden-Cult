@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: cathedral
   Name: "\u0421\u043E\u0431\u043E\u0440"
   Icon: {fileID: -1738381449610654608, guid: e140ec5dcf048ea4b8deac382fb4d615, type: 3}
-  RowBackground: {fileID: 2950976784391216073, guid: 9eee27e9be43780408dec1704d81d387, type: 3}
+  RowBackground: {fileID: 4402694333995341726, guid: 024f31bb1be782d4282b2f19cabed9e1, type: 3}
   BasePrice: 10000000000000
   BasePassiveIncome: 111111111111
   PurchaseSound:

@@ -48,7 +48,7 @@ public class SceneLoader : MonoBehaviour
         isTransitioning = true;
         if (raycastBlocker != null) raycastBlocker.blocksRaycasts = true;
 
-        float height = canvasRect.rect.height + 200f;
+        float height = canvasRect.rect.height + 1200f;
 
         // 1. Появление шторки сверху
         fadePanel.anchoredPosition = new Vector2(0, height);

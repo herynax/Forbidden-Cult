@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: altar
   Name: "\u0410\u043B\u0442\u0430\u0440\u044C"
   Icon: {fileID: 4588504535222749217, guid: 2341be825c6c6654d98beb68d52a8895, type: 3}
-  RowBackground: {fileID: -4846732496204108578, guid: c38bc8e2c1bf7ac4591b10885f29cbde, type: 3}
+  RowBackground: {fileID: 2593220865837535961, guid: 79edd3dba5db7de4c8d7f86e61771c2e, type: 3}
   BasePrice: 300000000
   BasePassiveIncome: 8500000
   PurchaseSound:

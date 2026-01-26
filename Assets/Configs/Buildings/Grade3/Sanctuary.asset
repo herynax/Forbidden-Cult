@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: sanctuary
   Name: "\u0421\u0432\u044F\u0442\u0438\u043B\u0438\u0449\u0435"
   Icon: {fileID: -7698688916799460016, guid: 2341be825c6c6654d98beb68d52a8895, type: 3}
-  RowBackground: {fileID: 4402694333995341726, guid: 024f31bb1be782d4282b2f19cabed9e1, type: 3}
+  RowBackground: {fileID: 5214884263507831724, guid: 7fdcf4cf64828bf47a36d448bd0a5885, type: 3}
   BasePrice: 15000000000
   BasePassiveIncome: 300000000
   PurchaseSound:
