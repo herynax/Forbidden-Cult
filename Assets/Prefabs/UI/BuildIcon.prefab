@@ -90,4 +90,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   iconImage: {fileID: 5223872906548558989}
-  sleepColor: {r: 0.5, g: 0.5, b: 1, a: 1}
+  sleepColor: {r: 0.12941177, g: 0.08690815, b: 0.21960784, a: 0.87058824}

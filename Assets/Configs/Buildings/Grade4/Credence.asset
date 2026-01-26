@@ -25,6 +25,11 @@ MonoBehaviour:
       Data3: -1457598054
       Data4: -279760424
     Path: event:/UI/Upgrades/Credence
+  possibleColors:
+  - {r: 1, g: 0.6933962, b: 0.6933962, a: 1}
+  - {r: 0.71162915, g: 0.69411767, b: 1, a: 1}
+  - {r: 1, g: 0.69411767, b: 0.9375306, a: 1}
+  sleepMaterial: {fileID: 0}
   RowsCount: 1
   IconsPerLine: 8
   MaxVisuals: 8

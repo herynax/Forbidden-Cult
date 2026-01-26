@@ -25,6 +25,11 @@ MonoBehaviour:
       Data3: -11026512
       Data4: -1978550080
     Path: event:/UI/Upgrades/Neo
+  possibleColors:
+  - {r: 0.91434115, g: 0.84878963, b: 0.9622642, a: 1}
+  - {r: 0.8706733, g: 0.84705883, b: 0.9607843, a: 1}
+  - {r: 0.7924528, g: 0.36258456, b: 0.38706294, a: 1}
+  sleepMaterial: {fileID: 0}
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20

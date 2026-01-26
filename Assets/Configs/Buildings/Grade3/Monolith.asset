@@ -25,6 +25,11 @@ MonoBehaviour:
       Data3: -2059255382
       Data4: 1100901269
     Path: event:/UI/Upgrades/Altar
+  possibleColors:
+  - {r: 0.9056604, g: 0.48273405, b: 0.56286603, a: 1}
+  - {r: 0.5306342, g: 0.48235294, b: 0.90588236, a: 1}
+  - {r: 1, g: 0.75, b: 0.97137547, a: 1}
+  sleepMaterial: {fileID: 0}
   RowsCount: 1
   IconsPerLine: 10
   MaxVisuals: 10

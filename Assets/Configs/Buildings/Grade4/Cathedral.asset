@@ -25,6 +25,11 @@ MonoBehaviour:
       Data3: 1302476958
       Data4: 946546728
     Path: event:/UI/Upgrades/Cathedral
+  possibleColors:
+  - {r: 1, g: 0.504717, b: 0.504717, a: 1}
+  - {r: 0.7128016, g: 0.6839622, b: 1, a: 1}
+  - {r: 0.9877473, g: 0.68235296, b: 1, a: 1}
+  sleepMaterial: {fileID: 0}
   RowsCount: 1
   IconsPerLine: 8
   MaxVisuals: 8

@@ -25,6 +25,11 @@ MonoBehaviour:
       Data3: -375705951
       Data4: -83438554
     Path: event:/UI/Upgrades/Temple
+  possibleColors:
+  - {r: 0.77934283, g: 0.759434, b: 1, a: 1}
+  - {r: 1, g: 0.3726415, b: 0.47635067, a: 1}
+  - {r: 0.7569745, g: 0.5728907, b: 0.7735849, a: 1}
+  sleepMaterial: {fileID: 0}
   RowsCount: 1
   IconsPerLine: 8
   MaxVisuals: 8

@@ -25,6 +25,11 @@ MonoBehaviour:
       Data3: -1124409681
       Data4: -1022994785
     Path: event:/UI/Upgrades/Ritualist
+  possibleColors:
+  - {r: 0.9528302, g: 0.8944019, b: 0.94128567, a: 1}
+  - {r: 0.84046817, g: 0.854166, b: 0.9528302, a: 1}
+  - {r: 0.9622642, g: 0.46751517, b: 0.5046755, a: 1}
+  sleepMaterial: {fileID: 0}
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20

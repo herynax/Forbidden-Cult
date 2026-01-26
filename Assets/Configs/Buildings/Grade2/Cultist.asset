@@ -25,6 +25,12 @@ MonoBehaviour:
       Data3: -193941332
       Data4: 127228751
     Path: event:/UI/Upgrades/Cultist
+  possibleColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0.9716981, g: 0.8204432, b: 0.8204432, a: 0.4117647}
+  - {r: 0.77784586, g: 0.7533375, b: 0.9339623, a: 0.4117647}
+  - {r: 0.9056604, g: 0.44422203, b: 0.43147027, a: 0.4117647}
+  sleepMaterial: {fileID: 0}
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20
