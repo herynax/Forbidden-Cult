@@ -1,4 +1,5 @@
 using FMODUnity;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewUpgrade", menuName = "Clicker/Upgrade")]
@@ -13,6 +14,10 @@ public class UpgradeSO : ScriptableObject
 
     [Header("Audio")]
     public EventReference PurchaseSound;
+
+    [Header("Random Visuals")]
+    public List<Color> possibleColors; // Список цветов, из которых будет выбираться рандомный
+    public Material sleepMaterial;     // Материал, который накладывается во время сна
 
     [Header("Visual Layout")]
     public int RowsCount = 2;      // Сколько рядов будет в этой полосе
