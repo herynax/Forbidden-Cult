@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using FMODUnity;
 
 public class BuildingEntity : MonoBehaviour, IPointerClickHandler
 {
@@ -113,7 +114,7 @@ public class BuildingEntity : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Фидбек нажатия (тряска)
+        RuntimeManager.PlayOneShot("event:/UI/Click");
         transform.DOKill(true);
         transform.DOPunchScale(new Vector3(0.15f, 0.15f, 0.15f), 0.2f);
 

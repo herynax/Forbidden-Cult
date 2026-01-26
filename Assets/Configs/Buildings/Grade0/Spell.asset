@@ -25,6 +25,10 @@ MonoBehaviour:
       Data3: 302401190
       Data4: 200174188
     Path: event:/UI/Upgrades/Words
+  possibleColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  sleepMaterial: {fileID: 0}
   RowsCount: 3
   IconsPerLine: 10
   MaxVisuals: 30

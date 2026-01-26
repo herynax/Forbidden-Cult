@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 6446193005198898902}
   - component: {fileID: 197623201836595815}
   - component: {fileID: 4182928660361458853}
+  - component: {fileID: 580582819531050803}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -606,4 +607,35 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 197623201836595815}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 580582819531050803}
+        m_TargetAssemblyTypeName: PlayOneShot, Assembly-CSharp
+        m_MethodName: PlaySoundEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &580582819531050803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414776478924671833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a3b5c83f5bf974686f9ec172e199e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEventReference:
+    Guid:
+      Data1: -1578514232
+      Data2: 1122186569
+      Data3: 531686275
+      Data4: 276342445
+    Path: event:/UI/Click
