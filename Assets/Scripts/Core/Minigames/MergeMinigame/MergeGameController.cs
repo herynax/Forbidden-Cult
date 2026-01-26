@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using DG.Tweening;
+using FMODUnity;
 
 public class MergeGameController : MonoBehaviour
 {
@@ -154,6 +155,8 @@ public class MergeGameController : MonoBehaviour
 
         // --- мнбне: яоюбм вюярхж ---
         SpawnRandomMergeParticle(spawnPos);
+
+        RuntimeManager.PlayOneShot("event:/UI/MerdgeMinigame/Merdge");
 
         a.transform.DOKill();
         b.transform.DOKill();

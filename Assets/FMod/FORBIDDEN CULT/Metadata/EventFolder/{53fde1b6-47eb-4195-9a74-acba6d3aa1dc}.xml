@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{53fde1b6-47eb-4195-9a74-acba6d3aa1dc}">
+		<property name="name">
+			<value>MerdgeMinigame</value>
+		</property>
+		<relationship name="folder">
+			<destination>{193166ed-d98f-41ed-a270-7f0e9b4f8bfe}</destination>
+		</relationship>
+	</object>
+</objects>

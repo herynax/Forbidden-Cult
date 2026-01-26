@@ -104,6 +104,10 @@
 		<property name="volume">
 			<value>-5</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{31a0a236-0abf-4c6e-9932-8fa77072c536}</destination>
+			<destination>{cc759b9b-3972-4087-824d-6de676e123da}</destination>
+		</relationship>
 		<relationship name="sounds">
 			<destination>{6a57f2ff-37f5-48a9-93e5-78bfe15dad5a}</destination>
 			<destination>{8d2de4c9-c384-4378-9c12-d06387939d5d}</destination>
@@ -118,6 +122,22 @@
 	<object class="CompressorEffect" id="{cbf062b1-6519-4c45-bef0-3126962aa232}">
 		<property name="threshold">
 			<value>-20.5</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{31a0a236-0abf-4c6e-9932-8fa77072c536}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="amount">
+			<value>11</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{cc759b9b-3972-4087-824d-6de676e123da}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>17</value>
 		</property>
 	</object>
 	<object class="SingleSound" id="{6a57f2ff-37f5-48a9-93e5-78bfe15dad5a}">

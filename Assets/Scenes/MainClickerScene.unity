@@ -12158,6 +12158,60 @@ RectTransform:
   m_AnchoredPosition: {x: -4.5599976, y: 0}
   m_SizeDelta: {x: -9.12, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1818940980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818940982}
+  - component: {fileID: 1818940981}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1818940981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818940980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee93794462110204aa22c45548d2400e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicEventPath:
+    Guid:
+      Data1: 545187597
+      Data2: 1115756836
+      Data3: -1143258442
+      Data4: 2042612537
+    Path: event:/Music
+  banksToLoad:
+  - Master
+  - Master.strings
+--- !u!4 &1818940982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818940980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895765167
 GameObject:
   m_ObjectHideFlags: 0
@@ -13521,3 +13575,4 @@ SceneRoots:
   - {fileID: 1039060044}
   - {fileID: 1146183476}
   - {fileID: 168508931}
+  - {fileID: 1818940982}
