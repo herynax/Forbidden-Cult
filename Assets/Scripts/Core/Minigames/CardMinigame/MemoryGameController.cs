@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 using DG.Tweening;
+using FMODUnity;
 
 public class MemoryGameController : MonoBehaviour
 {
@@ -257,6 +258,8 @@ public class MemoryGameController : MonoBehaviour
             sessionEarnings += reward;
             saveManager.data.Money += reward;
 
+            RuntimeManager.PlayOneShot("event:/UI/CardMinigame/Match");
+
             // ÎÁÍÎÂËßÅÌ ÒÅÊÑÒ ÏÅĞÅÄ ÃËÀÇÀÌÈ
             UpdateEarningsHUD();
 
@@ -274,7 +277,7 @@ public class MemoryGameController : MonoBehaviour
         }
         else
         {
-            // Îøèáêà... (êîä áåç èçìåíåíèé)
+            RuntimeManager.PlayOneShot("event:/UI/CardMinigame/UnMatch");
             firstSelected.ShakeError();
             secondSelected.ShakeError();
             timeLeft -= timePenalty;

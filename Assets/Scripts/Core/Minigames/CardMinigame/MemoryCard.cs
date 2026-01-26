@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using FMODUnity;
 
 public class MemoryCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -86,6 +87,8 @@ public class MemoryCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void Flip(bool showFace, float duration = 0.3f)
     {
         isFlipped = showFace;
+
+        RuntimeManager.PlayOneShot("event:/UI/CardMinigame/Flip");
 
         // При повороте крутим только Rotation, не трогая Position
         rect.DORotate(new Vector3(0, 90, 0), duration / 2).SetEase(Ease.InQuad).SetLink(gameObject).OnComplete(() =>
