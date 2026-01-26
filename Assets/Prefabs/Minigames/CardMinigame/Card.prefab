@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4752955457417035754}
   - component: {fileID: 6432691654199747370}
   m_Layer: 5
-  m_Name: Face (1)
+  m_Name: ICON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4752955457417035754
 CanvasRenderer:
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3940651643917324442}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4240501943464409486, guid: d50f509be96b3944baad510b92e96419, type: 3}
+  m_Sprite: {fileID: -2702954118525133435, guid: 263d17a6c7618ba43a498bd29203d188, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -300,7 +300,7 @@ MonoBehaviour:
   cardID: 0
   faceSide: {fileID: 8491665336583026849}
   backSide: {fileID: 3536467533192709549}
-  iconImage: {fileID: 8876090831563668474}
+  iconImage: {fileID: 6432691654199747370}
   isFlipped: 0
 --- !u!1 &8491665336583026849
 GameObject:
@@ -338,7 +338,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5248259059750970373
 CanvasRenderer:

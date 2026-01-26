@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/0_MainClickerScene.unity
+    path: Assets/Scenes/MainClickerScene.unity
     guid: 164cc154c3e43034bab581d037e01a69
   - enabled: 1
-    path: Assets/Scenes/1_CardMinigame.unity
+    path: Assets/Scenes/CardMinigame.unity
     guid: dbf8e07bc87e1224e9c612d4b2ed718f
   - enabled: 1
-    path: Assets/Scenes/2_MerdgeMinigame.unity
+    path: Assets/Scenes/MerdgeMinigame.unity
     guid: ae1777c733a7f8343b2a6524682ea108
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

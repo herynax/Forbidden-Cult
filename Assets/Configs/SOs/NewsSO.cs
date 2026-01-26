@@ -10,9 +10,3 @@ public class NewsEntry
     public string unlockID;     // ID улучшени€, которое ќ“ –џ¬ј≈“ новость (пусто Ч доступно всегда)
     public string hideID;       // ID улучшени€, которое — –џ¬ј≈“ новость (чтобы старые шутки пропадали)
 }
-
-[CreateAssetMenu(fileName = "NewsData", menuName = "Clicker/News Data")]
-public class NewsDataSO : ScriptableObject
-{
-    public List<NewsEntry> allNews;
-}

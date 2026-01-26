@@ -218,7 +218,7 @@ public class MiniGameButton : MonoBehaviour
         {
             readyVisual.SetActive(true);
             readyVisual.transform.localScale = Vector3.zero;
-            readyVisual.transform.DOScale(new Vector3(0.3f, 0.3f, 0.3f), 0.5f).SetEase(Ease.OutCubic);
+            readyVisual.transform.DOScale(new Vector3(0.2f, 0.2f, 0.2f), 0.5f).SetEase(Ease.OutCubic);
         }
 
         transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.5f, 5).SetLoops(-1, LoopType.Restart).SetDelay(1f);

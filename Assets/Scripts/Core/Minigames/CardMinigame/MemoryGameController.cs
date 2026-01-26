@@ -295,7 +295,7 @@ public class MemoryGameController : MonoBehaviour
     {
         if (sessionMoneyHUD != null)
         {
-            sessionMoneyHUD.text = $"Заработано: {BigNumberFormatter.Format(sessionEarnings)}";
+            sessionMoneyHUD.text = $"Скверна: {BigNumberFormatter.Format(sessionEarnings)}";
 
             // "Сочный" эффект: текст слегка подпрыгивает при изменении
             sessionMoneyHUD.transform.DOKill(true);
@@ -322,7 +322,7 @@ public class MemoryGameController : MonoBehaviour
         saveManager.Save();
 
         // Заполняем текст на панельке
-        earnedTextOnLosePanel.text = $"Вы заработали: {BigNumberFormatter.Format(sessionEarnings)}";
+        earnedTextOnLosePanel.text = $"Скверны получено: {BigNumberFormatter.Format(sessionEarnings)}";
 
         losePanel.SetActive(true);
         losePanel.transform.localScale = Vector3.zero;

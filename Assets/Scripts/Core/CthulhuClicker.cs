@@ -2,80 +2,84 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using Lean.Pool;
-using DG.Tweening.Core.Easing;
 using FMODUnity;
 
 public class CthulhuClicker : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Settings")]
-    public GameObject numberPrefab; // Префаб с FloatingNumber
-    public Transform uiCanvas;      // Ссылка на Canvas
+    public GameObject numberPrefab; // Префаб с FloatingNumber (UI-текст)
+    public Transform uiCanvas;      // Ссылка на Canvas, где спавнятся цифры
 
     [Header("Animation")]
     [SerializeField] private float punchStrength = 0.1f;
     [SerializeField] private float animDuration = 0.15f;
+    [SerializeField] private float hoverScale = 1.1f;
 
     private SaveManager saveManager;
-    private RectTransform rect;
     private PassiveIncomeManager passiveIncomeManager;
     private double clickPower;
+    private Vector3 initialScale;
 
     private void Awake()
     {
-        rect = GetComponent<RectTransform>();
-        saveManager = FindFirstObjectByType<SaveManager>();
-
-        passiveIncomeManager = FindFirstObjectByType<PassiveIncomeManager>();
+        initialScale = transform.localScale;
+        saveManager = Object.FindFirstObjectByType<SaveManager>();
+        passiveIncomeManager = Object.FindFirstObjectByType<PassiveIncomeManager>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        // 1. Логика расчета
         clickPower = 1 + (passiveIncomeManager.TotalIncomePerSecond * 0.01);
         saveManager.data.Money += clickPower;
 
+        // 2. Звук и КД мини-игр
         RuntimeManager.PlayOneShot("event:/UI/Click");
-
         MiniGameButton.ReduceAllCooldowns(1.0f);
 
-        // 2. Визуальный эффект Ктулху (дерганье)
+        // 3. Визуальный эффект (дерганье)
         AnimateCthulhu();
 
-        // 3. Вылет цифры
+        // 4. Вылет цифры
+        // eventData.position возвращает экранные координаты, что идеально для UI цифр
         SpawnNumber(eventData.position);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        // Обязательно убиваем текущий твин, чтобы анимации не суммировались
-        rect.DOKill();
-
-        // Target: 1.1f
-        // Duration: 0.6f (для эластичности нужно чуть больше времени, чтобы успели пройти колебания)
-        // Ease: OutElastic — создаёт эффект пружины
-        rect.DOScale(1.1f, 0.6f).SetEase(Ease.OutElastic).SetLink(gameObject);
+        transform.DOKill();
+        // Используем initialScale, чтобы корректно увеличивать объект
+        transform.DOScale(initialScale * hoverScale, 0.6f)
+            .SetEase(Ease.OutElastic)
+            .SetLink(gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        rect.DOKill();
-        // Возвращаемся к 1.0. Используем OutBack, чтобы был легкий "вжим" перед остановкой
-        rect.DOScale(1.0f, 0.4f).SetEase(Ease.OutBack).SetLink(gameObject);
+        transform.DOKill();
+        transform.DOScale(initialScale, 0.4f)
+            .SetEase(Ease.OutBack)
+            .SetLink(gameObject);
     }
 
     private void AnimateCthulhu()
     {
-        // Убиваем текущий твин, чтобы анимации не "стакались" при быстром клике
-        // true в конце означает "дойти до конца перед смертью", чтобы объект не застрял в сжатом виде
+        // Сбрасываем к hoverScale перед панчем, чтобы не было скачков
         transform.DOKill(true);
 
-        // Делаем легкий "толчок" (punch) масштаба
-        transform.DOPunchScale(new Vector3(punchStrength, -punchStrength, 0), animDuration, 1, 0.5f);
+        // Эффект "сжатия-разжатия"
+        transform.DOPunchScale(new Vector3(punchStrength, -punchStrength, 0), animDuration, 1, 0.5f)
+            .SetLink(gameObject);
     }
 
-    private void SpawnNumber(Vector2 pos)
+    private void SpawnNumber(Vector2 screenPos)
     {
-        // Берем объект из Lean Pool
+        if (numberPrefab == null || uiCanvas == null) return;
+
+        // Берем объект из Lean Pool и спавним его в Canvas
         GameObject obj = LeanPool.Spawn(numberPrefab, uiCanvas);
-        obj.GetComponent<FloatingNumber>().Initialize(clickPower, pos);
+
+        // Передаем сырое значение clickPower (внутри FloatingNumber оно отформатируется)
+        obj.GetComponent<FloatingNumber>().Initialize(clickPower, screenPos);
     }
 }

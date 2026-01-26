@@ -266,7 +266,7 @@ public class MergeGameController : MonoBehaviour
     {
         if (sessionMoneyHUD != null)
         {
-            sessionMoneyHUD.text = $"Заработано: {BigNumberFormatter.Format(sessionEarnings)}";
+            sessionMoneyHUD.text = $"Скверна: {BigNumberFormatter.Format(sessionEarnings)}";
             sessionMoneyHUD.transform.DOKill(true);
             sessionMoneyHUD.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
         }
@@ -279,7 +279,7 @@ public class MergeGameController : MonoBehaviour
 
         if (saveManager != null) saveManager.Save();
 
-        earnedTextOnLosePanel.text = $"Вы заработали: {BigNumberFormatter.Format(sessionEarnings)}";
+        earnedTextOnLosePanel.text = $"Скверны получено: {BigNumberFormatter.Format(sessionEarnings)}";
         losePanel.SetActive(true);
         losePanel.transform.DOKill();
         losePanel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
