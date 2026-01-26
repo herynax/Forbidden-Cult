@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using FMODUnity;
 
 public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -71,6 +72,12 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (saveManager.data.Money >= currentPrice)
         {
             saveManager.data.Money -= currentPrice;
+
+            if (!upgradeSO.PurchaseSound.IsNull)
+            {
+                RuntimeManager.PlayOneShot(upgradeSO.PurchaseSound);
+            }
+
             var state = saveManager.data.Upgrades.Find(u => u.ID == upgradeSO.ID);
             if (state == null)
             {

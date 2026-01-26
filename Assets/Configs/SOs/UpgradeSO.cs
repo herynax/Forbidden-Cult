@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewUpgrade", menuName = "Clicker/Upgrade")]
@@ -9,6 +10,9 @@ public class UpgradeSO : ScriptableObject
     public Sprite RowBackground; // ”никальный фон дл€ р€да построек
     public double BasePrice;
     public double BasePassiveIncome;
+
+    [Header("Audio")]
+    public EventReference PurchaseSound;
 
     [Header("Visual Layout")]
     public int RowsCount = 2;      // —колько р€дов будет в этой полосе

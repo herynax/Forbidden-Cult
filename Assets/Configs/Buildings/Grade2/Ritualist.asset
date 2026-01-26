@@ -18,6 +18,13 @@ MonoBehaviour:
   RowBackground: {fileID: -5297196951289981945, guid: 19af557bf71486142b8e2dd75414262d, type: 3}
   BasePrice: 45000000
   BasePassiveIncome: 1100000
+  PurchaseSound:
+    Guid:
+      Data1: -1038914961
+      Data2: 1258335473
+      Data3: -1124409681
+      Data4: -1022994785
+    Path: event:/UI/Upgrades/Ritualist
   RowsCount: 2
   IconsPerLine: 10
   MaxVisuals: 20

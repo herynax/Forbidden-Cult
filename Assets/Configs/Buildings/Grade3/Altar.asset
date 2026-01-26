@@ -18,6 +18,13 @@ MonoBehaviour:
   RowBackground: {fileID: -4846732496204108578, guid: c38bc8e2c1bf7ac4591b10885f29cbde, type: 3}
   BasePrice: 300000000
   BasePassiveIncome: 8500000
+  PurchaseSound:
+    Guid:
+      Data1: -1927286729
+      Data2: 1320922555
+      Data3: -2059255382
+      Data4: 1100901269
+    Path: event:/UI/Upgrades/Altar
   RowsCount: 1
   IconsPerLine: 10
   MaxVisuals: 30
