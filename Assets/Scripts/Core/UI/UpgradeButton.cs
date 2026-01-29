@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using FMODUnity;
+using Lean.Localization;
 
 public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -54,14 +55,16 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (isRevealed)
         {
-            nameText.text = $"{upgradeSO.Name}";
+            nameText.text = LeanLocalization.GetTranslationText(upgradeSO.NameTerm);
+
             countText.text = saveManager.data.GetUpgradeCount(upgradeSO.ID).ToString();
             iconImage.sprite = upgradeSO.Icon;
             iconImage.color = Color.white;
         }
         else
         {
-            nameText.text = "???";
+            nameText.text = LeanLocalization.GetTranslationText("UI_Unknown");
+
             iconImage.sprite = upgradeSO.Icon;
             iconImage.color = Color.black;
         }

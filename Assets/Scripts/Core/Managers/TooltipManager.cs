@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using Lean.Localization;
 
 public class TooltipManager : MonoBehaviour
 {
@@ -42,27 +43,25 @@ public class TooltipManager : MonoBehaviour
 
     public void ShowTooltip(UpgradeSO data, int currentCount)
     {
-        bool isRevealed = saveManager.data.RevealedUpgrades.Contains(data.ID);
-
-        canvasGroup.gameObject.SetActive(true);
         isActive = true;
         currentShownUpgrade = data;
 
-        // НАХОДИМ И ЗАПОМИНАЕМ СОСТОЯНИЕ (чтобы не искать каждый кадр)
-        currentUpgradeState = saveManager.data.Upgrades.Find(u => u.ID == data.ID);
+        bool isRevealed = saveManager.data.RevealedUpgrades.Contains(data.ID);
 
         if (!isRevealed)
         {
-            nameText.text = "???";
-            descriptionText.text = "Соберите больше скверны, чтобы узреть это...";
+            // Ключ для скрытого состояния: "Unknown_Upgrade"
+            nameText.text = LeanLocalization.GetTranslationText("UI_Unknown");
+            descriptionText.text = LeanLocalization.GetTranslationText("UI_NeedMoreCorruption");
             loreText.text = "";
             incomeText.gameObject.SetActive(false);
         }
         else
         {
-            nameText.text = data.Name;
-            descriptionText.text = data.Description;
-            loreText.text = "<i>\"" + data.LoreText + "\"</i>";
+            // Получаем переводы по ключам из SO
+            nameText.text = LeanLocalization.GetTranslationText(data.NameTerm);
+            descriptionText.text = LeanLocalization.GetTranslationText(data.DescriptionTerm);
+            loreText.text = "<i>\"" + LeanLocalization.GetTranslationText(data.LoreTerm) + "\"</i>";
 
             RefreshDynamicData();
         }
@@ -74,22 +73,23 @@ public class TooltipManager : MonoBehaviour
     private void RefreshDynamicData()
     {
         if (currentShownUpgrade == null || saveManager == null) return;
-        if (!saveManager.data.RevealedUpgrades.Contains(currentShownUpgrade.ID)) return;
 
-        // Используем закэшированное состояние. Если его нет (еще не купили), то count = 0
-        int count = currentUpgradeState != null ? currentUpgradeState.Amount : 0;
+        var state = saveManager.data.Upgrades.Find(u => u.ID == currentShownUpgrade.ID);
+        int count = state != null ? state.Amount : 0;
 
         if (count > 0)
         {
             incomeText.gameObject.SetActive(true);
 
-            double eachProvides = currentShownUpgrade.BasePassiveIncome;
-            double totalProvides = eachProvides * count;
+            // Вытягиваем только названия действий/меток
+            string txtEarned = LeanLocalization.GetTranslationText("Stat_TotalEarned"); // "Собрано скверны"
+            string txtProvides = LeanLocalization.GetTranslationText("Stat_TotalProvides"); // "Всего приносит"
+            string txtEach = LeanLocalization.GetTranslationText("Stat_EachProvides"); // "Каждый дает"
 
-            // currentUpgradeState.TotalEarned обновляется в PassiveIncomeManager
-            incomeText.text = $"Собрано скверны: <color=#B000FF>{BigNumberFormatter.Format(currentUpgradeState.TotalEarned)}</color>\n" +
-                              $"Всего приносит: <color=green>{BigNumberFormatter.Format(totalProvides)}</color>\n" +
-                              $"Каждый дает: <color=green>{BigNumberFormatter.Format(eachProvides)}</color>";
+            // Собираем строку через F (интерполяцию), полностью контролируя верстку
+            incomeText.text = $"{txtEarned}: <color=#B000FF>{BigNumberFormatter.Format(state.TotalEarned)}</color>\n" +
+                              $"{txtProvides}: <color=green>{BigNumberFormatter.Format(currentShownUpgrade.BasePassiveIncome * count)}</color>\n" +
+                              $"{txtEach}: <color=green>{BigNumberFormatter.Format(currentShownUpgrade.BasePassiveIncome)}</color>";
         }
         else
         {
