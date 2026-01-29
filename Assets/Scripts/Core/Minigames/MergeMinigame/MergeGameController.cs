@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using DG.Tweening;
 using FMODUnity;
+using Lean.Localization;
 
 public class MergeGameController : MonoBehaviour
 {
@@ -287,7 +288,10 @@ public class MergeGameController : MonoBehaviour
     {
         if (sessionMoneyHUD != null)
         {
-            sessionMoneyHUD.text = $"Скверна: {BigNumberFormatter.Format(sessionEarnings)}";
+            // Локализация "Скверна"
+            string txtCorruption = LeanLocalization.GetTranslationText("UI_Corruption");
+            sessionMoneyHUD.text = $"{txtCorruption}: {BigNumberFormatter.Format(sessionEarnings)}";
+
             sessionMoneyHUD.transform.DOKill(true);
             sessionMoneyHUD.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f);
         }
@@ -300,7 +304,10 @@ public class MergeGameController : MonoBehaviour
 
         if (saveManager != null) saveManager.Save();
 
-        earnedTextOnLosePanel.text = $"Скверны получено: {BigNumberFormatter.Format(sessionEarnings)}";
+        // Локализация "Скверны получено"
+        string txtEarned = LeanLocalization.GetTranslationText("UI_CorruptionEarned");
+        earnedTextOnLosePanel.text = $"{txtEarned}: {BigNumberFormatter.Format(sessionEarnings)}";
+
         losePanel.SetActive(true);
         losePanel.transform.DOKill();
         losePanel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);

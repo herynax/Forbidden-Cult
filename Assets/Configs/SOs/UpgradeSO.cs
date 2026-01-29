@@ -1,12 +1,12 @@
 using FMODUnity;
 using System.Collections.Generic;
 using UnityEngine;
+using Lean.Localization;
 
 [CreateAssetMenu(fileName = "NewUpgrade", menuName = "Clicker/Upgrade")]
 public class UpgradeSO : ScriptableObject
 {
     public string ID;
-    public string Name;
     public Sprite Icon;
     public Sprite RowBackground; // Уникальный фон для ряда построек
     public double BasePrice;
@@ -32,9 +32,8 @@ public class UpgradeSO : ScriptableObject
     public int MinClicksToWake = 3;
     public int MaxClicksToWake = 7;
 
-    [Header("Tooltip Info")]
-    [TextArea(3, 10)]
-    public string Description; // "Увеличивает производство на..."
-    [TextArea(2, 5)]
-    public string LoreText;    // "Вкусные печеньки от доброй бабули"
+    [Header("Localization Terms")]
+    [LeanTranslationName] public string NameTerm;        // Ключ для имени
+    [LeanTranslationName] public string DescriptionTerm; // Ключ для описания
+    [LeanTranslationName] public string LoreTerm;        // Ключ для лора
 }

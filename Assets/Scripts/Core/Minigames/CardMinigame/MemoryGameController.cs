@@ -5,6 +5,7 @@ using System.Collections;
 using TMPro;
 using DG.Tweening;
 using FMODUnity;
+using Lean.Localization;
 
 public class MemoryGameController : MonoBehaviour
 {
@@ -125,14 +126,17 @@ public class MemoryGameController : MonoBehaviour
 
     private void ShowRoundOverlay()
     {
-        roundOverlayText.text = "РАУНД " + currentRound;
+        // Получаем перевод слова "Раунд" и добавляем число
+        string txtRound = LeanLocalization.GetTranslationText("UI_Round");
+        roundOverlayText.text = $"{txtRound} {currentRound}";
+
         roundOverlayGroup.alpha = 0;
         roundOverlayText.transform.localScale = Vector3.one * 0.5f;
 
         Sequence seq = DOTween.Sequence();
         seq.Append(roundOverlayGroup.DOFade(1, 0.5f));
         seq.Join(roundOverlayText.transform.DOScale(1.2f, 0.5f).SetEase(Ease.OutBack));
-        seq.AppendInterval(1f); // Висит секунду
+        seq.AppendInterval(1f);
         seq.Append(roundOverlayGroup.DOFade(0, 0.5f));
         seq.Join(roundOverlayText.transform.DOScale(1.5f, 0.5f).SetEase(Ease.InQuad));
     }
@@ -298,9 +302,10 @@ public class MemoryGameController : MonoBehaviour
     {
         if (sessionMoneyHUD != null)
         {
-            sessionMoneyHUD.text = $"Скверна: {BigNumberFormatter.Format(sessionEarnings)}";
+            // Локализация "Скверна"
+            string txtCorruption = LeanLocalization.GetTranslationText("UI_Corruption");
+            sessionMoneyHUD.text = $"{txtCorruption}: {BigNumberFormatter.Format(sessionEarnings)}";
 
-            // "Сочный" эффект: текст слегка подпрыгивает при изменении
             sessionMoneyHUD.transform.DOKill(true);
             sessionMoneyHUD.transform.DOPunchScale(Vector3.one * (hudPunchAmount - 1f), 0.2f);
         }
@@ -324,8 +329,9 @@ public class MemoryGameController : MonoBehaviour
         isTimerActive = false;
         saveManager.Save();
 
-        // Заполняем текст на панельке
-        earnedTextOnLosePanel.text = $"Скверны получено: {BigNumberFormatter.Format(sessionEarnings)}";
+        // Локализация "Скверны получено"
+        string txtEarned = LeanLocalization.GetTranslationText("UI_CorruptionEarned");
+        earnedTextOnLosePanel.text = $"{txtEarned}: {BigNumberFormatter.Format(sessionEarnings)}";
 
         losePanel.SetActive(true);
         losePanel.transform.localScale = Vector3.zero;

@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using Lean.Localization;
 
 public class OfflineIncomeManager : MonoBehaviour
 {
@@ -81,19 +82,23 @@ public class OfflineIncomeManager : MonoBehaviour
     private void ShowWelcomePanel(double amount, System.TimeSpan span)
     {
         welcomePanel.SetActive(true);
-        welcomePanel.transform.localScale = Vector3.zero;
 
-        // Форматируем время: если больше 24 часов, пишем дни
-        string timeStr;
-        if (span.TotalDays >= 1)
-            timeStr = string.Format("{0}д {1:D2}ч {2:D2}м", (int)span.TotalDays, span.Hours, span.Minutes);
-        else
-            timeStr = string.Format("{0:D2}ч {1:D2}м {2:D2}с", span.Hours, span.Minutes, span.Seconds);
+        // Получаем переведенные слова для времени
+        string h = LeanLocalization.GetTranslationText("Time_HourShort"); // "ч" или "h"
+        string m = LeanLocalization.GetTranslationText("Time_MinShort");  // "м" или "m"
+        string s = LeanLocalization.GetTranslationText("Time_SecShort");  // "с" или "s"
 
-        earnedText.text = $"Вас не было\n <color=#B000FF>{timeStr}</color>.\nКультисты собрали\n <color=#B000FF>{BigNumberFormatter.Format(amount)}</color> скверны!";
+        string welcomeHeader = LeanLocalization.GetTranslationText("UI_WelcomeBack"); // "Вас не было"
+        string gatheredText = LeanLocalization.GetTranslationText("UI_Gathered"); // "Культисты собрали"
 
-        // Анимация как в мини-игре
+        // Формируем строку времени: "02ч 15м 05с"
+        string timeStr = $"{span.Hours}{h} {span.Minutes}{m} {span.Seconds}{s}";
+
+        // Финальная сборка
+        earnedText.text = $"{welcomeHeader}\n <color=#B000FF>{timeStr}</color>.\n{gatheredText}\n <color=#B000FF>{BigNumberFormatter.Format(amount)}</color>!";
+
         welcomePanel.transform.DOKill();
+        welcomePanel.transform.localScale = Vector3.zero;
         welcomePanel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).SetUpdate(true);
     }
 
