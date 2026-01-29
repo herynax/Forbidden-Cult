@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Symbol
   m_EditorClassIdentifier: 
   ID: symbol
-  Name: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0437\u043D\u0430\u043A"
+  Name: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0441\u0438\u043C\u0432\u043E\u043B"
   Icon: {fileID: -1540426309290004842, guid: 90f8b07d04d7ade4fbc5050d8a533e6d, type: 3}
   RowBackground: {fileID: 5756350290713979945, guid: bcba5d4e1efaf05458de3112eb24525b, type: 3}
   BasePrice: 15
