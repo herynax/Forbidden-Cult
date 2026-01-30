@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Neophyte
   m_EditorClassIdentifier: 
   ID: neophyte
-  Name: "\u041D\u0435\u043E\u0444\u0438\u0442"
   Icon: {fileID: 8780799021987293888, guid: f452f2f5c50af804caeeda98c6027550, type: 3}
   RowBackground: {fileID: -3149689827952356062, guid: b79946426df8bad4385064d1e14945dd, type: 3}
   BasePrice: 1000000
@@ -37,9 +36,6 @@ MonoBehaviour:
   RequiredAmount: 1
   MinClicksToWake: 1
   MaxClicksToWake: 3
-  Description: "\u041F\u0440\u043E\u0445\u043E\u0436\u0438\u0439, \u0437\u0430\u0441\u043C\u043E\u0442\u0440\u0435\u0432\u0448\u0438\u0439\u0441\u044F
-    \u043D\u0430 \u0437\u043D\u0430\u043A\u0438. \u041F\u043E\u0447\u0442\u0438 \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u0430\u044F
-    \u0440\u0430\u0431\u043E\u0447\u0430\u044F \u0441\u0438\u043B\u0430."
-  LoreText: "\u041E\u043D \u043F\u0440\u0438\u0448\u0435\u043B \u0437\u0430 \u0438\u0441\u0442\u0438\u043D\u043E\u0439,
-    \u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u043B \u043C\u0430\u043D\u0442\u0438\u044E
-    \u0438 \u0441\u0442\u0430\u0436\u0438\u0440\u043E\u0432\u043A\u0443 \u0432 \u0431\u0435\u0437\u0434\u043D\u0435.\r\n"
+  NameTerm: Neophyte_Title
+  DescriptionTerm: Neophyte_Description
+  LoreTerm: Neophyte_Lore
