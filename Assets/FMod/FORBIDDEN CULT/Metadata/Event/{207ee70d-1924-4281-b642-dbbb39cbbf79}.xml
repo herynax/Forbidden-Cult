@@ -126,6 +126,12 @@
 		<property name="length">
 			<value>48.000000000000007</value>
 		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>25</value>
+		</property>
 		<relationship name="timeline">
 			<destination>{e7076ffb-8150-44f2-a274-7cb7da2ca34e}</destination>
 		</relationship>
@@ -153,6 +159,12 @@
 		</property>
 		<property name="length">
 			<value>72</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>25</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{e7076ffb-8150-44f2-a274-7cb7da2ca34e}</destination>

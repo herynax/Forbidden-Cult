@@ -1,12 +1,10 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using Lean.Localization;
 
 [Serializable]
 public class NewsEntry
 {
-    [TextArea(2, 5)]
-    public string message;      // Текст новости
-    public string unlockID;     // ID улучшения, которое ОТКРЫВАЕТ новость (пусто — доступно всегда)
-    public string hideID;       // ID улучшения, которое СКРЫВАЕТ новость (чтобы старые шутки пропадали)
+    [LeanTranslationName] public string messageTerm; // Ключ локализации
+    public string unlockID;     // ID улучшения для открытия
+    public string hideID;       // ID улучшения для скрытия
 }

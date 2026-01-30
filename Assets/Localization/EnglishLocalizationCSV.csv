@@ -1,0 +1,96 @@
+UI_Unknown,???
+UI_NeedMoreCorruption,Collect more filtfh to see this...
+Stat_TotalEarned,Corruption gathered
+Stat_TotalProvides,Total production
+Stat_EachProvides,Each provides
+UI_WelcomeBack,You were away for
+UI_Gathered,Cultists gathered
+Time_DayShort,d
+Time_HourShort,h
+Time_MinShort,m
+Time_SecShort,s
+UI_Round,ROUND
+UI_Corruption,Filtfh
+UI_CorruptionEarned,Filtfh earned
+UI_Play,PLAY!
+News_Default,The world is quiet... for now.
+News_Empty,No news yet...
+UI_Warning_Generic,The dark ritual is almost ready!
+UI_Warning_Arena,The dark ritual is ready!
+Symbol_Title,Forbidden symbol
+Symbol_Description,A simple scribble on the wall. It attracts tiny particles of the attention of the Ancients.
+Symbol_Lore,"If you look at this symbol for a long time, you will feel a little uneasy."
+Word_Title,Forbidden word
+Word_Description,Phonetic anomaly. An unclean word in a forbidden language.
+Word_Lore,"If you say this out loud, a strange, unpleasant taste appears in your mouth."
+Spell_Title,Forbidden spell
+Spell_Description,A combination of forbidden words filled with sinister magical power.
+Spell_Lore,"If you misplace the stress, you can accidentally cause it to rain squid."
+Text_Title,Forbidden text
+Text_Description,"Pages of incoherent nonsense, in which a frightening logic is visible."
+Text_Lore,"The ink is still wet, although this manuscript is clearly very old."
+Folio_Title,Forbidden folio
+Folio_Description,"A heavy, leather-bound book. Containing within it a multitude of secrets of absolute evil."
+Folio_Lore,A leather cover... belonging to one of the former owners.
+Grimoire_Title,Forbidden grimoire
+Grimoire_Description,An ancient book whose secrets are revealed only to the most initiated.
+Grimoire_Lore,A single glance at these pages forever changes those who look.
+Neophyte_Title,Neophyte
+Neophyte_Description,"A passerby, gazing at the signs. Almost free labor."
+Neophyte_Lore,"He came for the truth, but received a mantle and an internship in the abyss."
+Cultist_Title,Cultist
+Cultist_Descritpion,A devoted follower who has served the cult for many years.
+Cultist_Lore,Has the ability to never ask stupid questions. None. Ever.
+Ritualist_Title,Ritualist
+Ritualist_Description,"Initiated into the most secretive secrets, he no longer quite resembles a human being... He can draw a perfect circle without a compass."
+Ritualist_Lore,Even demons fear him for his strict adherence to safety precautions.
+Altar_Title,Forbidden altar
+Altar_Description,A pulpit for reading ritual texts. It promotes the spread of dark teachings.
+Altar_Lore,The air around the pedestal is so heavy that ordinary candles go out near it.
+Monolith_Title,Forbidden monolith
+Monolith_Description,A block of black stone, humming at the frequency of your fear.
+Monolith_Lore,"If you press your ear to it, you can hear the Universe asking to reboot."
+Sanctuary_Title,Forbidden sanctuary
+Sanctuary_Description,A place where the geometry of the walls violates all the laws of physics.
+Sanctuary_Lore,"Here time goes in the other direction, just so as not to disturb you."
+Credence_Title,Forbidden credence
+Credence_Description,A facility for the mass conversion of resources into filth.
+Credence_Lore,"Sacrifice is not a loss, but a contribution to survival during the apocalypse."
+Temple_Title,Forbidden temple
+Temple_Description,A gloomy building within whose walls evil itself has taken up residence.
+Temple_Lore,The architect went crazy at the foundation stage. It was a condition of the tender.
+Cathedral_Title,Forbidden cathedral
+Cathedral_Description,The pinnacle of worship. The gates to R'lyeh begin to open.
+Cathedral_Lore,"Here the walls breathe, and the stained glass windows look into the soul. Ph'nglui mglv'nafkh!"
+News1,You saw a strange sign and wrote it down
+News2,You have seen something that can never be unseen
+News3,You have learned the forbidden word
+News4,All the insects have escaped from your house
+News5,You have learned to practice forbidden magic
+News6,You no longer need sleep and food
+News7,"Ordinary people avoid you, they are unable to accept the truth"
+News8,You will learn forbidden secrets
+News9,Your forbidden library is growing
+News10,You comprehend the secrets of the universe
+News11,The truth has been revealed to you and you are ready to share it
+News12,You have your first followers
+News13,Ordinary citizens don't suspect anything yet...
+News14,Your followers are growing
+News15,Your cult grows and rumors begin to circulate about it
+News16,Everyone in your circle wears the same clothes
+News17,People avoid your house
+News18,Strange things start happening in your city
+News19,All the plants near your house have died
+News20,Ordinary townspeople begin to suspect something...
+News21,The forbidden monolith drives away all non-believers in the area
+News22,The monoliths glow pleasantly at night from the filth that fills them
+News23,People are starting to disappear in your city
+News24,Popular rumors are turning into mass discontent
+News25,Constant weather anomalies are no longer surprising
+News26,People are sheltering in their homes and a curfew has been imposed in the city
+News27,Your sacrifices please the forbidden god and bear fruit
+News28,Armed men patrol the streets and look for suspicious passersby
+News29,You built a temple! Now this city is doomed
+News30,Fear of your cult fills this city!
+News31,Ph'nglui mglw'nafh Cthulhu R'lyeh vgah'nagl fhtagn
+News32,Ya! Ya! Cthulhu fhtagn!

@@ -1,30 +1,32 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-using System.Collections.Generic;
 using System.Linq;
+using Lean.Localization; // Добавляем пространство имен локализации
 
 public class NewsTicker : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private TextMeshProUGUI[] textElements; // Массив из 2-х текстов
-    [SerializeField] private CanvasGroup[] textGroups;      // Массив из 2-х CanvasGroup
+    [SerializeField] private TextMeshProUGUI[] textElements;
+    [SerializeField] private CanvasGroup[] textGroups;
     [SerializeField] private NewsDataSO newsData;
 
     [Header("Settings")]
-    [SerializeField] private float transitionDuration = 0.5f; // Скорость поворота колеса
-    [SerializeField] private float displayDuration = 10f;      // Сколько висит новость
-    [SerializeField] private float slideOffset = 50f;        // На сколько пикселей текст улетает вверх/вниз
+    [SerializeField] private float transitionDuration = 0.5f;
+    [SerializeField] private float displayDuration = 10f;
+    [SerializeField] private float slideOffset = 50f;
+
+    [Header("Default Terms")]
+    [LeanTranslationName][SerializeField] private string noNewsTerm = "News_Empty";    // Ключ "Новостей нет"
+    [LeanTranslationName][SerializeField] private string defaultNewsTerm = "News_Default"; // Ключ "Все спокойно"
 
     private int activeIndex = 0;
     private SaveManager saveManager;
-    private bool isFirstStart = true;
 
     private void Awake()
     {
         saveManager = Object.FindFirstObjectByType<SaveManager>();
 
-        // Скрываем второй текст сразу
         textGroups[0].alpha = 1;
         textGroups[1].alpha = 0;
     }
@@ -44,38 +46,40 @@ public class NewsTicker : MonoBehaviour
     {
         int nextIndex = (activeIndex == 0) ? 1 : 0;
 
-        // 1. Выбираем новую новость для следующего текста
+        // Берем локализованный текст
         textElements[nextIndex].text = GetRandomValidNews();
 
-        // 2. Устанавливаем начальную позицию для выезжающего текста (снизу)
         RectTransform nextRect = textElements[nextIndex].rectTransform;
         nextRect.anchoredPosition = new Vector2(0, -slideOffset);
         textGroups[nextIndex].alpha = 0;
 
-        // 3. Анимация уезда ТЕКУЩЕГО текста (вверх и исчезновение)
         RectTransform activeRect = textElements[activeIndex].rectTransform;
         activeRect.DOAnchorPos(new Vector2(0, slideOffset), transitionDuration).SetEase(Ease.InQuart);
         textGroups[activeIndex].DOFade(0, transitionDuration);
 
-        // 4. Анимация заезда НОВОГО текста (в центр и появление)
         nextRect.DOAnchorPos(Vector2.zero, transitionDuration).SetEase(Ease.OutQuart);
         textGroups[nextIndex].DOFade(1, transitionDuration);
 
-        // 5. Меняем индекс
         activeIndex = nextIndex;
     }
 
     private string GetRandomValidNews()
     {
-        if (newsData == null) return "Новостей пока нет...";
+        if (newsData == null || newsData.allNews.Count == 0)
+            return LeanLocalization.GetTranslationText(noNewsTerm);
 
-        var validNews = newsData.allNews
+        var validEntries = newsData.allNews
             .Where(n => IsNewsValid(n))
             .ToList();
 
-        if (validNews.Count == 0) return "В мире всё спокойно...";
+        if (validEntries.Count == 0)
+            return LeanLocalization.GetTranslationText(defaultNewsTerm);
 
-        return validNews[Random.Range(0, validNews.Count)].message;
+        // Выбираем случайную запись
+        NewsEntry selectedEntry = validEntries[Random.Range(0, validEntries.Count)];
+
+        // Возвращаем перевод по ключу
+        return LeanLocalization.GetTranslationText(selectedEntry.messageTerm);
     }
 
     private bool IsNewsValid(NewsEntry entry)
