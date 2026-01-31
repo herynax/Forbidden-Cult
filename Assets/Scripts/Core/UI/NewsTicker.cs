@@ -1,8 +1,9 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using System.Collections.Generic;
 using System.Linq;
-using Lean.Localization; // Добавляем пространство имен локализации
+using Lean.Localization;
 
 public class NewsTicker : MonoBehaviour
 {
@@ -17,11 +18,14 @@ public class NewsTicker : MonoBehaviour
     [SerializeField] private float slideOffset = 50f;
 
     [Header("Default Terms")]
-    [LeanTranslationName][SerializeField] private string noNewsTerm = "News_Empty";    // Ключ "Новостей нет"
-    [LeanTranslationName][SerializeField] private string defaultNewsTerm = "News_Default"; // Ключ "Все спокойно"
+    [LeanTranslationName][SerializeField] private string noNewsTerm = "News_Empty";
+    [LeanTranslationName][SerializeField] private string defaultNewsTerm = "News_Default";
 
     private int activeIndex = 0;
     private SaveManager saveManager;
+
+    // Переменная для хранения ключа текущей новости
+    private string currentActiveTerm;
 
     private void Awake()
     {
@@ -31,24 +35,49 @@ public class NewsTicker : MonoBehaviour
         textGroups[1].alpha = 0;
     }
 
+    private void OnEnable()
+    {
+        // Подписываемся на событие смены языка
+        LeanLocalization.OnLocalizationChanged += UpdateCurrentTranslation;
+    }
+
+    private void OnDisable()
+    {
+        // Отписываемся при выключении
+        LeanLocalization.OnLocalizationChanged -= UpdateCurrentTranslation;
+    }
+
     private void Start()
     {
         ShowInitialNews();
         InvokeRepeating(nameof(RotateWheel), displayDuration, displayDuration);
     }
 
+    // Метод, который вызывается автоматически при смене языка
+    private void UpdateCurrentTranslation()
+    {
+        if (string.IsNullOrEmpty(currentActiveTerm)) return;
+
+        // Обновляем текст в активном элементе по запомненному ключу
+        textElements[activeIndex].text = LeanLocalization.GetTranslationText(currentActiveTerm);
+    }
+
     private void ShowInitialNews()
     {
-        textElements[activeIndex].text = GetRandomValidNews();
+        currentActiveTerm = GetRandomValidTerm();
+        textElements[activeIndex].text = LeanLocalization.GetTranslationText(currentActiveTerm);
     }
 
     private void RotateWheel()
     {
         int nextIndex = (activeIndex == 0) ? 1 : 0;
 
-        // Берем локализованный текст
-        textElements[nextIndex].text = GetRandomValidNews();
+        // Получаем НОВЫЙ ключ
+        currentActiveTerm = GetRandomValidTerm();
+        // Устанавливаем текст для выезжающего элемента
+        textElements[nextIndex].text = LeanLocalization.GetTranslationText(currentActiveTerm);
 
+        // Анимации
         RectTransform nextRect = textElements[nextIndex].rectTransform;
         nextRect.anchoredPosition = new Vector2(0, -slideOffset);
         textGroups[nextIndex].alpha = 0;
@@ -63,23 +92,21 @@ public class NewsTicker : MonoBehaviour
         activeIndex = nextIndex;
     }
 
-    private string GetRandomValidNews()
+    // Теперь метод возвращает КЛЮЧ (string), а не переведенный текст
+    private string GetRandomValidTerm()
     {
         if (newsData == null || newsData.allNews.Count == 0)
-            return LeanLocalization.GetTranslationText(noNewsTerm);
+            return noNewsTerm;
 
         var validEntries = newsData.allNews
             .Where(n => IsNewsValid(n))
             .ToList();
 
         if (validEntries.Count == 0)
-            return LeanLocalization.GetTranslationText(defaultNewsTerm);
+            return defaultNewsTerm;
 
-        // Выбираем случайную запись
         NewsEntry selectedEntry = validEntries[Random.Range(0, validEntries.Count)];
-
-        // Возвращаем перевод по ключу
-        return LeanLocalization.GetTranslationText(selectedEntry.messageTerm);
+        return selectedEntry.messageTerm;
     }
 
     private bool IsNewsValid(NewsEntry entry)

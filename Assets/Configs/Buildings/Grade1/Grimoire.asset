@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: grimoire
   Icon: {fileID: -2183270343088332244, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
   RowBackground: {fileID: 134470934641131873, guid: c2f893a810d68914fa84b3bf7a958914, type: 3}
-  BasePrice: 160000
-  BasePassiveIncome: 2400
+  BasePrice: 73000
+  BasePassiveIncome: 2100
   PurchaseSound:
     Guid:
       Data1: -552180784

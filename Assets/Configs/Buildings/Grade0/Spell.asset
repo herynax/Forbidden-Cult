@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: spell
   Icon: {fileID: 21300000, guid: 7eed7a8da6983cc4bb146e74a8f4122c, type: 3}
   RowBackground: {fileID: -513826144365575497, guid: d390d2c93ce854049bc3bebc976bae42, type: 3}
-  BasePrice: 650
-  BasePassiveIncome: 6
+  BasePrice: 420
+  BasePassiveIncome: 8
   PurchaseSound:
     Guid:
       Data1: -1006921207

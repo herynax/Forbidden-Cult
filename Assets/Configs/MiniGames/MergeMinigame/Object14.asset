@@ -16,5 +16,5 @@ MonoBehaviour:
   sprite: {fileID: -2183270343088332244, guid: c36ea7a16ba871a4b9557aa20355ffc7, type: 3}
   itemColor: {r: 0.9339623, g: 0.057271298, b: 0.33641672, a: 1}
   scale: 1.9
-  reward: 15
+  reward: 10
   nextLevel: {fileID: 0}

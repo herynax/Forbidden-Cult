@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _DissolveAmount: 0.5
     - _DissolveScale: 14.88
-    - _FlashAmount: 0.23933628
+    - _FlashAmount: 0.65939754
     - _OutlineThickness: 0.1
     m_Colors:
     - _FlashColor: {r: 4, g: 4, b: 4, a: 0}
