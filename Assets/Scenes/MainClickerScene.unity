@@ -6008,6 +6008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8023262611851500135, guid: 5d24282a67669a94288dc116682e2cd0, type: 3}
+      propertyPath: translationName
+      value: UI_Back
+      objectReference: {fileID: 0}
     - target: {fileID: 8060637542498807726, guid: 5d24282a67669a94288dc116682e2cd0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 250
@@ -7033,7 +7037,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 618526885}
   m_FillRect: {fileID: 1653620508}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -7295,6 +7299,7 @@ GameObject:
   - component: {fileID: 498883080}
   - component: {fileID: 498883082}
   - component: {fileID: 498883081}
+  - component: {fileID: 498883083}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -7420,6 +7425,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498883079}
   m_CullTransparentMesh: 1
+--- !u!114 &498883083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498883079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: UI_Settings_Music
+  FallbackText: "\u0418\u0434\u0438 \u043D\u0430\u0445\u0443\u0439"
 --- !u!1 &536205461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8168776564130130274, guid: 3b7f6c4478920c1468ef4fa9545f7297, type: 3}
@@ -8094,7 +8113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086ae75064fca9f46b315403da7f5d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Source: {fileID: 4900000, guid: 1b42f96a19c61894aacac3542d2590df, type: 3}
+  Source: {fileID: 4900000, guid: 358f459813b415444ba28448e0e42245, type: 3}
   Format: 1
   Language: English
   Cache: 0
@@ -8298,6 +8317,16 @@ MonoBehaviour:
     Text: Ph'nglui mglw'nafh Cthulhu R'lyeh vgah'nagl fhtagn
   - Name: News32
     Text: Ya! Ya! Cthulhu fhtagn!
+  - Name: UI_Settings_Music
+    Text: Music
+  - Name: UI_Settings_Volume
+    Text: Volume
+  - Name: UI_Settings_ClickType
+    Text: Click type
+  - Name: UI_Corruption_PerSecond
+    Text: per second
+  - Name: UI_Back
+    Text: 'Back '
 --- !u!1 &641212642
 GameObject:
   m_ObjectHideFlags: 0
@@ -8309,6 +8338,7 @@ GameObject:
   - component: {fileID: 641212643}
   - component: {fileID: 641212645}
   - component: {fileID: 641212644}
+  - component: {fileID: 641212646}
   m_Layer: 5
   m_Name: Curse
   m_TagString: Untagged
@@ -8355,7 +8385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u043A\u0432\u0435\u0440\u043D\u0430:\n"
+  m_text: Filtfh
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 640d031bf89bb324a978bc3ac5845491, type: 2}
   m_sharedMaterial: {fileID: -6961331694494810768, guid: 640d031bf89bb324a978bc3ac5845491, type: 2}
@@ -8434,6 +8464,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641212642}
   m_CullTransparentMesh: 1
+--- !u!114 &641212646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641212642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: UI_Corruption
+  FallbackText: "\u0421\u043A\u0432\u0435\u0440\u043D\u0430:\n"
 --- !u!1 &665888968
 GameObject:
   m_ObjectHideFlags: 0
@@ -10158,7 +10202,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 955031707}
   m_FillRect: {fileID: 1113404119}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -10339,6 +10383,7 @@ GameObject:
   - component: {fileID: 949560664}
   - component: {fileID: 949560666}
   - component: {fileID: 949560665}
+  - component: {fileID: 949560667}
   m_Layer: 5
   m_Name: InSecond
   m_TagString: Untagged
@@ -10385,7 +10430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0443:\n"
+  m_text: per second
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3801057eb62def44887324551cafae0b, type: 2}
   m_sharedMaterial: {fileID: 240045871392865504, guid: 3801057eb62def44887324551cafae0b, type: 2}
@@ -10464,6 +10509,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949560663}
   m_CullTransparentMesh: 1
+--- !u!114 &949560667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949560663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: UI_Corruption_PerSecond
+  FallbackText: "\u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0443:\n"
 --- !u!1 &955031705
 GameObject:
   m_ObjectHideFlags: 0
@@ -11561,7 +11620,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 904169110}
   m_FillRect: {fileID: 1928276895}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -11627,7 +11686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086ae75064fca9f46b315403da7f5d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Source: {fileID: 4900000, guid: f36ddf6d1eec4cc45919f9926a9d71e2, type: 3}
+  Source: {fileID: 4900000, guid: 794975a0aa457434b87f4a4e1e93509e, type: 3}
   Format: 1
   Language: Russian
   Cache: 0
@@ -11976,6 +12035,16 @@ MonoBehaviour:
       \u0444\u0445\u0442\u0430\u0433\u043D"
   - Name: News32
     Text: "\u0419\u0430! \u0419\u0430! \u041A\u0442\u0443\u043B\u0445\u0443 \u0444\u0445\u0442\u0430\u0433\u043D!"
+  - Name: UI_Settings_Music
+    Text: "\u041C\u0443\u0437\u044B\u043A\u0430"
+  - Name: UI_Settings_Volume
+    Text: "\u0417\u0432\u0443\u043A"
+  - Name: UI_Settings_ClickType
+    Text: "\u0422\u0438\u043F \u043A\u043B\u0438\u043A\u0430"
+  - Name: UI_Corruption_PerSecond
+    Text: "\u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0443"
+  - Name: UI_Back
+    Text: "\u0412\u044B\u0439\u0442\u0438"
 --- !u!1 &1486480504
 GameObject:
   m_ObjectHideFlags: 0
@@ -12344,6 +12413,7 @@ GameObject:
   - component: {fileID: 1581015352}
   - component: {fileID: 1581015354}
   - component: {fileID: 1581015353}
+  - component: {fileID: 1581015355}
   m_Layer: 5
   m_Name: ClickType
   m_TagString: Untagged
@@ -12469,6 +12539,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581015351}
   m_CullTransparentMesh: 1
+--- !u!114 &1581015355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581015351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: UI_Settings_ClickType
+  FallbackText: "\u0438\u0434\u0438 \u043D\u0430\u0445\u0443\u0439"
 --- !u!1 &1616206248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7083814043659927851, guid: 3b7f6c4478920c1468ef4fa9545f7297, type: 3}
@@ -12815,8 +12899,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -312.78503, y: 0}
-  m_SizeDelta: {x: 625.57007, y: 1080}
+  m_AnchoredPosition: {x: -312.78503, y: -108.75}
+  m_SizeDelta: {x: 625.57, y: 862.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1669418161
 MonoBehaviour:
@@ -13771,6 +13855,7 @@ GameObject:
   - component: {fileID: 2053020689}
   - component: {fileID: 2053020691}
   - component: {fileID: 2053020690}
+  - component: {fileID: 2053020692}
   m_Layer: 5
   m_Name: SFX
   m_TagString: Untagged
@@ -13896,6 +13981,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053020688}
   m_CullTransparentMesh: 1
+--- !u!114 &2053020692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053020688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: UI_Settings_Volume
+  FallbackText: "\u0438\u0434\u0438 \u043D\u0430\u0445\u0443\u0439"
 --- !u!1001 &2080924815
 PrefabInstance:
   m_ObjectHideFlags: 0

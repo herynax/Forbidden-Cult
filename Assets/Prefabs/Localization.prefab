@@ -1,0 +1,840 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1506917257055792750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5441559049100896194}
+  - component: {fileID: 4099064055429927014}
+  m_Layer: 0
+  m_Name: EnglishLanguageCSV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5441559049100896194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506917257055792750}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3772963037472934677}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4099064055429927014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506917257055792750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086ae75064fca9f46b315403da7f5d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Source: {fileID: 4900000, guid: 358f459813b415444ba28448e0e42245, type: 3}
+  Format: 1
+  Language: English
+  Cache: 0
+  entries:
+  - Name: UI_Unknown
+    Text: ???
+  - Name: UI_NeedMoreCorruption
+    Text: Collect more filtfh to see this...
+  - Name: Stat_TotalEarned
+    Text: Corruption gathered
+  - Name: Stat_TotalProvides
+    Text: Total production
+  - Name: Stat_EachProvides
+    Text: Each provides
+  - Name: UI_WelcomeBack
+    Text: You were away for
+  - Name: UI_Gathered
+    Text: Cultists gathered
+  - Name: Time_DayShort
+    Text: d
+  - Name: Time_HourShort
+    Text: h
+  - Name: Time_MinShort
+    Text: m
+  - Name: Time_SecShort
+    Text: s
+  - Name: UI_Round
+    Text: ROUND
+  - Name: UI_Corruption
+    Text: Filtfh
+  - Name: UI_CorruptionEarned
+    Text: Filtfh earned
+  - Name: UI_Play
+    Text: PLAY!
+  - Name: News_Default
+    Text: The world is quiet... for now.
+  - Name: News_Empty
+    Text: No news yet...
+  - Name: UI_Warning_Generic
+    Text: The dark ritual is almost ready!
+  - Name: UI_Warning_Arena
+    Text: The dark ritual is ready!
+  - Name: Symbol_Title
+    Text: Forbidden symbol
+  - Name: Symbol_Description
+    Text: A simple scribble on the wall. It attracts tiny particles of the attention
+      of the Ancients.
+  - Name: Symbol_Lore
+    Text: If you look at this symbol for a long time, you will feel a little uneasy.
+  - Name: Word_Title
+    Text: Forbidden word
+  - Name: Word_Description
+    Text: Phonetic anomaly. An unclean word in a forbidden language.
+  - Name: Word_Lore
+    Text: If you say this out loud, a strange, unpleasant taste appears in your mouth.
+  - Name: Spell_Title
+    Text: Forbidden spell
+  - Name: Spell_Description
+    Text: A combination of forbidden words filled with sinister magical power.
+  - Name: Spell_Lore
+    Text: If you misplace the stress, you can accidentally cause it to rain squid.
+  - Name: Text_Title
+    Text: Forbidden text
+  - Name: Text_Description
+    Text: Pages of incoherent nonsense, in which a frightening logic is visible.
+  - Name: Text_Lore
+    Text: The ink is still wet, although this manuscript is clearly very old.
+  - Name: Folio_Title
+    Text: Forbidden folio
+  - Name: Folio_Description
+    Text: A heavy, leather-bound book. Containing within it a multitude of secrets
+      of absolute evil.
+  - Name: Folio_Lore
+    Text: A leather cover... belonging to one of the former owners.
+  - Name: Grimoire_Title
+    Text: Forbidden grimoire
+  - Name: Grimoire_Description
+    Text: An ancient book whose secrets are revealed only to the most initiated.
+  - Name: Grimoire_Lore
+    Text: A single glance at these pages forever changes those who look.
+  - Name: Neophyte_Title
+    Text: Neophyte
+  - Name: Neophyte_Description
+    Text: A passerby, gazing at the signs. Almost free labor.
+  - Name: Neophyte_Lore
+    Text: He came for the truth, but received a mantle and an internship in the abyss.
+  - Name: Cultist_Title
+    Text: Cultist
+  - Name: Cultist_Descritpion
+    Text: A devoted follower who has served the cult for many years.
+  - Name: Cultist_Lore
+    Text: Has the ability to never ask stupid questions. None. Ever.
+  - Name: Ritualist_Title
+    Text: Ritualist
+  - Name: Ritualist_Description
+    Text: Initiated into the most secretive secrets, he no longer quite resembles
+      a human being... He can draw a perfect circle without a compass.
+  - Name: Ritualist_Lore
+    Text: Even demons fear him for his strict adherence to safety precautions.
+  - Name: Altar_Title
+    Text: Forbidden altar
+  - Name: Altar_Description
+    Text: A pulpit for reading ritual texts. It promotes the spread of dark teachings.
+  - Name: Altar_Lore
+    Text: The air around the pedestal is so heavy that ordinary candles go out near
+      it.
+  - Name: Monolith_Title
+    Text: Forbidden monolith
+  - Name: Monolith_Description
+    Text: A block of black stone, humming at the frequency of your fear.
+  - Name: Monolith_Lore
+    Text: If you press your ear to it, you can hear the Universe asking to reboot.
+  - Name: Sanctuary_Title
+    Text: Forbidden sanctuary
+  - Name: Sanctuary_Description
+    Text: A place where the geometry of the walls violates all the laws of physics.
+  - Name: Sanctuary_Lore
+    Text: Here time goes in the other direction, just so as not to disturb you.
+  - Name: Credence_Title
+    Text: Forbidden credence
+  - Name: Credence_Description
+    Text: A facility for the mass conversion of resources into filth.
+  - Name: Credence_Lore
+    Text: Sacrifice is not a loss, but a contribution to survival during the apocalypse.
+  - Name: Temple_Title
+    Text: Forbidden temple
+  - Name: Temple_Description
+    Text: A gloomy building within whose walls evil itself has taken up residence.
+  - Name: Temple_Lore
+    Text: The architect went crazy at the foundation stage. It was a condition of
+      the tender.
+  - Name: Cathedral_Title
+    Text: Forbidden cathedral
+  - Name: Cathedral_Description
+    Text: The pinnacle of worship. The gates to R'lyeh begin to open.
+  - Name: Cathedral_Lore
+    Text: Here the walls breathe, and the stained glass windows look into the soul.
+      Ph'nglui mglv'nafkh!
+  - Name: News1
+    Text: You saw a strange sign and wrote it down
+  - Name: News2
+    Text: You have seen something that can never be unseen
+  - Name: News3
+    Text: You have learned the forbidden word
+  - Name: News4
+    Text: All the insects have escaped from your house
+  - Name: News5
+    Text: You have learned to practice forbidden magic
+  - Name: News6
+    Text: You no longer need sleep and food
+  - Name: News7
+    Text: Ordinary people avoid you, they are unable to accept the truth
+  - Name: News8
+    Text: You will learn forbidden secrets
+  - Name: News9
+    Text: Your forbidden library is growing
+  - Name: News10
+    Text: You comprehend the secrets of the universe
+  - Name: News11
+    Text: The truth has been revealed to you and you are ready to share it
+  - Name: News12
+    Text: You have your first followers
+  - Name: News13
+    Text: Ordinary citizens don't suspect anything yet...
+  - Name: News14
+    Text: Your followers are growing
+  - Name: News15
+    Text: Your cult grows and rumors begin to circulate about it
+  - Name: News16
+    Text: Everyone in your circle wears the same clothes
+  - Name: News17
+    Text: People avoid your house
+  - Name: News18
+    Text: Strange things start happening in your city
+  - Name: News19
+    Text: All the plants near your house have died
+  - Name: News20
+    Text: Ordinary townspeople begin to suspect something...
+  - Name: News21
+    Text: The forbidden monolith drives away all non-believers in the area
+  - Name: News22
+    Text: The monoliths glow pleasantly at night from the filth that fills them
+  - Name: News23
+    Text: People are starting to disappear in your city
+  - Name: News24
+    Text: Popular rumors are turning into mass discontent
+  - Name: News25
+    Text: Constant weather anomalies are no longer surprising
+  - Name: News26
+    Text: People are sheltering in their homes and a curfew has been imposed in the
+      city
+  - Name: News27
+    Text: Your sacrifices please the forbidden god and bear fruit
+  - Name: News28
+    Text: Armed men patrol the streets and look for suspicious passersby
+  - Name: News29
+    Text: You built a temple! Now this city is doomed
+  - Name: News30
+    Text: Fear of your cult fills this city!
+  - Name: News31
+    Text: Ph'nglui mglw'nafh Cthulhu R'lyeh vgah'nagl fhtagn
+  - Name: News32
+    Text: Ya! Ya! Cthulhu fhtagn!
+  - Name: UI_Settings_Music
+    Text: Music
+  - Name: UI_Settings_Volume
+    Text: Volume
+  - Name: UI_Settings_ClickType
+    Text: Click type
+  - Name: UI_Corruption_PerSecond
+    Text: per second
+  - Name: UI_Back
+    Text: 'Back '
+--- !u!1 &1995967788007553081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3772963037472934677}
+  - component: {fileID: 8980666696056118618}
+  m_Layer: 0
+  m_Name: Localization
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3772963037472934677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995967788007553081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1967358307323681767}
+  - {fileID: 1228101206941946850}
+  - {fileID: 7346925018079872838}
+  - {fileID: 5441559049100896194}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8980666696056118618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995967788007553081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLanguage: English
+  detectLanguage: 1
+  defaultLanguage: 
+  saveLoad: 1
+  prefabs: []
+--- !u!1 &5238857766443214675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7346925018079872838}
+  - component: {fileID: 4540195518407435528}
+  m_Layer: 0
+  m_Name: RussianLanguageCSV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7346925018079872838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238857766443214675}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3772963037472934677}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4540195518407435528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238857766443214675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086ae75064fca9f46b315403da7f5d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Source: {fileID: 4900000, guid: 794975a0aa457434b87f4a4e1e93509e, type: 3}
+  Format: 1
+  Language: Russian
+  Cache: 0
+  entries:
+  - Name: UI_Unknown
+    Text: ???
+  - Name: UI_NeedMoreCorruption
+    Text: "\u0421\u043E\u0431\u0435\u0440\u0438\u0442\u0435 \u0431\u043E\u043B\u044C\u0448\u0435
+      \u0441\u043A\u0432\u0435\u0440\u043D\u044B, \u0447\u0442\u043E\u0431\u044B
+      \u0443\u0432\u0438\u0434\u0435\u0442\u044C \u044D\u0442\u043E..."
+  - Name: Stat_TotalEarned
+    Text: "\u0421\u043A\u0432\u0435\u0440\u043D\u044B \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u043E"
+  - Name: Stat_TotalProvides
+    Text: "\u0412\u0441\u0435\u0433\u043E \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D\u043E
+      \u0441\u043A\u0432\u0435\u0440\u043D\u044B"
+  - Name: Stat_EachProvides
+    Text: "\u041A\u0430\u0436\u0434\u044B\u0439 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442"
+  - Name: UI_WelcomeBack
+    Text: "\u0412\u0430\u0441 \u043D\u0435 \u0431\u044B\u043B\u043E"
+  - Name: UI_Gathered
+    Text: "\u041A\u0443\u043B\u044C\u0442\u0438\u0441\u0442\u044B \u0441\u043E\u0431\u0440\u0430\u043B\u0438"
+  - Name: Time_DayShort
+    Text: "\u0434"
+  - Name: Time_HourShort
+    Text: "\u0447"
+  - Name: Time_MinShort
+    Text: "\u043C"
+  - Name: Time_SecShort
+    Text: "\u0441"
+  - Name: UI_Round
+    Text: "\u0420\u0410\u0423\u041D\u0414"
+  - Name: UI_Corruption
+    Text: "\u0421\u043A\u0432\u0435\u0440\u043D\u0430"
+  - Name: UI_CorruptionEarned
+    Text: "\u0421\u043A\u0432\u0435\u0440\u043D\u044B \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u043E"
+  - Name: UI_Play
+    Text: "\u0422\u0435\u043C\u043D\u044B\u0439 \u0440\u0438\u0442\u0443\u0430\u043B
+      \u0433\u043E\u0442\u043E\u0432!"
+  - Name: News_Default
+    Text: "\u0412 \u043C\u0438\u0440\u0435 \u0432\u043E\u0446\u0430\u0440\u0438\u043B\u0430\u0441\u044C
+      \u0442\u0438\u0448\u0438\u043D\u0430... \u043F\u043E\u043A\u0430 \u0447\u0442\u043E."
+  - Name: News_Empty
+    Text: "\u041F\u043E\u043A\u0430 \u043D\u0435\u0442 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439..."
+  - Name: UI_Warning_Generic
+    Text: "\u0422\u0435\u043C\u043D\u044B\u0439 \u0440\u0438\u0442\u0443\u0430\u043B
+      \u043F\u043E\u0447\u0442\u0438 \u0433\u043E\u0442\u043E\u0432!"
+  - Name: UI_Warning_Arena
+    Text: "\u0422\u0435\u043C\u043D\u044B\u0439 \u0440\u0438\u0442\u0443\u0430\u043B
+      \u0433\u043E\u0442\u043E\u0432!"
+  - Name: Symbol_Title
+    Text: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0441\u0438\u043C\u0432\u043E\u043B"
+  - Name: Symbol_Description
+    Text: "\u041F\u0440\u043E\u0441\u0442\u0430\u044F \u0437\u0430\u043A\u043E\u0440\u044E\u0447\u043A\u0430
+      \u043D\u0430 \u0441\u0442\u0435\u043D\u0435. \u041F\u0440\u0438\u0442\u044F\u0433\u0438\u0432\u0430\u0435\u0442
+      \u043A\u0440\u0443\u043F\u0438\u0446\u044B \u0432\u043D\u0438\u043C\u0430\u043D\u0438\u044F
+      \u0414\u0440\u0435\u0432\u043D\u0438\u0445."
+  - Name: Symbol_Lore
+    Text: "\u0415\u0441\u043B\u0438 \u0434\u043E\u043B\u0433\u043E \u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
+      \u043D\u0430 \u044D\u0442\u043E\u0442 \u0441\u0438\u043C\u0432\u043E\u043B,
+      \u0442\u043E \u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0441\u044F \u043D\u0435\u043C\u043D\u043E\u0433\u043E
+      \u043D\u0435 \u043F\u043E \u0441\u0435\u0431\u0435."
+  - Name: Word_Title
+    Text: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u043E\u0435 \u0441\u043B\u043E\u0432\u043E"
+  - Name: Word_Description
+    Text: "\u0424\u043E\u043D\u0435\u0442\u0438\u0447\u0435\u0441\u043A\u0430\u044F
+      \u0430\u043D\u043E\u043C\u0430\u043B\u0438\u044F. \u041D\u0435\u0447\u0438\u0441\u0442\u043E\u0435
+      \u0441\u043B\u043E\u0432\u043E \u043D\u0430 \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u043E\u043C
+      \u044F\u0437\u044B\u043A\u0435."
+  - Name: Word_Lore
+    Text: "\u0415\u0441\u043B\u0438 \u043F\u0440\u043E\u0438\u0437\u043D\u0435\u0441\u0442\u0438
+      \u044D\u0442\u043E \u0432\u0441\u043B\u0443\u0445, \u0442\u043E \u0432\u043E
+      \u0440\u0442\u0443 \u043F\u043E\u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F
+      \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0439 \u043D\u0435\u043F\u0440\u0438\u044F\u0442\u043D\u044B\u0439
+      \u043F\u0440\u0438\u0432\u043A\u0443\u0441."
+  - Name: Spell_Title
+    Text: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u043E\u0435 \u0437\u0430\u043A\u043B\u0438\u043D\u0430\u043D\u0438\u0435"
+  - Name: Spell_Description
+    Text: "\u0421\u043E\u0447\u0435\u0442\u0430\u043D\u0438\u0435 \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0445
+      \u0441\u043B\u043E\u0432, \u043D\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u043D\u043E\u0435
+      \u0437\u043B\u043E\u0432\u0435\u0449\u0435\u0439 \u043C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0439
+      \u0441\u0438\u043B\u043E\u0439. "
+  - Name: Spell_Lore
+    Text: "\u041F\u0440\u0438 \u043E\u0448\u0438\u0431\u043A\u0435 \u0432 \u0443\u0434\u0430\u0440\u0435\u043D\u0438\u0438
+      \u043C\u043E\u0436\u043D\u043E \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E
+      \u0432\u044B\u0437\u0432\u0430\u0442\u044C \u0434\u043E\u0436\u0434\u044C \u0438\u0437
+      \u043A\u0430\u043B\u044C\u043C\u0430\u0440\u043E\u0432."
+  - Name: Text_Title
+    Text: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0442\u0435\u043A\u0441\u0442"
+  - Name: Text_Description
+    Text: "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0431\u0435\u0441\u0441\u0432\u044F\u0437\u043D\u043E\u0433\u043E
+      \u0431\u0440\u0435\u0434\u0430, \u0432 \u043A\u043E\u0442\u043E\u0440\u043E\u043C
+      \u0432\u0438\u0434\u043D\u0430 \u043F\u0443\u0433\u0430\u044E\u0449\u0430\u044F
+      \u043B\u043E\u0433\u0438\u043A\u0430."
+  - Name: Text_Lore
+    Text: "\u0427\u0435\u0440\u043D\u0438\u043B\u0430 \u0432\u0441\u0451 \u0435\u0449\u0435
+      \u0432\u043B\u0430\u0436\u043D\u044B\u0435, \u0445\u043E\u0442\u044F \u044D\u0442\u043E\u0439
+      \u0440\u0443\u043A\u043E\u043F\u0438\u0441\u0438 \u0443\u0436\u0435 \u044F\u0432\u043D\u043E
+      \u043E\u0447\u0435\u043D\u044C \u043C\u043D\u043E\u0433\u043E \u043B\u0435\u0442."
+  - Name: Folio_Title
+    Text: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0444\u043E\u043B\u0438\u0430\u043D\u0442"
+  - Name: Folio_Description
+    Text: "\u0422\u044F\u0436\u0435\u043B\u0430\u044F \u043A\u043D\u0438\u0433\u0430
+      \u0432 \u043A\u043E\u0436\u0430\u043D\u043E\u043C \u043F\u0435\u0440\u0435\u043F\u043B\u0435\u0442\u0435.
+      \u0425\u0440\u0430\u043D\u0438\u0442 \u0432 \u0441\u0435\u0431\u0435 \u043C\u043D\u043E\u0436\u0435\u0441\u0442\u0432\u043E
+      \u0441\u0435\u043A\u0440\u0435\u0442\u043E\u0432 \u0430\u0431\u0441\u043E\u043B\u044E\u0442\u043D\u043E\u0433\u043E
+      \u0437\u043B\u0430."
+  - Name: Folio_Lore
+    Text: "\u041E\u0431\u043B\u043E\u0436\u043A\u0430 \u0438\u0437 \u043A\u043E\u0436\u0438...
+      \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0431\u044B\u0432\u0448\u0438\u0445
+      \u0432\u043B\u0430\u0434\u0435\u043B\u044C\u0446\u0435\u0432."
+  - Name: Grimoire_Title
+    Text: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u0433\u0440\u0438\u043C\u0443\u0430\u0440"
+  - Name: Grimoire_Description
+    Text: "\u0414\u0440\u0435\u0432\u043D\u044F\u044F \u043A\u043D\u0438\u0433\u0430,
+      \u0447\u044C\u0438 \u0442\u0430\u0439\u043D\u044B \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u044E\u0442\u0441\u044F
+      \u043B\u0438\u0448\u044C \u0441\u0430\u043C\u044B\u043C \u043F\u043E\u0441\u0432\u044F\u0449\u0435\u043D\u043D\u044B\u043C."
+  - Name: Grimoire_Lore
+    Text: "\u041E\u0434\u043D\u0430\u0436\u0434\u044B \u0432\u0437\u0433\u043B\u044F\u043D\u0443\u0432
+      \u043D\u0430 \u044D\u0442\u0438 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B
+      \u043D\u0438 \u043E\u0434\u0438\u043D \u0447\u0435\u043B\u043E\u0432\u0435\u043A
+      \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043E\u0441\u0442\u0430\u0442\u044C\u0441\u044F
+      \u043F\u0440\u0435\u0436\u043D\u0438\u043C."
+  - Name: Neophyte_Title
+    Text: "\u041D\u0435\u043E\u0444\u0438\u0442"
+  - Name: Neophyte_Description
+    Text: "\u041F\u0440\u043E\u0445\u043E\u0436\u0438\u0439, \u0437\u0430\u0441\u043C\u043E\u0442\u0440\u0435\u0432\u0448\u0438\u0439\u0441\u044F
+      \u043D\u0430 \u0437\u043D\u0430\u043A\u0438. \u041F\u043E\u0447\u0442\u0438
+      \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u0430\u044F \u0440\u0430\u0431\u043E\u0447\u0430\u044F
+      \u0441\u0438\u043B\u0430."
+  - Name: Neophyte_Lore
+    Text: "\u041E\u043D \u043F\u0440\u0438\u0448\u0435\u043B \u0437\u0430 \u0438\u0441\u0442\u0438\u043D\u043E\u0439,
+      \u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u043B \u043C\u0430\u043D\u0442\u0438\u044E
+      \u0438 \u0441\u0442\u0430\u0436\u0438\u0440\u043E\u0432\u043A\u0443 \u0432
+      \u0431\u0435\u0437\u0434\u043D\u0435."
+  - Name: Cultist_Title
+    Text: "\u041A\u0443\u043B\u044C\u0442\u0438\u0441\u0442"
+  - Name: Cultist_Descritpion
+    Text: "\u041F\u0440\u0435\u0434\u0430\u043D\u043D\u044B\u0439 \u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C,
+      \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0434\u043E\u043B\u0433\u0438\u0435
+      \u0433\u043E\u0434\u044B \u0441\u043B\u0443\u0436\u0438\u0442 \u043D\u0430
+      \u0431\u043B\u0430\u0433\u043E \u043A\u0443\u043B\u044C\u0442\u0430."
+  - Name: Cultist_Lore
+    Text: "\u041E\u0431\u043B\u0430\u0434\u0430\u0435\u0442 \u0443\u043C\u0435\u043D\u0438\u0435\u043C
+      \u043D\u0435 \u0437\u0430\u0434\u0430\u0432\u0430\u0442\u044C \u0433\u043B\u0443\u043F\u044B\u0445
+      \u0432\u043E\u043F\u0440\u043E\u0441\u043E\u0432. \u041D\u0438\u043A\u0430\u043A\u0438\u0445.
+      \u041D\u0438\u043A\u043E\u0433\u0434\u0430."
+  - Name: Ritualist_Title
+    Text: "\u0420\u0438\u0442\u0443\u0430\u043B\u0438\u0441\u0442"
+  - Name: Ritualist_Description
+    Text: "\u041F\u043E\u0441\u0432\u044F\u0449\u0435\u043D\u043D\u044B\u0439 \u0432
+      \u0441\u0430\u043C\u044B\u0435 \u0437\u0430\u043A\u0440\u044B\u0442\u044B\u0435
+      \u0442\u0430\u0439\u043D\u044B, \u043E\u043D \u0443\u0436\u0435 \u043D\u0435
+      \u0441\u043E\u0432\u0441\u0435\u043C \u043F\u043E\u0445\u043E\u0436 \u043D\u0430
+      \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u0430... \u041D\u0430\u0440\u0438\u0441\u0443\u0435\u0442
+      \u0438\u0434\u0435\u0430\u043B\u044C\u043D\u044B\u0439 \u043A\u0440\u0443\u0433
+      \u0431\u0435\u0437 \u0446\u0438\u0440\u043A\u0443\u043B\u044F."
+  - Name: Ritualist_Lore
+    Text: "\u0415\u0433\u043E \u0431\u043E\u044F\u0442\u0441\u044F \u0434\u0430\u0436\u0435
+      \u0434\u0435\u043C\u043E\u043D\u044B \u0437\u0430 \u0441\u0442\u0440\u043E\u0433\u043E\u0435
+      \u0441\u043E\u0431\u043B\u044E\u0434\u0435\u043D\u0438\u0435 \u0442\u0435\u0445\u043D\u0438\u043A\u0438
+      \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0441\u0442\u0438."
+  - Name: Altar_Title
+    Text: "\u0410\u043B\u0442\u0430\u0440\u044C"
+  - Name: Altar_Description
+    Text: "\u041A\u0430\u0444\u0435\u0434\u0440\u0430 \u0434\u043B\u044F \u0447\u0442\u0435\u043D\u0438\u044F
+      \u0440\u0438\u0442\u0443\u0430\u043B\u044C\u043D\u044B\u0445 \u0442\u0435\u043A\u0441\u0442\u043E\u0432.
+      \u0421\u043F\u043E\u0441\u043E\u0431\u0441\u0442\u0432\u0443\u0435\u0442 \u0440\u0430\u0441\u043F\u0440\u043E\u0441\u0442\u0440\u0430\u043D\u0435\u043D\u0438\u044E
+      \u0442\u0435\u043C\u043D\u043E\u0433\u043E \u0443\u0447\u0435\u043D\u0438\u044F."
+  - Name: Altar_Lore
+    Text: "\u0412\u043E\u0437\u0434\u0443\u0445 \u0432\u043E\u043A\u0440\u0443\u0433
+      \u043F\u043E\u0441\u0442\u0430\u043C\u0435\u043D\u0442\u043E\u043C \u043D\u0430\u0441\u0442\u043E\u043B\u044C\u043A\u043E
+      \u0442\u044F\u0436\u0435\u043B\u044B\u0439, \u0447\u0442\u043E \u043E\u0431\u044B\u0447\u043D\u044B\u0435
+      \u0441\u0432\u0435\u0447\u0438 \u0433\u0430\u0441\u043D\u0443\u0442 \u0440\u044F\u0434\u043E\u043C
+      \u0441 \u043D\u0438\u043C."
+  - Name: Monolith_Title
+    Text: "\u041C\u043E\u043D\u043E\u043B\u0438\u0442"
+  - Name: Monolith_Description
+    Text: "\u0413\u043B\u044B\u0431\u0430 \u0447\u0435\u0440\u043D\u043E\u0433\u043E
+      \u043A\u0430\u043C\u043D\u044F, \u0433\u0443\u0434\u044F\u0449\u0430\u044F
+      \u043D\u0430 \u0447\u0430\u0441\u0442\u043E\u0442\u0435 \u0432\u0430\u0448\u0435\u0433\u043E
+      \u0441\u0442\u0440\u0430\u0445\u0430."
+  - Name: Monolith_Lore
+    Text: "\u0415\u0441\u043B\u0438 \u043F\u0440\u0438\u0441\u043B\u043E\u043D\u0438\u0442\u044C\u0441\u044F
+      \u0443\u0445\u043E\u043C, \u0441\u043B\u044B\u0448\u043D\u043E, \u043A\u0430\u043A
+      \u0412\u0441\u0435\u043B\u0435\u043D\u043D\u0430\u044F \u043F\u0440\u043E\u0441\u0438\u0442
+      \u0435\u0451 \u043F\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C."
+  - Name: Sanctuary_Title
+    Text: "\u0421\u0432\u044F\u0442\u0438\u043B\u0438\u0449\u0435"
+  - Name: Sanctuary_Description
+    Text: "\u041C\u0435\u0441\u0442\u043E, \u0433\u0434\u0435 \u0433\u0435\u043E\u043C\u0435\u0442\u0440\u0438\u044F
+      \u0441\u0442\u0435\u043D \u043D\u0430\u0440\u0443\u0448\u0430\u0435\u0442 \u0432\u0441\u0435
+      \u0437\u0430\u043A\u043E\u043D\u044B \u0444\u0438\u0437\u0438\u043A\u0438."
+  - Name: Sanctuary_Lore
+    Text: "\u0417\u0434\u0435\u0441\u044C \u0432\u0440\u0435\u043C\u044F \u0438\u0434\u0435\u0442
+      \u0432 \u0434\u0440\u0443\u0433\u0443\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443,
+      \u043F\u0440\u043E\u0441\u0442\u043E \u0447\u0442\u043E\u0431\u044B \u0432\u0430\u043C
+      \u043D\u0435 \u043C\u0435\u0448\u0430\u0442\u044C."
+  - Name: Credence_Title
+    Text: "\u0416\u0435\u0440\u0442\u0432\u0435\u043D\u043D\u0438\u043A"
+  - Name: Credence_Description
+    Text: "\u0421\u043E\u043E\u0440\u0443\u0436\u0435\u043D\u0438\u0435 \u0434\u043B\u044F
+      \u043C\u0430\u0441\u0441\u043E\u0432\u043E\u0433\u043E \u043E\u0431\u0440\u0430\u0449\u0435\u043D\u0438\u044F
+      \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432 \u0432 \u0441\u043A\u0432\u0435\u0440\u043D\u0443."
+  - Name: Credence_Lore
+    Text: "\u0416\u0435\u0440\u0442\u0432\u0430 \u2014 \u044D\u0442\u043E \u043D\u0435
+      \u043F\u043E\u0442\u0435\u0440\u044F, \u0430 \u0432\u043A\u043B\u0430\u0434
+      \u0432 \u0432\u044B\u0436\u0438\u0432\u0430\u043D\u0438\u0435 \u043F\u0440\u0438
+      \u0430\u043F\u043E\u043A\u0430\u043B\u0438\u043F\u0441\u0438\u0441\u0435."
+  - Name: Temple_Title
+    Text: "\u0425\u0440\u0430\u043C"
+  - Name: Temple_Description
+    Text: "\u041C\u0440\u0430\u0447\u043D\u043E\u0435 \u0437\u0434\u0430\u043D\u0438\u0435,
+      \u0432 \u0447\u044C\u0438\u0445 \u0441\u0442\u0435\u043D\u0430\u0445 \u043F\u043E\u0441\u0435\u043B\u0438\u043B\u043E\u0441\u044C
+      \u0441\u0430\u043C\u043E \u0437\u043B\u043E."
+  - Name: Temple_Lore
+    Text: "\u0410\u0440\u0445\u0438\u0442\u0435\u043A\u0442\u043E\u0440 \u0441\u043E\u0448\u0435\u043B
+      \u0441 \u0443\u043C\u0430 \u043D\u0430 \u044D\u0442\u0430\u043F\u0435 \u0444\u0443\u043D\u0434\u0430\u043C\u0435\u043D\u0442\u0430.
+      \u042D\u0442\u043E \u0431\u044B\u043B\u043E \u0443\u0441\u043B\u043E\u0432\u0438\u0435
+      \u0442\u0435\u043D\u0434\u0435\u0440\u0430."
+  - Name: Cathedral_Title
+    Text: "\u0421\u043E\u0431\u043E\u0440"
+  - Name: Cathedral_Description
+    Text: "\u0412\u0435\u0440\u0448\u0438\u043D\u0430 \u043F\u043E\u043A\u043B\u043E\u043D\u0435\u043D\u0438\u044F.
+      \u0412\u0440\u0430\u0442\u0430 \u0432 \u0420\u2019\u043B\u044C\u0435\u0445
+      \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442 \u043F\u0440\u0438\u043E\u0442\u043A\u0440\u044B\u0432\u0430\u0442\u044C\u0441\u044F."
+  - Name: Cathedral_Lore
+    Text: "\u0417\u0434\u0435\u0441\u044C \u0441\u0442\u0435\u043D\u044B \u0434\u044B\u0448\u0430\u0442,
+      \u0430 \u0432\u0438\u0442\u0440\u0430\u0436\u0438 \u0441\u043C\u043E\u0442\u0440\u044F\u0442
+      \u0432 \u0434\u0443\u0448\u0443. \u041F\u0445\u2019\u043D\u0433\u043B\u0443\u0438
+      \u043C\u0433\u043B\u0432\u2019\u043D\u0430\u0444\u0445!"
+  - Name: News1
+    Text: "\u0412\u044B \u0443\u0432\u0438\u0434\u0435\u043B\u0438 \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0439
+      \u0437\u043D\u0430\u043A \u0438 \u0437\u0430\u043F\u0438\u0441\u0430\u043B\u0438
+      \u0435\u0433\u043E"
+  - Name: News2
+    Text: "\u0412\u044B \u0443\u0432\u0438\u0434\u0435\u043B\u0438 \u0442\u043E,
+      \u0447\u0442\u043E \u0443\u0436\u0435 \u043D\u0435 \u0440\u0430\u0437\u0432\u0438\u0434\u0435\u0442\u044C"
+  - Name: News3
+    Text: "\u0412\u044B \u0438\u0437\u0443\u0447\u0438\u043B\u0438 \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u043E\u0435
+      \u0441\u043B\u043E\u0432\u043E"
+  - Name: News4
+    Text: "\u0412\u0441\u0435 \u043D\u0430\u0441\u0435\u043A\u043E\u043C\u044B\u0435
+      \u0441\u0431\u0435\u0436\u0430\u043B\u0438 \u0438\u0437 \u0432\u0430\u0448\u0435\u0433\u043E
+      \u0434\u043E\u043C\u0430"
+  - Name: News5
+    Text: "\u0412\u044B \u043D\u0430\u0443\u0447\u0438\u043B\u0438\u0441\u044C \u043F\u0440\u0430\u043A\u0442\u0438\u043A\u043E\u0432\u0430\u0442\u044C
+      \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u0443\u044E \u043C\u0430\u0433\u0438\u044E"
+  - Name: News6
+    Text: "\u0412\u0430\u043C \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0435 \u043D\u0443\u0436\u043D\u044B
+      \u0441\u043E\u043D \u0438 \u0435\u0434\u0430"
+  - Name: News7
+    Text: "\u041E\u0431\u044B\u0447\u043D\u044B\u0435 \u043B\u044E\u0434\u0438 \u0441\u0442\u043E\u0440\u043E\u043D\u044F\u0442\u0441\u044F
+      \u0432\u0430\u0441, \u043E\u043D\u0438 \u043D\u0435 \u0432 \u0441\u0438\u043B\u0430\u0445
+      \u043F\u0440\u0438\u043D\u044F\u0442\u044C \u0438\u0441\u0442\u0438\u043D\u0443"
+  - Name: News8
+    Text: "\u0412\u044B \u043F\u043E\u0437\u043D\u0430\u0435\u0442\u0435 \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0435
+      \u0442\u0430\u0439\u043D\u044B"
+  - Name: News9
+    Text: "\u0412\u0430\u0448\u0430 \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u0430\u044F
+      \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u0440\u0430\u0441\u0442\u0435\u0442"
+  - Name: News10
+    Text: "\u0412\u044B \u043F\u043E\u0441\u0442\u0438\u0433\u0430\u0435\u0442\u0435
+      \u0442\u0430\u0439\u043D\u044B \u043C\u0438\u0440\u043E\u0437\u0434\u0430\u043D\u0438\u044F"
+  - Name: News11
+    Text: "\u0412\u0430\u043C \u043E\u0442\u043A\u0440\u044B\u043B\u0430\u0441\u044C
+      \u0438\u0441\u0442\u0438\u043D\u0430 \u0438 \u0432\u044B \u0433\u043E\u0442\u043E\u0432\u044B
+      \u0435\u0439 \u043F\u043E\u0434\u0435\u043B\u0438\u0442\u044C\u0441\u044F"
+  - Name: News12
+    Text: "\u0423 \u0432\u0430\u0441 \u043F\u043E\u044F\u0432\u043B\u044F\u044E\u0442\u0441\u044F
+      \u043F\u0435\u0440\u0432\u044B\u0435 \u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u0438"
+  - Name: News13
+    Text: "\u041E\u0431\u044B\u0447\u043D\u044B\u0435 \u0433\u043E\u0440\u043E\u0436\u0430\u043D\u0435
+      \u0435\u0449\u0435 \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u043F\u043E\u0434\u043E\u0437\u0440\u0435\u0432\u0430\u044E\u0442..."
+  - Name: News14
+    Text: "\u0412\u0430\u0448\u0438\u0445 \u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439
+      \u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0441\u044F \u0432\u0441\u0435
+      \u0431\u043E\u043B\u044C\u0448\u0435"
+  - Name: News15
+    Text: "\u0412\u0430\u0448 \u043A\u0443\u043B\u044C\u0442 \u0440\u0430\u0441\u0442\u0435\u0442
+      \u0438 \u043E \u043D\u0435\u043C \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442
+      \u0445\u043E\u0434\u0438\u0442\u044C \u0441\u043B\u0443\u0445\u0438"
+  - Name: News16
+    Text: "\u0412 \u0432\u0430\u0448\u0435\u043C \u043E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0438
+      \u0432\u0441\u0435 \u043D\u043E\u0441\u044F\u0442 \u043E\u0434\u0438\u043D\u0430\u043A\u043E\u0432\u044B\u0435
+      \u043E\u0434\u0435\u0436\u0434\u044B"
+  - Name: News17
+    Text: "\u041B\u044E\u0434\u0438 \u043E\u0431\u0445\u043E\u0434\u044F\u0442 \u0432\u0430\u0448
+      \u0434\u043E\u043C \u0441\u0442\u043E\u0440\u043E\u043D\u043E\u0439"
+  - Name: News18
+    Text: "\u0412 \u0432\u0430\u0448\u0435\u043C \u0433\u043E\u0440\u043E\u0434\u0435
+      \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442 \u043F\u0440\u043E\u0438\u0441\u0445\u043E\u0434\u0438\u0442\u044C
+      \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0435 \u0432\u0435\u0449\u0438"
+  - Name: News19
+    Text: "\u0420\u044F\u0434\u043E\u043C \u0441 \u0432\u0430\u0448\u0438\u043C \u0434\u043E\u043C\u043E\u043C
+      \u043F\u043E\u0433\u0438\u0431\u043B\u0438 \u0432\u0441\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F"
+  - Name: News20
+    Text: "\u041E\u0431\u044B\u0447\u043D\u044B\u0435 \u0433\u043E\u0440\u043E\u0436\u0430\u043D\u0435
+      \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442 \u0447\u0442\u043E-\u0442\u043E
+      \u043F\u043E\u0434\u043E\u0437\u0440\u0435\u0432\u0430\u0442\u044C..."
+  - Name: News21
+    Text: "\u0417\u0430\u043F\u0440\u0435\u0442\u043D\u044B\u0439 \u043C\u043E\u043D\u043E\u043B\u0438\u0442
+      \u043E\u0442\u0433\u043E\u043D\u044F\u0435\u0442 \u0432\u0441\u0435\u0445 \u043D\u0435\u0432\u0435\u0440\u0443\u044E\u0449\u0438\u0445
+      \u0432 \u043E\u043A\u0440\u0443\u0433\u0435"
+  - Name: News22
+    Text: "\u041C\u043E\u043D\u043E\u043B\u0438\u0442\u044B \u043F\u0440\u0438\u044F\u0442\u043D\u043E
+      \u0441\u0432\u0435\u0442\u044F\u0442\u0441\u044F \u043F\u043E \u043D\u043E\u0447\u0430\u043C
+      \u043E\u0442 \u043F\u0435\u0440\u0435\u043F\u043E\u043B\u043D\u044F\u044E\u0449\u0435\u0439
+      \u0438\u0445 \u0441\u043A\u0432\u0435\u0440\u043D\u044B"
+  - Name: News23
+    Text: "\u0412 \u0432\u0430\u0448\u0435\u043C \u0433\u043E\u0440\u043E\u0434\u0435
+      \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442 \u043F\u0440\u043E\u043F\u0430\u0434\u0430\u0442\u044C
+      \u043B\u044E\u0434\u0438"
+  - Name: News24
+    Text: "\u041D\u0430\u0440\u043E\u0434\u043D\u0430\u044F \u043C\u043E\u043B\u0432\u0430
+      \u043F\u0435\u0440\u0435\u0440\u0430\u0441\u0442\u0430\u0435\u0442 \u0432 \u043C\u0430\u0441\u0441\u043E\u0432\u044B\u0435
+      \u043D\u0435\u0434\u043E\u0432\u043E\u043B\u044C\u0441\u0442\u0432\u0430"
+  - Name: News25
+    Text: "\u041F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u044B\u0435 \u043F\u043E\u0433\u043E\u0434\u043D\u044B\u0435
+      \u0430\u043D\u043E\u043C\u0430\u043B\u0438\u0438 \u0443\u0436\u0435 \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u044E\u0442
+      \u0443\u0434\u0438\u0432\u043B\u044F\u0442\u044C"
+  - Name: News26
+    Text: "\u041B\u044E\u0434\u0438 \u0443\u043A\u0440\u044B\u0432\u0430\u044E\u0442\u0441\u044F
+      \u0432 \u0441\u0432\u043E\u0438\u0445 \u0434\u043E\u043C\u0430\u0445, \u0432
+      \u0433\u043E\u0440\u043E\u0434\u0435 \u0432\u0432\u0435\u0434\u0435\u043D \u043A\u043E\u043C\u0435\u043D\u0434\u0430\u043D\u0442\u0441\u043A\u0438\u0439
+      \u0447\u0430\u0441"
+  - Name: News27
+    Text: "\u0412\u0430\u0448\u0438 \u0436\u0435\u0440\u0442\u0432\u044B \u0440\u0430\u0434\u0443\u044E\u0442
+      \u0437\u0430\u043F\u0440\u0435\u0442\u043D\u043E\u0433\u043E \u0431\u043E\u0433\u0430
+      \u0438 \u0434\u0430\u044E\u0442 \u0441\u0432\u043E\u0438 \u043F\u043B\u043E\u0434\u044B"
+  - Name: News28
+    Text: "\u0412\u043E\u043E\u0440\u0443\u0436\u0435\u043D\u043D\u044B\u0435 \u043B\u044E\u0434\u0438
+      \u043F\u0430\u0442\u0440\u0443\u043B\u0438\u0440\u0443\u044E\u0442 \u0443\u043B\u0438\u0446\u044B
+      \u0438 \u0438\u0449\u0443\u0442 \u043F\u043E\u0434\u043E\u0437\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445
+      \u043F\u0440\u043E\u0445\u043E\u0436\u0438\u0445"
+  - Name: News29
+    Text: "\u0412\u044B \u043F\u043E\u0441\u0442\u0440\u043E\u0438\u043B\u0438 \u0445\u0440\u0430\u043C!
+      \u0442\u0435\u043F\u0435\u0440\u044C \u044D\u0442\u043E\u0442 \u0433\u043E\u0440\u043E\u0434
+      \u043E\u0431\u0440\u0435\u0447\u0435\u043D"
+  - Name: News30
+    Text: "\u0421\u0442\u0440\u0430\u0445 \u043F\u0435\u0440\u0435\u0434 \u0432\u0430\u0448\u0438\u043C
+      \u043A\u0443\u043B\u044C\u0442\u043E\u043C \u043F\u0435\u0440\u0435\u043F\u043E\u043B\u043D\u044F\u0435\u0442
+      \u044D\u0442\u043E\u0442 \u0433\u043E\u0440\u043E\u0434!"
+  - Name: News31
+    Text: "\u041F\u0445'\u043D\u0433\u043B\u0443\u0438 \u043C\u0433\u043B\u0432'\u043D\u0430\u0444\u0445
+      \u041A\u0442\u0443\u043B\u0445\u0443 \u0420'\u043B\u044C\u0435\u0445 \u0432\u0433\u0430\u0445'\u043D\u0430\u0433\u043B
+      \u0444\u0445\u0442\u0430\u0433\u043D"
+  - Name: News32
+    Text: "\u0419\u0430! \u0419\u0430! \u041A\u0442\u0443\u043B\u0445\u0443 \u0444\u0445\u0442\u0430\u0433\u043D!"
+  - Name: UI_Settings_Music
+    Text: "\u041C\u0443\u0437\u044B\u043A\u0430"
+  - Name: UI_Settings_Volume
+    Text: "\u0417\u0432\u0443\u043A"
+  - Name: UI_Settings_ClickType
+    Text: "\u0422\u0438\u043F \u043A\u043B\u0438\u043A\u0430"
+  - Name: UI_Corruption_PerSecond
+    Text: "\u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0443"
+  - Name: UI_Back
+    Text: "\u0412\u044B\u0439\u0442\u0438"
+--- !u!1001 &304599205915127196
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3772963037472934677}
+    m_Modifications:
+    - target: {fileID: 765358623864573794, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_Name
+      value: English
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+--- !u!4 &1228101206941946850 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+  m_PrefabInstance: {fileID: 304599205915127196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1043785233131775385
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3772963037472934677}
+    m_Modifications:
+    - target: {fileID: 765358623864573794, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_Name
+      value: Russian
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+--- !u!4 &1967358307323681767 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1527055450098318974, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+  m_PrefabInstance: {fileID: 1043785233131775385}
+  m_PrefabAsset: {fileID: 0}

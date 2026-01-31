@@ -48,7 +48,7 @@ Altar_Title,Forbidden altar
 Altar_Description,A pulpit for reading ritual texts. It promotes the spread of dark teachings.
 Altar_Lore,The air around the pedestal is so heavy that ordinary candles go out near it.
 Monolith_Title,Forbidden monolith
-Monolith_Description,A block of black stone, humming at the frequency of your fear.
+Monolith_Description,"A block of black stone, humming at the frequency of your fear."
 Monolith_Lore,"If you press your ear to it, you can hear the Universe asking to reboot."
 Sanctuary_Title,Forbidden sanctuary
 Sanctuary_Description,A place where the geometry of the walls violates all the laws of physics.
@@ -94,3 +94,8 @@ News29,You built a temple! Now this city is doomed
 News30,Fear of your cult fills this city!
 News31,Ph'nglui mglw'nafh Cthulhu R'lyeh vgah'nagl fhtagn
 News32,Ya! Ya! Cthulhu fhtagn!
+UI_Settings_Music,Music
+UI_Settings_Volume,Volume
+UI_Settings_ClickType,Click type
+UI_Corruption_PerSecond,per second
+UI_Back,Back 
