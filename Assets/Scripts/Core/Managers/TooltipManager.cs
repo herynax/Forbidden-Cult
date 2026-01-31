@@ -43,14 +43,19 @@ public class TooltipManager : MonoBehaviour
 
     public void ShowTooltip(UpgradeSO data, int currentCount)
     {
+        // 1. ВКЛЮЧАЕМ ОБЪЕКТ (это то, чего не хватало)
+        canvasGroup.gameObject.SetActive(true);
+
         isActive = true;
         currentShownUpgrade = data;
+
+        // Кэшируем состояние сразу, чтобы не искать в Update
+        currentUpgradeState = saveManager.data.Upgrades.Find(u => u.ID == data.ID);
 
         bool isRevealed = saveManager.data.RevealedUpgrades.Contains(data.ID);
 
         if (!isRevealed)
         {
-            // Ключ для скрытого состояния: "Unknown_Upgrade"
             nameText.text = LeanLocalization.GetTranslationText("UI_Unknown");
             descriptionText.text = LeanLocalization.GetTranslationText("UI_NeedMoreCorruption");
             loreText.text = "";
@@ -58,7 +63,6 @@ public class TooltipManager : MonoBehaviour
         }
         else
         {
-            // Получаем переводы по ключам из SO
             nameText.text = LeanLocalization.GetTranslationText(data.NameTerm);
             descriptionText.text = LeanLocalization.GetTranslationText(data.DescriptionTerm);
             loreText.text = "<i>\"" + LeanLocalization.GetTranslationText(data.LoreTerm) + "\"</i>";
@@ -66,9 +70,11 @@ public class TooltipManager : MonoBehaviour
             RefreshDynamicData();
         }
 
+        // Анимация появления
         canvasGroup.DOKill();
         canvasGroup.DOFade(1f, 0.15f).SetUpdate(true);
     }
+
 
     private void RefreshDynamicData()
     {
@@ -99,13 +105,18 @@ public class TooltipManager : MonoBehaviour
 
     public void HideTooltip()
     {
+        // Сразу ставим флаг в false, чтобы Update перестал дергать расчеты и движение
         isActive = false;
         currentShownUpgrade = null;
-        currentUpgradeState = null; // Сбрасываем кэш
+        currentUpgradeState = null;
 
         canvasGroup.DOKill();
         canvasGroup.DOFade(0f, 0.15f).SetUpdate(true).OnComplete(() => {
-            if (!isActive) canvasGroup.gameObject.SetActive(false);
+            // Выключаем объект только если за время анимации мы не навели на новую кнопку
+            if (!isActive)
+            {
+                canvasGroup.gameObject.SetActive(false);
+            }
         });
     }
 
