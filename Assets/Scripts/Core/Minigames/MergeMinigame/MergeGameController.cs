@@ -188,18 +188,8 @@ public class MergeGameController : MonoBehaviour
 
             ReduceBaseTime();
 
-            // --- РАСЧЕТ ДИНАМИЧЕСКОЙ НАГРАДЫ ---
-            // Берем текущий доход в секунду
-            double currentCPS = (passiveManager != null) ? passiveManager.TotalIncomePerSecond : 0;
-
-            // Если доход 0 (самое начало игры), берем 1 как базу, чтобы награда не была нулевой
-            double baseReward = (currentCPS > 0) ? currentCPS : 1.0;
-
-            // Финальная награда = (Доход в сек) * (Множитель из SO объекта)
-            double calculatedReward = baseReward * rewardMultiplier;
-
             // Вызываем начисление и спавн цифры
-            AddReward(calculatedReward, spawnPos);
+            AddReward(rewardMultiplier, spawnPos);
         });
     }
 
