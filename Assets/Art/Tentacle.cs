@@ -1,38 +1,50 @@
 using UnityEngine;
 
-public class AnimateObject : MonoBehaviour
+public class AnimateObjectSimple : MonoBehaviour
 {
-    // Настройка диапазона вращения по осям Y и Z
-    public float rotationAmplitudeY = 30f; // амплитуда по Y
-    public float rotationAmplitudeZ = 20f; // амплитуда по Z
-    public float rotationSpeed = 1f; // скорость цикла вращения
+    [Header("Вращение (Swing)")]
+    public Vector3 rotationAmount = new Vector3(0, 30, 20); // Макс. отклонение
+    public float rotationSpeed = 2f;
 
-    // Максимальный диапазон изменения масштаба
-    public Vector3 scaleRange = new Vector3(0.1f, 0.1f, 0.1f);
+    [Header("Пульсация (Pulse)")]
+    public float scaleAmount = 0.1f;
+    public float scaleSpeed = 1.5f;
+
+    private Vector3 initialRotation;
     private Vector3 initialScale;
-    private float scaleTime;
+    private float randomOffset;
 
     void Start()
     {
+        // Сохраняем позы, выставленные в редакторе
+        initialRotation = transform.localEulerAngles;
         initialScale = transform.localScale;
-        scaleTime = 0f;
+
+        // Генерируем случайное число, чтобы "сдвинуть" фазу синуса
+        // Это и дает ту самую асинхронность
+        randomOffset = Random.Range(0f, 100f);
     }
 
     void Update()
     {
-        // Время для синусоидальной функции, создающей цикл «туда и обратно»
-        float t = Time.time * rotationSpeed;
+        // Вычисляем время со сдвигом
+        float timeWithOffset = Time.time + randomOffset;
 
-        // Поворот по осям Y и Z в диапазоне, используя синусоиду
-        float rotY = Mathf.Sin(t) * rotationAmplitudeY;
-        float rotZ = Mathf.Sin(t) * rotationAmplitudeZ;
+        // --- ЛОГИКА ВРАЩЕНИЯ ---
+        // Mathf.Sin выдает значение от -1 до 1
+        float sinRot = Mathf.Sin(timeWithOffset * rotationSpeed);
 
-        // Обновляем локальный EulerAngles
-        transform.localEulerAngles = new Vector3(0, rotY, rotZ);
+        // Считаем новый угол относительно начального
+        float newRotY = initialRotation.y + (sinRot * rotationAmount.y);
+        float newRotZ = initialRotation.z + (sinRot * rotationAmount.z);
 
-        // Меняем масштаб в циклe
-        scaleTime += Time.deltaTime;
-        float scaleFactor = 1 + Mathf.Sin(scaleTime) * 0.1f; // амплитуда 0.1
-        transform.localScale = initialScale * scaleFactor;
+        transform.localEulerAngles = new Vector3(initialRotation.x, newRotY, newRotZ);
+
+        // --- ЛОГИКА МАСШТАБА ---
+        // Используем Cos, чтобы фазы скейла и ротации не совпадали идеально
+        float cosScale = Mathf.Cos(timeWithOffset * scaleSpeed);
+        float currentScaleFactor = 1f + (cosScale * scaleAmount);
+
+        transform.localScale = initialScale * currentScaleFactor;
     }
 }
