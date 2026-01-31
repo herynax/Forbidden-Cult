@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: text
   Icon: {fileID: 8468526713697396880, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
   RowBackground: {fileID: -520188919877199745, guid: a1b31e632455d5546a0bd66b806d3c18, type: 3}
-  BasePrice: 4200
-  BasePassiveIncome: 45
+  BasePrice: 2300
+  BasePassiveIncome: 25
   PurchaseSound:
     Guid:
       Data1: -552180784

@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: folio
   Icon: {fileID: -2581632841690836079, guid: 4f0970e7be03e184f955d0e189e9b18f, type: 3}
   RowBackground: {fileID: -7451621914821404702, guid: 6bd63599e8fb2d04d949808a30d1f877, type: 3}
-  BasePrice: 25000
-  BasePassiveIncome: 320
+  BasePrice: 13000
+  BasePassiveIncome: 280
   PurchaseSound:
     Guid:
       Data1: -552180784

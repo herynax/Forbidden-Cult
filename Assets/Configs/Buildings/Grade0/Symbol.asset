@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: symbol
   Icon: {fileID: -1540426309290004842, guid: 90f8b07d04d7ade4fbc5050d8a533e6d, type: 3}
   RowBackground: {fileID: 5756350290713979945, guid: bcba5d4e1efaf05458de3112eb24525b, type: 3}
-  BasePrice: 15
-  BasePassiveIncome: 0.1
+  BasePrice: 13
+  BasePassiveIncome: 0.13
   PurchaseSound:
     Guid:
       Data1: -1006921207
