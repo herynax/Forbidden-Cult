@@ -78,7 +78,7 @@ MonoBehaviour:
   - Name: UI_CorruptionEarned
     Text: Filtfh earned
   - Name: UI_Play
-    Text: PLAY!
+    Text: Begin the Ritual!
   - Name: News_Default
     Text: The world is quiet... for now.
   - Name: News_Empty
@@ -257,7 +257,9 @@ MonoBehaviour:
   - Name: UI_Corruption_PerSecond
     Text: per second
   - Name: UI_Back
-    Text: 'Back '
+    Text: Back
+  - Name: UI_Lose
+    Text: Ritual is over!
 --- !u!1 &1995967788007553081
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,8 +394,7 @@ MonoBehaviour:
   - Name: UI_CorruptionEarned
     Text: "\u0421\u043A\u0432\u0435\u0440\u043D\u044B \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u043E"
   - Name: UI_Play
-    Text: "\u0422\u0435\u043C\u043D\u044B\u0439 \u0440\u0438\u0442\u0443\u0430\u043B
-      \u0433\u043E\u0442\u043E\u0432!"
+    Text: "\u041D\u0430\u0447\u0430\u0442\u044C \u0440\u0438\u0442\u0443\u0430\u043B!"
   - Name: News_Default
     Text: "\u0412 \u043C\u0438\u0440\u0435 \u0432\u043E\u0446\u0430\u0440\u0438\u043B\u0430\u0441\u044C
       \u0442\u0438\u0448\u0438\u043D\u0430... \u043F\u043E\u043A\u0430 \u0447\u0442\u043E."
@@ -714,6 +715,8 @@ MonoBehaviour:
     Text: "\u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0443"
   - Name: UI_Back
     Text: "\u0412\u044B\u0439\u0442\u0438"
+  - Name: UI_Lose
+    Text: "\u0420\u0438\u0442\u0443\u0430\u043B \u043E\u043A\u043E\u043D\u0447\u0435\u043D!"
 --- !u!1001 &304599205915127196
 PrefabInstance:
   m_ObjectHideFlags: 0

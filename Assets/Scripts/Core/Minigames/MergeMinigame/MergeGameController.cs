@@ -14,6 +14,7 @@ public class MergeGameController : MonoBehaviour
     public Transform spawnPoint;
     public LineRenderer guideLine;
     public LayerMask collisionMask;
+    public Color defaultColor;
 
     [Header("UI HUD")]
     public Image timerBar;
@@ -221,7 +222,7 @@ public class MergeGameController : MonoBehaviour
         // Визуальный фидбек: трясем таймер и красим в красный
         timerBar.transform.DOKill(true);
         timerBar.transform.DOShakePosition(0.5f, 15f);
-        timerBar.DOColor(Color.red, 0.2f).OnComplete(() => timerBar.DOColor(Color.green, 0.5f));
+        timerBar.DOColor(Color.red, 0.2f).OnComplete(() => timerBar.DOColor(defaultColor, 0.5f));
 
         if (timeLeft <= 0) GameOver();
     }

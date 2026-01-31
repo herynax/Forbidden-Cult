@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic; // Для List
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using DG.Tweening;
+using Lean.Localization; // ДОБАВЛЕНО
 
 public class MiniGameButton : MonoBehaviour
 {
-    // СТАТИЧЕСКИЙ СПИСОК для доступа ко всем кнопкам извне
     public static List<MiniGameButton> allActiveButtons = new List<MiniGameButton>();
 
     public MiniGameSO gameData;
@@ -19,13 +19,17 @@ public class MiniGameButton : MonoBehaviour
     [SerializeField] private GameObject readyVisual;
     [SerializeField] private CanvasGroup canvasGroup;
 
+    [Header("Localization Terms")]
+    // Позволяет выбирать ключи прямо из выпадающего списка в инспекторе
+    [LeanTranslationName][SerializeField] private string warningTerm;
+    [LeanTranslationName][SerializeField] private string playButtonTerm = "UI_Play";
+
     [Header("Warning Text Settings")]
-    [SerializeField] private TextMeshProUGUI warningTextUI; // Текст, который вводит человек
-    [SerializeField] private string customWarningMessage = "Почти готово...";
+    [SerializeField] private TextMeshProUGUI warningTextUI;
     [SerializeField] private float warningDuration = 3f;
 
     [Header("Balance")]
-    public float clickCooldownReduction = 1f; // Сколько секунд срезает один клик
+    public float clickCooldownReduction = 1f;
 
     private Button mainButton;
     private SaveManager saveManager;
@@ -33,7 +37,6 @@ public class MiniGameButton : MonoBehaviour
     private bool hasRevealed;
     private Coroutine logicRoutine;
 
-    // Переменная для управления временем кулдауна в реальном времени
     private float currentRemainingCooldown;
     private bool warningShownInCurrentCycle = false;
 
@@ -41,25 +44,20 @@ public class MiniGameButton : MonoBehaviour
     {
         saveManager = Object.FindFirstObjectByType<SaveManager>();
         mainButton = GetComponent<Button>();
-        warningTextUI.gameObject.SetActive(false);
+        if (warningTextUI != null) warningTextUI.gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
-        // Регистрируем кнопку в глобальном списке
         if (!allActiveButtons.Contains(this)) allActiveButtons.Add(this);
-
         SetupInitialState();
-
         if (logicRoutine != null) StopCoroutine(logicRoutine);
         logicRoutine = StartCoroutine(ButtonLogicRoutine());
     }
 
     private void OnDisable()
     {
-        // Удаляем кнопку из списка
         if (allActiveButtons.Contains(this)) allActiveButtons.Remove(this);
-
         if (logicRoutine != null) StopCoroutine(logicRoutine);
         transform.DOKill();
         if (timerText != null) timerText.transform.DOKill();
@@ -80,10 +78,12 @@ public class MiniGameButton : MonoBehaviour
 
         if (cooldownFill != null) cooldownFill.gameObject.SetActive(false);
         if (timerText != null) timerText.gameObject.SetActive(false);
+
         if (warningTextUI != null)
         {
             warningTextUI.alpha = 0;
-            warningTextUI.text = customWarningMessage;
+            // Установка текста по ключу через код
+            warningTextUI.text = LeanLocalization.GetTranslationText(warningTerm);
         }
 
         if (readyVisual != null)
@@ -93,7 +93,6 @@ public class MiniGameButton : MonoBehaviour
         }
     }
 
-    // МЕТОД ДЛЯ ГЛАВНОГО КЛИКЕРА
     public static void ReduceAllCooldowns(float seconds)
     {
         foreach (var btn in allActiveButtons)
@@ -107,8 +106,8 @@ public class MiniGameButton : MonoBehaviour
         if (hasRevealed && !isReady)
         {
             currentRemainingCooldown -= seconds;
-            // Визуальный фидбек среза времени (легкая тряска таймера)
-            timerText.transform.DOPunchScale(Vector3.one * 0.1f, 0.1f);
+            if (timerText != null) timerText.transform.DOKill(true);
+            if (timerText != null) timerText.transform.DOPunchScale(Vector3.one * 0.1f, 0.1f);
         }
     }
 
@@ -171,7 +170,6 @@ public class MiniGameButton : MonoBehaviour
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
 
-            // ЛОГИКА ПРЕДУПРЕЖДЕНИЯ (за 10 секунд)
             if (currentRemainingCooldown <= 10f && !warningShownInCurrentCycle)
             {
                 StartCoroutine(ShowWarningText());
@@ -185,21 +183,24 @@ public class MiniGameButton : MonoBehaviour
 
     private IEnumerator ShowWarningText()
     {
-        warningTextUI.gameObject.SetActive(true);
-
-        warningShownInCurrentCycle = true;
         if (warningTextUI == null) yield break;
 
+        warningTextUI.gameObject.SetActive(true);
+        warningShownInCurrentCycle = true;
+
+        // Берем свежий перевод в момент появления
+        warningTextUI.text = LeanLocalization.GetTranslationText(warningTerm);
+
         warningTextUI.DOKill();
-        // Появление
         warningTextUI.DOFade(1f, 0.5f);
 
         yield return new WaitForSeconds(warningDuration);
 
-        // Исчезновение за 3 секунды, как ты просил
         warningTextUI.DOFade(0f, 3f)
             .SetLink(warningTextUI.gameObject)
-            .OnComplete(() => warningTextUI.gameObject.SetActive(false));
+            .OnComplete(() => {
+                if (warningTextUI != null) warningTextUI.gameObject.SetActive(false);
+            });
     }
 
     private void SetReady()
@@ -211,8 +212,12 @@ public class MiniGameButton : MonoBehaviour
         if (warningTextUI != null) warningTextUI.alpha = 0;
 
         transform.DOKill();
-        timerText.transform.DOKill();
-        timerText.text = "ИГРАТЬ!";
+        if (timerText != null)
+        {
+            timerText.transform.DOKill();
+            // Локализация кнопки "ИГРАТЬ!"
+            timerText.text = LeanLocalization.GetTranslationText(playButtonTerm);
+        }
 
         if (readyVisual != null)
         {
@@ -229,7 +234,6 @@ public class MiniGameButton : MonoBehaviour
         if (isReady)
         {
             isReady = false;
-            hasRevealed = false; // Сброс для следующего круга после возврата
             transform.DOKill();
             saveManager.Save();
             SceneLoader.Instance.LoadScene(gameData.SceneName);

@@ -12,7 +12,7 @@ Time_SecShort,s
 UI_Round,ROUND
 UI_Corruption,Filtfh
 UI_CorruptionEarned,Filtfh earned
-UI_Play,PLAY!
+UI_Play,Begin the Ritual!
 News_Default,The world is quiet... for now.
 News_Empty,No news yet...
 UI_Warning_Generic,The dark ritual is almost ready!
@@ -98,4 +98,5 @@ UI_Settings_Music,Music
 UI_Settings_Volume,Volume
 UI_Settings_ClickType,Click type
 UI_Corruption_PerSecond,per second
-UI_Back,Back 
+UI_Back,Back
+UI_Lose,Ritual is over!

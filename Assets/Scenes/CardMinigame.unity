@@ -622,7 +622,7 @@ MonoBehaviour:
   - {fileID: -6542389118214824599, guid: 15ec32632eff94940b6c846b54767509, type: 3}
   - {fileID: -2648564031959166319, guid: 15ec32632eff94940b6c846b54767509, type: 3}
   timerBar: {fileID: 755611724}
-  timerNormalColor: {r: 0, g: 1, b: 0, a: 1}
+  timerNormalColor: {r: 0.53333336, g: 0, b: 1, a: 1}
   timerWarningColor: {r: 1, g: 0, b: 0, a: 1}
   losePanel: {fileID: 217336032}
   exitButton: {fileID: 415805996}

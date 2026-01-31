@@ -12,7 +12,7 @@ Time_SecShort,с
 UI_Round,РАУНД
 UI_Corruption,Скверна
 UI_CorruptionEarned,Скверны получено
-UI_Play,Темный ритуал готов!
+UI_Play,Начать ритуал!
 News_Default,В мире воцарилась тишина... пока что.
 News_Empty,Пока нет новостей...
 UI_Warning_Generic,Темный ритуал почти готов!
@@ -99,3 +99,4 @@ UI_Settings_Volume,Звук
 UI_Settings_ClickType,Тип клика
 UI_Corruption_PerSecond,в секунду
 UI_Back,Выйти
+UI_Lose,Ритуал окончен!
