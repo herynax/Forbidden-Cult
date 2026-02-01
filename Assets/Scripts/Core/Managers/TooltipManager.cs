@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using YG;
 using DG.Tweening;
 using Lean.Localization;
 

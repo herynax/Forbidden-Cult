@@ -41,9 +41,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolveAmount: 0.5
+    - _DissolveAmount: 0
     - _DissolveScale: 14.88
-    - _FlashAmount: 0.65939754
+    - _FlashAmount: 0.8059666
     - _OutlineThickness: 0.1
     m_Colors:
     - _FlashColor: {r: 4, g: 4, b: 4, a: 0}

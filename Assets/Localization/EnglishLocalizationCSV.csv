@@ -100,3 +100,7 @@ UI_Settings_ClickType,Click type
 UI_Corruption_PerSecond,per second
 UI_Back,Back
 UI_Lose,Ritual is over!
+UI_Offline_Ad_Button,Claim More!
+UI_Offline_Normal_Button,Claim
+UI_Offline_Info_Full,Filtfh collected: {0}
+UI_Offline_Info_Half,Will receive: {0}

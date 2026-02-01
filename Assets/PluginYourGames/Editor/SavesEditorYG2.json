@@ -1,0 +1,56 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 14,
+    "Money": 730.8295647647512,
+    "ClickPower": 1.0,
+    "languageChosen": false,
+    "LastSaveTimeTicks": 639055761450210021,
+    "MoneyAtLeave": -1.0,
+    "Upgrades": [
+        {
+            "ID": "symbol",
+            "Amount": 1,
+            "TotalEarned": 16.591214456412677,
+            "StoredPositions": [
+                {
+                    "x": -261.05169677734377,
+                    "y": -70.95266723632813,
+                    "zRotation": 4.842170715332031,
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                }
+            ]
+        },
+        {
+            "ID": "word",
+            "Amount": 1,
+            "TotalEarned": 110.23872537433637,
+            "StoredPositions": [
+                {
+                    "x": -258.3702087402344,
+                    "y": -83.97584533691406,
+                    "zRotation": -3.2177438735961916,
+                    "r": 0.9811320900917053,
+                    "g": 0.9209683537483215,
+                    "b": 0.9487012624740601,
+                    "a": 1.0
+                }
+            ]
+        }
+    ],
+    "RevealedUpgrades": [
+        "symbol",
+        "word",
+        "spell"
+    ],
+    "MiniGames": []
+}

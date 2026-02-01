@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.UI;
+using YG;
 
 public class BuildingVisualManager : MonoBehaviour
 {

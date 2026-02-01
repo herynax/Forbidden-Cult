@@ -100,3 +100,7 @@ UI_Settings_ClickType,Тип клика
 UI_Corruption_PerSecond,в секунду
 UI_Back,Выйти
 UI_Lose,Ритуал окончен!
+UI_Offline_Ad_Button,Забрать больше!
+UI_Offline_Normal_Button,Забрать
+UI_Offline_Info_Full,Собрано скверны: {0}
+UI_Offline_Info_Half,Будет получено: {0}

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using FMODUnity;
 using Lean.Localization;
+using YG;
 
 public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {

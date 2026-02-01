@@ -1,58 +1,43 @@
 using UnityEngine;
+using YG;
 
 public class SaveManager : MonoBehaviour
 {
-    public GameData data;
-    private string saveKey = "PlayerSave";
+    public static SaveManager Instance;
+
+    // Свойство для быстрого доступа к данным
+    public SavesYG data => YG2.saves;
 
     private void Awake()
     {
-        // 1. Сначала проверяем на дубликаты самого SaveManager
-        if (FindObjectsByType<SaveManager>(FindObjectsSortMode.None).Length > 1)
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-        DontDestroyOnLoad(gameObject);
-
-        // 2. Загружаем данные
-        Load();
     }
 
     public void Save()
     {
+        // Фиксируем время перед отправкой в облако
         data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
 
-        // Превращаем объект в строку
-        string json = JsonUtility.ToJson(data);
-        // Сохраняем в PlayerPrefs (в Вебе это IndexedDB)
-        PlayerPrefs.SetString(saveKey, json);
-        PlayerPrefs.Save();
-        Debug.Log("Saved: " + json);
-    }
-
-    public void Load()
-    {
-        if (PlayerPrefs.HasKey(saveKey))
-        {
-            string json = PlayerPrefs.GetString(saveKey);
-            data = JsonUtility.FromJson<GameData>(json);
-        }
-        else
-        {
-            data = new GameData(); // Если сохранения нет, создаем новое
-        }
-    }
-
-    private void OnApplicationQuit()
-    {
-        Save();
+        // Метод плагина для сохранения (локально + облако)
+        YG2.SaveProgress();
+        Debug.Log("Game Saved to Yandex Cloud");
     }
 
     [ContextMenu("Reset Save")]
     public void ResetSave()
     {
-        data = new GameData();
+        // В YG2 сброс делается через новый экземпляр
+        YG2.saves = new SavesYG();
         Save();
+        // Перезагружаем сцену, чтобы визуал обновился
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
