@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using FMODUnity;
+using System.Collections;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -28,13 +29,16 @@ public class SettingsManager : MonoBehaviour
     private bool isOpen = false;
     private Vector2 closedPos;
     private Vector2 openedPos;
+    private bool isInitialized = false;
 
     private void Awake()
     {
-        // Делаем менеджер настроек вечным, чтобы он один раз загрузил всё при старте
         if (Instance == null)
         {
             Instance = this;
+            // ВАЖНО: Если этот объект — часть UI на Канвасе, 
+            // DontDestroyOnLoad может работать криво вместе с родительским Канвасом.
+            // Убедись, что SettingsManager висит на корневом объекте, а не внутри UI.
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -42,18 +46,34 @@ public class SettingsManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
 
-        // Инициализируем шины
+    private IEnumerator Start()
+    {
+        // Скрываем панель сразу (визуально)
+        SetupInitialUI();
+
+        // ЖДЕМ ИНИЦИАЛИЗАЦИИ FMOD (Критично для Веба)
+        while (!RuntimeManager.IsInitialized) yield return null;
+        while (!RuntimeManager.HaveAllBanksLoaded) yield return null;
+
+        // Получаем шины только когда всё загружено
         musicBus = RuntimeManager.GetBus(musicBusPath);
         sfxBus = RuntimeManager.GetBus(sfxBusPath);
 
-        // 1. ЗАГРУЖАЕМ НАСТРОЙКИ ИЗ ПАМЯТИ
+        // Загружаем и применяем настройки
         LoadAndApplySettings();
+
+        // Подписываемся на события
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        globalParamSlider.onValueChanged.AddListener(SetGlobalParameter);
+
+        isInitialized = true;
     }
 
-    private void Start()
+    private void SetupInitialUI()
     {
-        // Настройка анимации
         openedPos = settingsPanel.anchoredPosition;
         closedPos = settingsButton.GetComponent<RectTransform>().anchoredPosition;
 
@@ -61,33 +81,33 @@ public class SettingsManager : MonoBehaviour
         settingsPanel.localScale = Vector3.zero;
         panelAlpha.alpha = 0;
         settingsPanel.gameObject.SetActive(false);
-
-        // Подписываемся на события слайдеров
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
-        globalParamSlider.onValueChanged.AddListener(SetGlobalParameter);
     }
 
     private void LoadAndApplySettings()
     {
-        // Достаем значения (если их нет, ставим 0.75f по умолчанию)
         float mVol = PlayerPrefs.GetFloat("MusicVol", 0.75f);
         float sVol = PlayerPrefs.GetFloat("SFXVol", 0.75f);
         float gParam = PlayerPrefs.GetFloat("GlobalParam", 0.5f);
 
-        // Применяем к слайдерам (это вызовет методы Set...Volume автоматически через Listener)
         musicSlider.value = mVol;
         sfxSlider.value = sVol;
         globalParamSlider.value = gParam;
 
-        // Принудительно применяем к FMOD на старте
-        musicBus.setVolume(mVol);
-        sfxBus.setVolume(sVol);
-        RuntimeManager.StudioSystem.setParameterByName(globalParamName, gParam);
+        // Применяем принудительно
+        ApplyVolumes(mVol, sVol, gParam);
+    }
+
+    private void ApplyVolumes(float m, float s, float g)
+    {
+        if (musicBus.isValid()) musicBus.setVolume(m);
+        if (sfxBus.isValid()) sfxBus.setVolume(s);
+        RuntimeManager.StudioSystem.setParameterByName(globalParamName, g);
     }
 
     public void ToggleSettings()
     {
+        if (!isInitialized) return; // Не даем открывать, пока FMOD не готов
+
         isOpen = !isOpen;
         settingsPanel.DOKill();
         panelAlpha.DOKill();
@@ -101,26 +121,22 @@ public class SettingsManager : MonoBehaviour
         }
         else
         {
-            // Сохраняем в память при закрытии панели (на всякий случай)
             PlayerPrefs.Save();
-
             settingsPanel.DOAnchorPos(closedPos, 0.4f).SetEase(Ease.InBack).SetUpdate(true);
             settingsPanel.DOScale(0f, 0.4f).SetEase(Ease.InBack).SetUpdate(true);
             panelAlpha.DOFade(0f, 0.2f).SetUpdate(true).OnComplete(() => settingsPanel.gameObject.SetActive(false));
         }
     }
 
-    // МЕТОДЫ ИЗМЕНЕНИЯ (Вызываются слайдерами)
-
     private void SetMusicVolume(float value)
     {
-        musicBus.setVolume(value);
+        if (musicBus.isValid()) musicBus.setVolume(value);
         PlayerPrefs.SetFloat("MusicVol", value);
     }
 
     private void SetSFXVolume(float value)
     {
-        sfxBus.setVolume(value);
+        if (sfxBus.isValid()) sfxBus.setVolume(value);
         PlayerPrefs.SetFloat("SFXVol", value);
     }
 
