@@ -1,0 +1,3 @@
+﻿Build path: C:/Users/Nik/Desktop/promo/Forbidden Cult/FC yandex1
+Build number: 0
+PluginYG version: 2.007
