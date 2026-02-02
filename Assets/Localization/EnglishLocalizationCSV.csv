@@ -10,8 +10,8 @@ Time_HourShort,h
 Time_MinShort,m
 Time_SecShort,s
 UI_Round,ROUND
-UI_Corruption,Filtfh
-UI_CorruptionEarned,Filtfh earned
+UI_Corruption,Filth
+UI_CorruptionEarned,Filth earned
 UI_Play,Begin the Ritual!
 News_Default,The world is quiet... for now.
 News_Empty,No news yet...
@@ -102,5 +102,5 @@ UI_Back,Back
 UI_Lose,Ritual is over!
 UI_Offline_Ad_Button,Claim More!
 UI_Offline_Normal_Button,Claim
-UI_Offline_Info_Full,Filtfh collected: {0}
+UI_Offline_Info_Full,Filth collected: {0}
 UI_Offline_Info_Half,Will receive: {0}

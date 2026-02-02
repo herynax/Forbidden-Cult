@@ -342,7 +342,7 @@ MonoBehaviour:
   - Name: UI_CorruptionEarned
     Text: Filtfh earned
   - Name: UI_Play
-    Text: PLAY!
+    Text: Begin the Ritual!
   - Name: News_Default
     Text: The world is quiet... for now.
   - Name: News_Empty
@@ -521,7 +521,17 @@ MonoBehaviour:
   - Name: UI_Corruption_PerSecond
     Text: per second
   - Name: UI_Back
-    Text: 'Back '
+    Text: Back
+  - Name: UI_Lose
+    Text: Ritual is over!
+  - Name: UI_Offline_Ad_Button
+    Text: Claim More!
+  - Name: UI_Offline_Normal_Button
+    Text: Claim
+  - Name: UI_Offline_Info_Full
+    Text: 'Filtfh collected: {0}'
+  - Name: UI_Offline_Info_Half
+    Text: 'Will receive: {0}'
 --- !u!1 &1594435399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: English
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1

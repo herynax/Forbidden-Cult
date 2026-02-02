@@ -7,17 +7,17 @@
         false,
         false
     ],
-    "idSave": 24,
-    "Money": 59238.857509204056,
+    "idSave": 26,
+    "Money": 10419433.62155517,
     "ClickPower": 1.0,
     "languageChosen": false,
-    "LastSaveTimeTicks": 639056411109051355,
+    "LastSaveTimeTicks": 639056509282064658,
     "MoneyAtLeave": -1.0,
     "Upgrades": [
         {
             "ID": "symbol",
             "Amount": 2,
-            "TotalEarned": 21.514598556746475,
+            "TotalEarned": 23.155067979831963,
             "StoredPositions": [
                 {
                     "x": -261.05169677734377,
@@ -42,7 +42,7 @@
         {
             "ID": "word",
             "Amount": 1,
-            "TotalEarned": 144.97255996696186,
+            "TotalEarned": 151.28205774805975,
             "StoredPositions": [
                 {
                     "x": -258.3702087402344,
@@ -58,7 +58,7 @@
         {
             "ID": "spell",
             "Amount": 1,
-            "TotalEarned": 239.0179687961936,
+            "TotalEarned": 289.4939510449767,
             "StoredPositions": [
                 {
                     "x": -255.80072021484376,
@@ -74,7 +74,7 @@
         {
             "ID": "grimoire",
             "Amount": 1,
-            "TotalEarned": 40290.1803845074,
+            "TotalEarned": 53540.12572481297,
             "StoredPositions": [
                 {
                     "x": -263.68170166015627,
@@ -94,7 +94,9 @@
         "spell",
         "text",
         "folio",
-        "grimoire"
+        "grimoire",
+        "neophyte",
+        "cultist"
     ],
     "MiniGames": []
 }
