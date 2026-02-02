@@ -6386,7 +6386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: English
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1
@@ -7111,8 +7111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseScale: 1.1
   pulseDuration: 0.8
-  shakeStrength: 15
-  shakeInterval: 3
 --- !u!114 &423690021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8337,7 +8335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Filtfh
+  m_text: "\u0421\u043A\u0432\u0435\u0440\u043D\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: abb4815fe79b35647a13a36e53ab6e7d, type: 2}
   m_sharedMaterial: {fileID: 3045083535678946952, guid: abb4815fe79b35647a13a36e53ab6e7d, type: 2}
@@ -10600,7 +10598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: per second
+  m_text: "\u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0443"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32b5c45acf4ece5488ed74de0e1f1c1b, type: 2}
   m_sharedMaterial: {fileID: -2066253437775346182, guid: 32b5c45acf4ece5488ed74de0e1f1c1b, type: 2}
@@ -13658,27 +13656,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1757899024}
-  - component: {fileID: 1757899023}
+  - component: {fileID: 1757899025}
   m_Layer: 0
-  m_Name: ADSManager
+  m_Name: AdPauseManger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1757899023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757899022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60fd4819018ea9644a654b088bcdc76c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interAdInterval: 90
 --- !u!4 &1757899024
 Transform:
   m_ObjectHideFlags: 0
@@ -13694,6 +13679,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1757899025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757899022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68cf81e83d620b42a2b7ab945781836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1787153411
 GameObject:
   m_ObjectHideFlags: 0

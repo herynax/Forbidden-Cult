@@ -7,10 +7,6 @@ public class AttentionSeeker : MonoBehaviour
     [SerializeField] private float pulseScale = 1.1f;    // Размер при увеличении
     [SerializeField] private float pulseDuration = 0.8f; // Скорость пульсации
 
-    [Header("Shake Settings")]
-    [SerializeField] private float shakeStrength = 15f;  // Сила тряски
-    [SerializeField] private float shakeInterval = 3f;  // Как часто трясти (раз в 3 секунды)
-
     private Vector3 initialScale;
     private Sequence mainSequence;
 

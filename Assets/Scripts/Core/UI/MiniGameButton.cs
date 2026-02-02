@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using DG.Tweening;
-using Lean.Localization; // днаюбкемн
+using Lean.Localization;
+using YG;
 
 public class MiniGameButton : MonoBehaviour
 {
@@ -233,6 +234,7 @@ public class MiniGameButton : MonoBehaviour
     {
         if (isReady)
         {
+            YG2.InterstitialAdvShow();
             isReady = false;
             transform.DOKill();
             saveManager.Save();
