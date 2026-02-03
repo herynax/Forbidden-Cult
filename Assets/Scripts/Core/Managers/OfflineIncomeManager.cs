@@ -62,6 +62,12 @@ public class OfflineIncomeManager : MonoBehaviour
             }
         }
 
+        if (timePassed.TotalSeconds < 30)
+        {
+            saveManager.data.Money += earned;
+            return;
+        }
+
         // Если ничего не куплено — просто обновляем время и выходим
         if (passiveManager.TotalIncomePerSecond <= 0 && !fromMinigame)
         {
@@ -111,8 +117,18 @@ public class OfflineIncomeManager : MonoBehaviour
 
     private void OnApplicationFocus(bool hasFocus)
     {
-        AudioListener.pause = !hasFocus;
-        if (!hasFocus && saveManager != null) saveManager.Save();
+        if (hasFocus)
+        {
+            CalculateOfflineIncome();
+        }
+        else
+        {
+            if (saveManager != null && saveManager.data != null)
+            {
+                saveManager.data.LastSaveTimeTicks = System.DateTime.UtcNow.Ticks;
+                saveManager.Save(); // Сохраняем в облако/локалхост
+            }
+        }
     }
 
     private void OnApplicationPause(bool pauseStatus)
